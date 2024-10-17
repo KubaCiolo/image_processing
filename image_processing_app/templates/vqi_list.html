@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>VQI List</title>
+</head>
+<body>
+    <h1>VQI List</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Frame</th>
+                <th>Blockiness</th>
+                <th>SA</th>
+                <th>Letterbox</th>
+                <th>Pillarbox</th>
+                <th>Blockloss</th>
+                <th>Blur</th>
+                <th>TA</th>
+                <th>Blackout</th>
+                <th>Freezing</th>
+                <th>Exposure Bri</th>
+                <th>Contrast</th>
+                <th>Interlace</th>
+                <th>Noise</th>
+                <th>Slice</th>
+                <th>Flickering</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for vqi in vqis %}
+            <tr>
+                <td>{{ vqi.frame }}</td>
+                <td>{{ vqi.blockiness }}</td>
+                <td>{{ vqi.sa }}</td>
+                <td>{{ vqi.letterbox }}</td>
+                <td>{{ vqi.pillarbox }}</td>
+                <td>{{ vqi.blockloss }}</td>
+                <td>{{ vqi.blur }}</td>
+                <td>{{ vqi.ta }}</td>
+                <td>{{ vqi.blackout }}</td>
+                <td>{{ vqi.freezing }}</td>
+                <td>{{ vqi.exposure_bri }}</td>
+                <td>{{ vqi.contrast }}</td>
+                <td>{{ vqi.interlace }}</td>
+                <td>{{ vqi.noise }}</td>
+                <td>{{ vqi.slice }}</td>
+                <td>{{ vqi.flickering }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

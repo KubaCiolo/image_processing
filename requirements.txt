@@ -1,0 +1,11 @@
+Django>=3.2,<4.0
+PyMuPDF>=1.18.19
+agh-vqis>=3.2.1  # Ensure this is the correct package name and version
+psycopg2-binary  # If using PostgreSQL
+mysqlclient  # If using MySQL
+pillow  # For image processing
+python-dotenv
+numpy==1.21.6  # Downgraded to a compatible version
+scikit-learn==1.2.0
+xgboost==1.7.5  # Updated to a compatible version
+opencv-python-headless==4.5.3.56  # Use headless version to avoid GUI dependencies
