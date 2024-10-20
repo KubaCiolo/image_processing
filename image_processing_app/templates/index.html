@@ -10,13 +10,62 @@
         {{ form.as_p }}
         <button type="submit">Search</button>
     </form>
+    <a href="{% url 'archive' %}">
+        <button type="button">Go to Archive</button>
+    </a>
+    {% if metrics %}
     <h2>Results</h2>
-    <ul>
+    <table border="1">
+        <tr>
+            <th>VQIS Filename</th>
+            <th>Doc Filename</th>
+            <th>Doc Headline</th>
+            <th>Doc URL</th>
+            <th>Frame</th>
+            <th>Blockiness</th>
+            <th>SA</th>
+            <th>Letterbox</th>
+            <th>Pillarbox</th>
+            <th>Blockloss</th>
+            <th>Blur</th>
+            <th>TA</th>
+            <th>Blackout</th>
+            <th>Freezing</th>
+            <th>Exposure (bri)</th>
+            <th>Contrast</th>
+            <th>Interlace</th>
+            <th>Noise</th>
+            <th>Slice</th>
+            <th>Flickering</th>
+            <th>Colourfulness</th>
+        </tr>
         {% for metric in metrics %}
-            <li>{{ metric.vqis_filename }} - {{ metric.doc_filename }}</li>
-        {% empty %}
-            <li>No results found</li>
+        <tr>
+            <td>{{ metric.vqis_filename }}</td>
+            <td>{{ metric.doc_filename }}</td>
+            <td>{{ metric.doc_headline }}</td>
+            <td>{{ metric.doc_url }}</td>
+            <td>{{ metric.frame }}</td>
+            <td>{{ metric.blockiness }}</td>
+            <td>{{ metric.sa }}</td>
+            <td>{{ metric.letterbox }}</td>
+            <td>{{ metric.pillarbox }}</td>
+            <td>{{ metric.blockloss }}</td>
+            <td>{{ metric.blur }}</td>
+            <td>{{ metric.ta }}</td>
+            <td>{{ metric.blackout }}</td>
+            <td>{{ metric.freezing }}</td>
+            <td>{{ metric.exposure_bri }}</td>
+            <td>{{ metric.contrast }}</td>
+            <td>{{ metric.interlace }}</td>
+            <td>{{ metric.noise }}</td>
+            <td>{{ metric.slice }}</td>
+            <td>{{ metric.flickering }}</td>
+            <td>{{ metric.colourfulness }}</td>
+        </tr>
         {% endfor %}
-    </ul>
+    </table>
+    {% endif %}
+    <br>
 </body>
 </html>
