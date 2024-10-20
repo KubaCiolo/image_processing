@@ -1,10 +1,5 @@
 from django.contrib import admin
-from .models import VQI
+from .models import VideoQualityMetrics  # Update this line
 
-@admin.register(VQI)
-class VQIAdmin(admin.ModelAdmin):
-    list_display = ('frame', 'blockiness', 'sa', 'letterbox', 'pillarbox', 'blockloss', 'blur', 'ta', 'blackout', 'freezing', 'exposure_bri', 'contrast', 'interlace', 'noise', 'slice', 'flickering')
-    search_fields = ('frame', 'blockiness', 'sa')
-
-# Alternatively, you can use:
-# admin.site.register(VQI, VQIAdmin)
+# Register your models here
+admin.site.register(VideoQualityMetrics)

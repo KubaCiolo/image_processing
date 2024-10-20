@@ -1,39 +1,27 @@
 from django.db import models
-from django.utils import timezone
 
-class PDF(models.Model):
-    name = models.CharField(max_length=255)
-    source_link = models.URLField()
-
-class Image(models.Model):
-    title = models.CharField(max_length=255, default='Untitled')  # Provide a default title
-    image = models.ImageField(upload_to='images/', default='images/default.jpg')  # Provide a default image path
-    uploaded_at = models.DateTimeField(auto_now_add=True)  # Automatically set the timestamp when the object is created
-
-    def __str__(self):
-        return self.title
-
-class Indicator(models.Model):
-    image = models.ForeignKey(Image, on_delete=models.CASCADE)
-    indicator_data = models.TextField()
-
-class VQI(models.Model):
-    frame = models.IntegerField()
-    blockiness = models.FloatField()
-    sa = models.FloatField()
-    letterbox = models.FloatField()
-    pillarbox = models.FloatField()
-    blockloss = models.FloatField()
-    blur = models.FloatField()
-    ta = models.FloatField()
-    blackout = models.IntegerField()
-    freezing = models.IntegerField()
-    exposure_bri = models.FloatField()
-    contrast = models.FloatField()
-    interlace = models.FloatField()
-    noise = models.FloatField()
-    slice = models.FloatField()
-    flickering = models.FloatField()
+class VideoQualityMetrics(models.Model):
+    vqis_filename = models.CharField(max_length=255, default='default_vqis_filename')
+    doc_filename = models.CharField(max_length=255, default='default_doc_filename')
+    doc_headline = models.TextField(default='default_doc_headline')
+    doc_url = models.URLField(default='http://example.com')
+    frame = models.IntegerField(default=0)
+    blockiness = models.FloatField(default=0.0)
+    sa = models.FloatField(default=0.0)
+    letterbox = models.FloatField(default=0.0)
+    pillarbox = models.FloatField(default=0.0)
+    blockloss = models.FloatField(default=0.0)
+    blur = models.FloatField(default=0.0)
+    ta = models.FloatField(default=0.0)
+    blackout = models.IntegerField(default=0)
+    freezing = models.IntegerField(default=0)
+    exposure_bri = models.FloatField(default=0.0)
+    contrast = models.FloatField(default=0.0)
+    interlace = models.FloatField(default=0.0)
+    noise = models.FloatField(default=0.0)
+    slice = models.FloatField(default=0.0)
+    flickering = models.FloatField(default=0.0)
+    colourfulness = models.FloatField(default=0.0)
 
     def __str__(self):
         return f"Frame {self.frame}"

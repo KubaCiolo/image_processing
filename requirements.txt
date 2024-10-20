@@ -5,7 +5,6 @@ psycopg2-binary  # If using PostgreSQL
 mysqlclient  # If using MySQL
 pillow  # For image processing
 python-dotenv
-numpy==1.21.6  # Downgraded to a compatible version
+numpy==1.22.3  # Downgraded to a compatible version
 scikit-learn==1.2.0
 xgboost==1.7.5  # Updated to a compatible version
-opencv-python-headless==4.5.3.56  # Use headless version to avoid GUI dependencies

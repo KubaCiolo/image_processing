@@ -1,2 +1,2 @@
-Frame,Blockiness,SA,Letterbox,Pillarbox,Blockloss,Blur,TA,Blackout,Freezing,Exposure(bri),Contrast,Interlace,Noise,Slice,Flickering
-0,0.87489,139.10718,0.0,0.0,0.25,2.109,0.0,0,0,125,67.06936,0.03065,0.3737,39.938,0.0
+Frame,Blockiness,SA,Letterbox,Pillarbox,Blockloss,Blur,TA,Blackout,Freezing,Exposure(bri),Contrast,Interlace,Noise,Slice,Flickering,Colourfulness
+0,0.80859,116.97817,0.0,0.0,0.0,3.179,0.0,0,0,126,60.47812,0.018,0.3575,8.832,0.0,140.4029524826176
