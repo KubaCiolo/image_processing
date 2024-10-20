@@ -10,9 +10,6 @@
         {{ form.as_p }}
         <button type="submit">Search</button>
     </form>
-    <a href="{% url 'archive' %}">
-        <button type="button">Go to Archive</button>
-    </a>
     {% if metrics %}
     <h2>Results</h2>
     <table border="1">
@@ -67,5 +64,15 @@
     </table>
     {% endif %}
     <br>
+    <a href="{% url 'archive' %}">
+        <button type="button">Go to Archive</button>
+    </a>
+    <br><br>
+    <a href="{% url 'account_login' %}">
+        <button type="button">Sign In</button>
+    </a>
+    <a href="{% url 'account_signup' %}">
+        <button type="button">Sign Up</button>
+    </a>
 </body>
 </html>
