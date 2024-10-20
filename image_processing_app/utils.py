@@ -1,6 +1,7 @@
 import os
 from pathlib import Path
 import csv
+from PIL import Image
 from agh_vqis import process_folder_w_mm_files, VQIs
 
 def process_images(picture_dirs):
@@ -29,6 +30,14 @@ def process_single_image(image_file, parameters):
             print(f"File does not exist: {image_file}")
             return
 
+        # Verify that the image is not corrupted
+        try:
+            with Image.open(image_file) as img:
+                img.verify()  # Verify that the image is not corrupted
+        except (IOError, SyntaxError) as e:
+            print(f"Image is corrupted or invalid: {image_file}, Error: {e}")
+            return
+
         # Define a consistent output directory
         output_dir = Path(r"C:\Users\jakub_lk\OneDrive\.inżynierka\image_processing\data")
         output_dir.mkdir(parents=True, exist_ok=True)
@@ -36,31 +45,36 @@ def process_single_image(image_file, parameters):
         # Define the output file based on the image filename
         output_file = output_dir / f"VQIs_for_{image_file.stem}.csv"
 
-        try:
-            # Open the output file in write mode
-            with open(output_file, mode='w', newline='') as file:
-                writer = csv.writer(file)
-                # Write headers as expected by the VQI data
-                writer.writerow([
-                    "Frame", "Blockiness", "SA", "Letterbox", "Pillarbox", "Blockloss", "Blur", "TA",
-                    "Blackout", "Freezing", "Exposure(bri)", "Contrast", "Interlace", "Noise", "Slice", "Flickering"
-                ])
-                # Iterate over the parameters assuming it's a list of values
-                # If parameters contain multiple rows, adjust this accordingly
-                if isinstance(parameters, list):
-                    for parameter_row in parameters:
-                        writer.writerow(parameter_row)
-                else:
-                    writer.writerow(parameters)
+        # Open the output file in write mode
+        with open(output_file, mode='w', newline='') as file:
+            writer = csv.writer(file)
+            # Write headers as expected by the VQI data
+            writer.writerow([
+                "Frame", "Blockiness", "SA", "Letterbox", "Pillarbox", "Blockloss", "Blur", "TA",
+                "Blackout", "Freezing", "Exposure(bri)", "Contrast", "Interlace", "Noise", "Slice", "Flickering"
+            ])
+            # Iterate over the parameters assuming it's a list of values
+            # If parameters contain multiple rows, adjust this accordingly
+            if isinstance(parameters, list):
+                for parameter_row in parameters:
+                    writer.writerow(parameter_row)
+            else:
+                writer.writerow(parameters)
 
-            print(f"Successfully processed {image_file} and saved VQI data to {output_file}")
-        except Exception as e:
-            print(f"Error writing VQI data for image {image_file}: {e}")
-            # Remove the output file if it was created
-            if output_file.exists():
-                output_file.unlink()
+        print(f"Successfully processed {image_file} and saved VQI data to {output_file}")
     except Exception as e:
         print(f"Error processing image {image_file}: {e}")
-        # Ensure no unnecessary directories or files are created
-        if output_file.exists():
-            output_file.unlink()
+
+# Example usage
+picture_dirs = [
+    r"C:\Users\jakub_lk\OneDrive\.inżynierka\Es_pdfs(Art2)\From 2023-01-01 to 2023-01-31_3724PDFs_pictures",
+    r"C:\Users\jakub_lk\OneDrive\.inżynierka\Es_pdfs(Art2)\From 2023-02-01 to 2023-02-28_3063PDFs_pictures",
+    r"C:\Users\jakub_lk\OneDrive\.inżynierka\Es_pdfs(Art2)\From 2023-03-01 to 2023-03-31_1992PDFs_pictures",
+    r"C:\Users\jakub_lk\OneDrive\.inżynierka\Es_pdfs(Art2)\From 2023-04-01 to 2023-04-30_5507PDFs_pictures",
+    r"C:\Users\jakub_lk\OneDrive\.inżynierka\Es_pdfs(Art2)\From 2023-05-01 to 2023-05-31_1971PDFs_pictures",
+    r"C:\Users\jakub_lk\OneDrive\.inżynierka\Es_pdfs(Art2)\From 2023-06-01 to 2023-06-30_2198PDFs_pictures",
+    r"C:\Users\jakub_lk\OneDrive\.inżynierka\Es_pdfs(Art2)\From 2023-09-01 to 2023-09-15_329PDFs_pictures",
+    r"C:\Users\jakub_lk\OneDrive\.inżynierka\Es_pdfs(Art2)\From 2023-09-16 to 2023-09-30_8750PDFs_pictures"
+]
+
+process_images(picture_dirs)

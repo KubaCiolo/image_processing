@@ -1,230 +1,173 @@
-2024-10-17 15:54:44,289 __main__ INFO: No IQIs were selected. Running 15 AGH VQIs only.
-2024-10-17 15:54:44,337 __main__ INFO: Running requested AGH VQIs on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-01-01 to 2023-01-31_3724PDFs_pictures\doc_10_12_img_1.jpg)
-2024-10-17 15:54:44,486 __main__ INFO: All results stored in the VQIs_for_doc_10_12_img_1.csv file
-2024-10-17 15:54:44,488 __main__ INFO: No IQIs were selected. Running 15 AGH VQIs only.
-2024-10-17 15:54:44,538 __main__ INFO: Running requested AGH VQIs on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-01-01 to 2023-01-31_3724PDFs_pictures\doc_10_12_img_10.jpg)
-2024-10-17 15:54:44,684 __main__ INFO: All results stored in the VQIs_for_doc_10_12_img_10.csv file
-2024-10-17 15:54:44,685 __main__ INFO: No IQIs were selected. Running 15 AGH VQIs only.
-2024-10-17 15:54:44,733 __main__ INFO: Running requested AGH VQIs on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-01-01 to 2023-01-31_3724PDFs_pictures\doc_10_12_img_11.jpg)
-2024-10-17 15:54:44,870 __main__ INFO: All results stored in the VQIs_for_doc_10_12_img_11.csv file
-2024-10-17 15:54:44,871 __main__ INFO: No IQIs were selected. Running 15 AGH VQIs only.
-2024-10-17 15:54:44,923 __main__ INFO: Running requested AGH VQIs on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-01-01 to 2023-01-31_3724PDFs_pictures\doc_10_12_img_12.jpg)
-2024-10-17 15:54:45,058 __main__ INFO: All results stored in the VQIs_for_doc_10_12_img_12.csv file
-2024-10-17 15:54:45,060 __main__ INFO: No IQIs were selected. Running 15 AGH VQIs only.
-2024-10-17 15:54:45,135 __main__ INFO: Running requested AGH VQIs on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-01-01 to 2023-01-31_3724PDFs_pictures\doc_10_12_img_13.jpg)
-2024-10-17 15:54:45,359 __main__ INFO: All results stored in the VQIs_for_doc_10_12_img_13.csv file
-2024-10-17 15:54:45,361 __main__ INFO: No IQIs were selected. Running 15 AGH VQIs only.
-2024-10-17 15:54:45,424 __main__ INFO: Running requested AGH VQIs on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-01-01 to 2023-01-31_3724PDFs_pictures\doc_10_12_img_14.jpg)
-2024-10-17 15:54:45,582 __main__ INFO: All results stored in the VQIs_for_doc_10_12_img_14.csv file
-2024-10-17 15:54:45,584 __main__ INFO: No IQIs were selected. Running 15 AGH VQIs only.
-2024-10-17 15:54:45,659 __main__ INFO: Running requested AGH VQIs on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-01-01 to 2023-01-31_3724PDFs_pictures\doc_10_12_img_2.jpg)
-2024-10-17 15:54:45,834 __main__ INFO: All results stored in the VQIs_for_doc_10_12_img_2.csv file
-2024-10-17 15:54:45,836 __main__ INFO: No IQIs were selected. Running 15 AGH VQIs only.
-2024-10-17 15:54:45,902 __main__ INFO: Running requested AGH VQIs on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-01-01 to 2023-01-31_3724PDFs_pictures\doc_10_12_img_3.jpg)
-2024-10-17 15:54:46,050 __main__ INFO: All results stored in the VQIs_for_doc_10_12_img_3.csv file
-2024-10-17 15:54:46,052 __main__ INFO: No IQIs were selected. Running 15 AGH VQIs only.
-2024-10-17 15:54:46,102 __main__ INFO: Running requested AGH VQIs on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-01-01 to 2023-01-31_3724PDFs_pictures\doc_10_12_img_4.jpg)
-2024-10-17 15:54:46,237 __main__ INFO: All results stored in the VQIs_for_doc_10_12_img_4.csv file
-2024-10-17 15:54:46,239 __main__ INFO: No IQIs were selected. Running 15 AGH VQIs only.
-2024-10-17 15:54:46,286 __main__ INFO: Running requested AGH VQIs on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-01-01 to 2023-01-31_3724PDFs_pictures\doc_10_12_img_5.jpg)
-2024-10-17 15:54:46,441 __main__ INFO: All results stored in the VQIs_for_doc_10_12_img_5.csv file
-2024-10-17 15:54:46,444 __main__ INFO: No IQIs were selected. Running 15 AGH VQIs only.
-2024-10-17 15:54:46,499 __main__ INFO: Running requested AGH VQIs on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-01-01 to 2023-01-31_3724PDFs_pictures\doc_10_12_img_6.jpg)
-2024-10-17 15:54:46,631 __main__ INFO: All results stored in the VQIs_for_doc_10_12_img_6.csv file
-2024-10-17 15:54:46,633 __main__ INFO: No IQIs were selected. Running 15 AGH VQIs only.
-2024-10-17 15:54:46,684 __main__ INFO: Running requested AGH VQIs on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-01-01 to 2023-01-31_3724PDFs_pictures\doc_10_12_img_7.jpg)
-2024-10-17 15:54:46,854 __main__ INFO: All results stored in the VQIs_for_doc_10_12_img_7.csv file
-2024-10-17 15:54:46,861 __main__ INFO: No IQIs were selected. Running 15 AGH VQIs only.
-2024-10-17 15:54:46,922 __main__ INFO: Running requested AGH VQIs on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-01-01 to 2023-01-31_3724PDFs_pictures\doc_10_12_img_8.jpg)
-2024-10-17 15:54:47,097 __main__ INFO: All results stored in the VQIs_for_doc_10_12_img_8.csv file
-2024-10-17 15:54:47,102 __main__ INFO: No IQIs were selected. Running 15 AGH VQIs only.
-2024-10-17 15:54:47,184 __main__ INFO: Running requested AGH VQIs on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-01-01 to 2023-01-31_3724PDFs_pictures\doc_10_12_img_9.jpg)
-2024-10-17 15:54:47,345 __main__ INFO: All results stored in the VQIs_for_doc_10_12_img_9.csv file
-2024-10-17 15:54:47,347 __main__ INFO: No IQIs were selected. Running 15 AGH VQIs only.
-2024-10-17 15:54:47,400 __main__ INFO: Running requested AGH VQIs on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-01-01 to 2023-01-31_3724PDFs_pictures\doc_10_14_img_1.jpg)
-2024-10-17 15:54:47,576 helpers ERROR: Calling C:\Users\jakub_lk\OneDrive\.in퓓nierka\image_processing\venv\Lib\site-packages\agh_vqis\binaries\agh_vqis_win64_mt.exe failed with the following return code: 3221225477
-2024-10-17 15:54:47,577 helpers ERROR: C:\Users\jakub_lk\OneDrive\.in퓓nierka\image_processing\venv\Lib\site-packages\agh_vqis\binaries\agh_vqis_win64_mt.exe's output: 
-2024-10-17 15:54:47,603 __main__ INFO: No IQIs were selected. Running 15 AGH VQIs only.
-2024-10-17 15:54:47,655 __main__ INFO: Running requested AGH VQIs on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-02-01 to 2023-02-28_3063PDFs_pictures\doc_10_0_img_1.jpg)
-2024-10-17 15:54:47,805 __main__ INFO: All results stored in the VQIs_for_doc_10_0_img_1.csv file
-2024-10-17 15:54:47,807 __main__ INFO: No IQIs were selected. Running 15 AGH VQIs only.
-2024-10-17 15:54:47,869 __main__ INFO: Running requested AGH VQIs on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-02-01 to 2023-02-28_3063PDFs_pictures\doc_10_10_img_1.jpg)
-2024-10-17 15:54:48,042 __main__ INFO: All results stored in the VQIs_for_doc_10_10_img_1.csv file
-2024-10-17 15:54:48,044 __main__ INFO: No IQIs were selected. Running 15 AGH VQIs only.
-2024-10-17 15:54:48,109 __main__ INFO: Running requested AGH VQIs on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-02-01 to 2023-02-28_3063PDFs_pictures\doc_10_12_img_1.jpg)
-2024-10-17 15:54:48,273 __main__ INFO: All results stored in the VQIs_for_doc_10_12_img_1.csv file
-2024-10-17 15:54:48,276 __main__ INFO: No IQIs were selected. Running 15 AGH VQIs only.
-2024-10-17 15:54:48,351 __main__ INFO: Running requested AGH VQIs on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-02-01 to 2023-02-28_3063PDFs_pictures\doc_10_14_img_1.jpg)
-2024-10-17 15:54:48,594 __main__ INFO: All results stored in the VQIs_for_doc_10_14_img_1.csv file
-2024-10-17 15:54:48,597 __main__ INFO: No IQIs were selected. Running 15 AGH VQIs only.
-2024-10-17 15:54:48,654 __main__ INFO: Running requested AGH VQIs on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-02-01 to 2023-02-28_3063PDFs_pictures\doc_10_14_img_2.jpg)
-2024-10-17 15:54:48,819 __main__ INFO: All results stored in the VQIs_for_doc_10_14_img_2.csv file
-2024-10-17 15:54:48,822 __main__ INFO: No IQIs were selected. Running 15 AGH VQIs only.
-2024-10-17 15:54:48,887 __main__ INFO: Running requested AGH VQIs on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-02-01 to 2023-02-28_3063PDFs_pictures\doc_10_14_img_3.jpg)
-2024-10-17 15:54:49,068 __main__ INFO: All results stored in the VQIs_for_doc_10_14_img_3.csv file
-2024-10-17 15:54:49,070 __main__ INFO: No IQIs were selected. Running 15 AGH VQIs only.
-2024-10-17 15:54:49,123 __main__ INFO: Running requested AGH VQIs on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-02-01 to 2023-02-28_3063PDFs_pictures\doc_10_14_img_4.jpg)
-2024-10-17 15:54:49,270 __main__ INFO: All results stored in the VQIs_for_doc_10_14_img_4.csv file
-2024-10-17 15:54:49,272 __main__ INFO: No IQIs were selected. Running 15 AGH VQIs only.
-2024-10-17 15:54:49,325 __main__ INFO: Running requested AGH VQIs on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-02-01 to 2023-02-28_3063PDFs_pictures\doc_10_15_img_1.jpg)
-2024-10-17 15:54:49,472 __main__ INFO: All results stored in the VQIs_for_doc_10_15_img_1.csv file
-2024-10-17 15:54:49,474 __main__ INFO: No IQIs were selected. Running 15 AGH VQIs only.
-2024-10-17 15:54:49,524 __main__ INFO: Running requested AGH VQIs on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-02-01 to 2023-02-28_3063PDFs_pictures\doc_10_16_img_1.jpg)
-2024-10-17 15:54:49,687 __main__ INFO: All results stored in the VQIs_for_doc_10_16_img_1.csv file
-2024-10-17 15:54:49,689 __main__ INFO: No IQIs were selected. Running 15 AGH VQIs only.
-2024-10-17 15:54:49,741 __main__ INFO: Running requested AGH VQIs on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-02-01 to 2023-02-28_3063PDFs_pictures\doc_10_18_img_1.jpg)
-2024-10-17 15:54:49,878 __main__ INFO: All results stored in the VQIs_for_doc_10_18_img_1.csv file
-2024-10-17 15:54:49,880 __main__ INFO: No IQIs were selected. Running 15 AGH VQIs only.
-2024-10-17 15:54:49,926 __main__ INFO: Running requested AGH VQIs on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-02-01 to 2023-02-28_3063PDFs_pictures\doc_10_18_img_2.jpg)
-2024-10-17 15:54:50,079 __main__ INFO: All results stored in the VQIs_for_doc_10_18_img_2.csv file
-2024-10-17 15:54:50,082 __main__ INFO: No IQIs were selected. Running 15 AGH VQIs only.
-2024-10-17 15:54:50,132 __main__ INFO: Running requested AGH VQIs on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-02-01 to 2023-02-28_3063PDFs_pictures\doc_10_18_img_3.jpg)
-2024-10-17 15:54:50,285 __main__ INFO: All results stored in the VQIs_for_doc_10_18_img_3.csv file
-2024-10-17 15:54:50,287 __main__ INFO: No IQIs were selected. Running 15 AGH VQIs only.
-2024-10-17 15:54:50,335 __main__ INFO: Running requested AGH VQIs on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-02-01 to 2023-02-28_3063PDFs_pictures\doc_10_19_img_1.jpg)
-2024-10-17 15:54:50,488 __main__ INFO: All results stored in the VQIs_for_doc_10_19_img_1.csv file
-2024-10-17 15:54:50,490 __main__ INFO: No IQIs were selected. Running 15 AGH VQIs only.
-2024-10-17 15:54:50,549 __main__ INFO: Running requested AGH VQIs on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-02-01 to 2023-02-28_3063PDFs_pictures\doc_10_19_img_2.jpg)
-2024-10-17 15:54:50,738 __main__ INFO: All results stored in the VQIs_for_doc_10_19_img_2.csv file
-2024-10-17 15:54:50,741 __main__ INFO: No IQIs were selected. Running 15 AGH VQIs only.
-2024-10-17 15:54:50,793 __main__ INFO: Running requested AGH VQIs on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-02-01 to 2023-02-28_3063PDFs_pictures\doc_10_23_img_1.jpg)
-2024-10-17 15:54:50,944 __main__ INFO: All results stored in the VQIs_for_doc_10_23_img_1.csv file
-2024-10-17 15:54:50,945 __main__ INFO: No IQIs were selected. Running 15 AGH VQIs only.
-2024-10-17 15:54:50,997 __main__ INFO: Running requested AGH VQIs on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-02-01 to 2023-02-28_3063PDFs_pictures\doc_10_23_img_2.jpg)
-2024-10-17 15:54:51,229 __main__ INFO: All results stored in the VQIs_for_doc_10_23_img_2.csv file
-2024-10-17 15:54:51,231 __main__ INFO: No IQIs were selected. Running 15 AGH VQIs only.
-2024-10-17 15:54:51,291 __main__ INFO: Running requested AGH VQIs on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-02-01 to 2023-02-28_3063PDFs_pictures\doc_10_23_img_3.jpg)
-2024-10-17 15:54:51,570 __main__ INFO: All results stored in the VQIs_for_doc_10_23_img_3.csv file
-2024-10-17 15:54:51,571 __main__ INFO: No IQIs were selected. Running 15 AGH VQIs only.
-2024-10-17 15:54:51,624 __main__ INFO: Running requested AGH VQIs on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-02-01 to 2023-02-28_3063PDFs_pictures\doc_10_24_img_1.jpg)
-2024-10-17 15:54:51,852 helpers ERROR: Calling C:\Users\jakub_lk\OneDrive\.in퓓nierka\image_processing\venv\Lib\site-packages\agh_vqis\binaries\agh_vqis_win64_mt.exe failed with the following return code: 3221225477
-2024-10-17 15:54:51,853 helpers ERROR: C:\Users\jakub_lk\OneDrive\.in퓓nierka\image_processing\venv\Lib\site-packages\agh_vqis\binaries\agh_vqis_win64_mt.exe's output: 
-2024-10-17 15:54:51,929 __main__ INFO: No IQIs were selected. Running 15 AGH VQIs only.
-2024-10-17 15:54:51,979 __main__ INFO: Running requested AGH VQIs on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-03-01 to 2023-03-31_1992PDFs_pictures\doc_10_10_img_1.jpg)
-2024-10-17 15:54:52,129 __main__ INFO: All results stored in the VQIs_for_doc_10_10_img_1.csv file
-2024-10-17 15:54:52,131 __main__ INFO: No IQIs were selected. Running 15 AGH VQIs only.
-2024-10-17 15:54:52,180 __main__ INFO: Running requested AGH VQIs on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-03-01 to 2023-03-31_1992PDFs_pictures\doc_10_10_img_2.jpg)
-2024-10-17 15:54:52,339 __main__ INFO: All results stored in the VQIs_for_doc_10_10_img_2.csv file
-2024-10-17 15:54:52,344 __main__ INFO: No IQIs were selected. Running 15 AGH VQIs only.
-2024-10-17 15:54:52,410 __main__ INFO: Running requested AGH VQIs on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-03-01 to 2023-03-31_1992PDFs_pictures\doc_10_20_img_1.jpg)
-2024-10-17 15:54:52,610 __main__ INFO: All results stored in the VQIs_for_doc_10_20_img_1.csv file
-2024-10-17 15:54:52,614 __main__ INFO: No IQIs were selected. Running 15 AGH VQIs only.
-2024-10-17 15:54:52,689 __main__ INFO: Running requested AGH VQIs on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-03-01 to 2023-03-31_1992PDFs_pictures\doc_10_20_img_2.jpg)
-2024-10-17 15:54:52,869 __main__ INFO: All results stored in the VQIs_for_doc_10_20_img_2.csv file
-2024-10-17 15:54:52,877 __main__ INFO: No IQIs were selected. Running 15 AGH VQIs only.
-2024-10-17 15:54:52,957 __main__ INFO: Running requested AGH VQIs on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-03-01 to 2023-03-31_1992PDFs_pictures\doc_10_20_img_3.jpg)
-2024-10-17 15:54:53,114 __main__ INFO: All results stored in the VQIs_for_doc_10_20_img_3.csv file
-2024-10-17 15:54:53,115 __main__ INFO: No IQIs were selected. Running 15 AGH VQIs only.
-2024-10-17 15:54:53,164 __main__ INFO: Running requested AGH VQIs on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-03-01 to 2023-03-31_1992PDFs_pictures\doc_10_20_img_4.jpg)
-2024-10-17 15:54:53,315 __main__ INFO: All results stored in the VQIs_for_doc_10_20_img_4.csv file
-2024-10-17 15:54:53,318 __main__ INFO: No IQIs were selected. Running 15 AGH VQIs only.
-2024-10-17 15:54:53,367 __main__ INFO: Running requested AGH VQIs on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-03-01 to 2023-03-31_1992PDFs_pictures\doc_10_20_img_5.jpg)
-2024-10-17 15:54:53,505 __main__ INFO: All results stored in the VQIs_for_doc_10_20_img_5.csv file
-2024-10-17 15:54:53,507 __main__ INFO: No IQIs were selected. Running 15 AGH VQIs only.
-2024-10-17 15:54:53,556 __main__ INFO: Running requested AGH VQIs on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-03-01 to 2023-03-31_1992PDFs_pictures\doc_10_24_img_2.jpg)
-2024-10-17 15:54:53,707 helpers ERROR: Calling C:\Users\jakub_lk\OneDrive\.in퓓nierka\image_processing\venv\Lib\site-packages\agh_vqis\binaries\agh_vqis_win64_mt.exe failed with the following return code: 3221225477
-2024-10-17 15:54:53,708 helpers ERROR: C:\Users\jakub_lk\OneDrive\.in퓓nierka\image_processing\venv\Lib\site-packages\agh_vqis\binaries\agh_vqis_win64_mt.exe's output: 
-2024-10-17 15:54:53,835 __main__ INFO: No IQIs were selected. Running 15 AGH VQIs only.
-2024-10-17 15:54:53,885 __main__ INFO: Running requested AGH VQIs on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-04-01 to 2023-04-30_5507PDFs_pictures\doc_10_15_img_1.jpg)
-2024-10-17 15:54:54,073 __main__ INFO: All results stored in the VQIs_for_doc_10_15_img_1.csv file
-2024-10-17 15:54:54,076 __main__ INFO: No IQIs were selected. Running 15 AGH VQIs only.
-2024-10-17 15:54:54,126 __main__ INFO: Running requested AGH VQIs on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-04-01 to 2023-04-30_5507PDFs_pictures\doc_10_15_img_10.jpg)
-2024-10-17 15:54:54,270 __main__ INFO: All results stored in the VQIs_for_doc_10_15_img_10.csv file
-2024-10-17 15:54:54,272 __main__ INFO: No IQIs were selected. Running 15 AGH VQIs only.
-2024-10-17 15:54:54,316 __main__ INFO: Running requested AGH VQIs on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-04-01 to 2023-04-30_5507PDFs_pictures\doc_10_15_img_11.jpg)
-2024-10-17 15:54:54,474 __main__ INFO: All results stored in the VQIs_for_doc_10_15_img_11.csv file
-2024-10-17 15:54:54,476 __main__ INFO: No IQIs were selected. Running 15 AGH VQIs only.
-2024-10-17 15:54:54,523 __main__ INFO: Running requested AGH VQIs on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-04-01 to 2023-04-30_5507PDFs_pictures\doc_10_15_img_12.jpg)
-2024-10-17 15:54:54,674 __main__ INFO: All results stored in the VQIs_for_doc_10_15_img_12.csv file
-2024-10-17 15:54:54,676 __main__ INFO: No IQIs were selected. Running 15 AGH VQIs only.
-2024-10-17 15:54:54,731 __main__ INFO: Running requested AGH VQIs on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-04-01 to 2023-04-30_5507PDFs_pictures\doc_10_15_img_13.jpg)
-2024-10-17 15:54:54,876 __main__ INFO: All results stored in the VQIs_for_doc_10_15_img_13.csv file
-2024-10-17 15:54:54,878 __main__ INFO: No IQIs were selected. Running 15 AGH VQIs only.
-2024-10-17 15:54:54,931 __main__ INFO: Running requested AGH VQIs on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-04-01 to 2023-04-30_5507PDFs_pictures\doc_10_15_img_14.jpg)
-2024-10-17 15:54:55,079 __main__ INFO: All results stored in the VQIs_for_doc_10_15_img_14.csv file
-2024-10-17 15:54:55,081 __main__ INFO: No IQIs were selected. Running 15 AGH VQIs only.
-2024-10-17 15:54:55,128 __main__ INFO: Running requested AGH VQIs on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-04-01 to 2023-04-30_5507PDFs_pictures\doc_10_15_img_15.jpg)
-2024-10-17 15:54:55,284 __main__ INFO: All results stored in the VQIs_for_doc_10_15_img_15.csv file
-2024-10-17 15:54:55,286 __main__ INFO: No IQIs were selected. Running 15 AGH VQIs only.
-2024-10-17 15:54:55,338 __main__ INFO: Running requested AGH VQIs on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-04-01 to 2023-04-30_5507PDFs_pictures\doc_10_15_img_16.jpg)
-2024-10-17 15:54:55,471 __main__ INFO: All results stored in the VQIs_for_doc_10_15_img_16.csv file
-2024-10-17 15:54:55,473 __main__ INFO: No IQIs were selected. Running 15 AGH VQIs only.
-2024-10-17 15:54:55,524 __main__ INFO: Running requested AGH VQIs on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-04-01 to 2023-04-30_5507PDFs_pictures\doc_10_15_img_17.jpg)
-2024-10-17 15:54:55,665 __main__ INFO: All results stored in the VQIs_for_doc_10_15_img_17.csv file
-2024-10-17 15:54:55,666 __main__ INFO: No IQIs were selected. Running 15 AGH VQIs only.
-2024-10-17 15:54:55,713 __main__ INFO: Running requested AGH VQIs on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-04-01 to 2023-04-30_5507PDFs_pictures\doc_10_15_img_18.jpg)
-2024-10-17 15:54:55,851 __main__ INFO: All results stored in the VQIs_for_doc_10_15_img_18.csv file
-2024-10-17 15:54:55,852 __main__ INFO: No IQIs were selected. Running 15 AGH VQIs only.
-2024-10-17 15:54:55,903 __main__ INFO: Running requested AGH VQIs on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-04-01 to 2023-04-30_5507PDFs_pictures\doc_10_15_img_19.jpg)
-2024-10-17 15:54:56,049 __main__ INFO: All results stored in the VQIs_for_doc_10_15_img_19.csv file
-2024-10-17 15:54:56,051 __main__ INFO: No IQIs were selected. Running 15 AGH VQIs only.
-2024-10-17 15:54:56,098 __main__ INFO: Running requested AGH VQIs on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-04-01 to 2023-04-30_5507PDFs_pictures\doc_10_15_img_2.jpg)
-2024-10-17 15:54:56,253 __main__ INFO: All results stored in the VQIs_for_doc_10_15_img_2.csv file
-2024-10-17 15:54:56,256 __main__ INFO: No IQIs were selected. Running 15 AGH VQIs only.
-2024-10-17 15:54:56,304 __main__ INFO: Running requested AGH VQIs on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-04-01 to 2023-04-30_5507PDFs_pictures\doc_10_15_img_20.jpg)
-2024-10-17 15:54:56,455 __main__ INFO: All results stored in the VQIs_for_doc_10_15_img_20.csv file
-2024-10-17 15:54:56,457 __main__ INFO: No IQIs were selected. Running 15 AGH VQIs only.
-2024-10-17 15:54:56,508 __main__ INFO: Running requested AGH VQIs on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-04-01 to 2023-04-30_5507PDFs_pictures\doc_10_15_img_21.jpg)
-2024-10-17 15:54:56,670 __main__ INFO: All results stored in the VQIs_for_doc_10_15_img_21.csv file
-2024-10-17 15:54:56,673 __main__ INFO: No IQIs were selected. Running 15 AGH VQIs only.
-2024-10-17 15:54:56,720 __main__ INFO: Running requested AGH VQIs on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-04-01 to 2023-04-30_5507PDFs_pictures\doc_10_15_img_22.jpg)
-2024-10-17 15:54:56,857 __main__ INFO: All results stored in the VQIs_for_doc_10_15_img_22.csv file
-2024-10-17 15:54:56,859 __main__ INFO: No IQIs were selected. Running 15 AGH VQIs only.
-2024-10-17 15:54:56,906 __main__ INFO: Running requested AGH VQIs on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-04-01 to 2023-04-30_5507PDFs_pictures\doc_10_15_img_23.jpg)
-2024-10-17 15:54:57,058 __main__ INFO: All results stored in the VQIs_for_doc_10_15_img_23.csv file
-2024-10-17 15:54:57,060 __main__ INFO: No IQIs were selected. Running 15 AGH VQIs only.
-2024-10-17 15:54:57,111 __main__ INFO: Running requested AGH VQIs on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-04-01 to 2023-04-30_5507PDFs_pictures\doc_10_15_img_24.jpg)
-2024-10-17 15:54:57,263 __main__ INFO: All results stored in the VQIs_for_doc_10_15_img_24.csv file
-2024-10-17 15:54:57,265 __main__ INFO: No IQIs were selected. Running 15 AGH VQIs only.
-2024-10-17 15:54:57,314 __main__ INFO: Running requested AGH VQIs on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-04-01 to 2023-04-30_5507PDFs_pictures\doc_10_15_img_25.jpg)
-2024-10-17 15:54:57,466 __main__ INFO: All results stored in the VQIs_for_doc_10_15_img_25.csv file
-2024-10-17 15:54:57,469 __main__ INFO: No IQIs were selected. Running 15 AGH VQIs only.
-2024-10-17 15:54:57,516 __main__ INFO: Running requested AGH VQIs on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-04-01 to 2023-04-30_5507PDFs_pictures\doc_10_15_img_26.jpg)
-2024-10-17 15:54:57,656 __main__ INFO: All results stored in the VQIs_for_doc_10_15_img_26.csv file
-2024-10-17 15:54:57,659 __main__ INFO: No IQIs were selected. Running 15 AGH VQIs only.
-2024-10-17 15:54:57,717 __main__ INFO: Running requested AGH VQIs on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-04-01 to 2023-04-30_5507PDFs_pictures\doc_10_15_img_27.jpg)
-2024-10-17 15:54:57,871 __main__ INFO: All results stored in the VQIs_for_doc_10_15_img_27.csv file
-2024-10-17 15:54:57,874 __main__ INFO: No IQIs were selected. Running 15 AGH VQIs only.
-2024-10-17 15:54:57,930 __main__ INFO: Running requested AGH VQIs on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-04-01 to 2023-04-30_5507PDFs_pictures\doc_10_15_img_28.jpg)
-2024-10-17 15:54:58,166 __main__ INFO: All results stored in the VQIs_for_doc_10_15_img_28.csv file
-2024-10-17 15:54:58,168 __main__ INFO: No IQIs were selected. Running 15 AGH VQIs only.
-2024-10-17 15:54:58,219 __main__ INFO: Running requested AGH VQIs on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-04-01 to 2023-04-30_5507PDFs_pictures\doc_10_15_img_29.jpg)
-2024-10-17 15:54:58,398 __main__ INFO: All results stored in the VQIs_for_doc_10_15_img_29.csv file
-2024-10-17 15:54:58,401 __main__ INFO: No IQIs were selected. Running 15 AGH VQIs only.
-2024-10-17 15:54:58,455 __main__ INFO: Running requested AGH VQIs on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-04-01 to 2023-04-30_5507PDFs_pictures\doc_10_15_img_3.jpg)
-2024-10-17 15:54:58,641 __main__ INFO: All results stored in the VQIs_for_doc_10_15_img_3.csv file
-2024-10-17 15:54:58,645 __main__ INFO: No IQIs were selected. Running 15 AGH VQIs only.
-2024-10-17 15:54:58,699 __main__ INFO: Running requested AGH VQIs on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-04-01 to 2023-04-30_5507PDFs_pictures\doc_10_15_img_30.jpg)
-2024-10-17 15:54:58,850 __main__ INFO: All results stored in the VQIs_for_doc_10_15_img_30.csv file
-2024-10-17 15:54:58,852 __main__ INFO: No IQIs were selected. Running 15 AGH VQIs only.
-2024-10-17 15:54:58,902 __main__ INFO: Running requested AGH VQIs on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-04-01 to 2023-04-30_5507PDFs_pictures\doc_10_15_img_31.jpg)
-2024-10-17 15:54:59,065 __main__ INFO: All results stored in the VQIs_for_doc_10_15_img_31.csv file
-2024-10-17 15:54:59,068 __main__ INFO: No IQIs were selected. Running 15 AGH VQIs only.
-2024-10-17 15:54:59,119 __main__ INFO: Running requested AGH VQIs on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-04-01 to 2023-04-30_5507PDFs_pictures\doc_10_15_img_32.jpg)
-2024-10-17 15:54:59,271 __main__ INFO: All results stored in the VQIs_for_doc_10_15_img_32.csv file
-2024-10-17 15:54:59,275 __main__ INFO: No IQIs were selected. Running 15 AGH VQIs only.
-2024-10-17 15:54:59,328 __main__ INFO: Running requested AGH VQIs on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-04-01 to 2023-04-30_5507PDFs_pictures\doc_10_15_img_4.jpg)
-2024-10-17 15:54:59,484 __main__ INFO: All results stored in the VQIs_for_doc_10_15_img_4.csv file
-2024-10-17 15:54:59,486 __main__ INFO: No IQIs were selected. Running 15 AGH VQIs only.
-2024-10-17 15:54:59,542 __main__ INFO: Running requested AGH VQIs on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-04-01 to 2023-04-30_5507PDFs_pictures\doc_10_15_img_5.jpg)
-2024-10-17 15:54:59,711 __main__ INFO: All results stored in the VQIs_for_doc_10_15_img_5.csv file
-2024-10-17 15:54:59,713 __main__ INFO: No IQIs were selected. Running 15 AGH VQIs only.
-2024-10-17 15:54:59,770 __main__ INFO: Running requested AGH VQIs on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-04-01 to 2023-04-30_5507PDFs_pictures\doc_10_15_img_6.jpg)
-2024-10-17 15:54:59,929 __main__ INFO: All results stored in the VQIs_for_doc_10_15_img_6.csv file
-2024-10-17 15:54:59,933 __main__ INFO: No IQIs were selected. Running 15 AGH VQIs only.
-2024-10-17 15:54:59,979 __main__ INFO: Running requested AGH VQIs on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-04-01 to 2023-04-30_5507PDFs_pictures\doc_10_15_img_7.jpg)
-2024-10-17 15:55:00,118 __main__ INFO: All results stored in the VQIs_for_doc_10_15_img_7.csv file
-2024-10-17 15:55:00,120 __main__ INFO: No IQIs were selected. Running 15 AGH VQIs only.
-2024-10-17 15:55:00,166 __main__ INFO: Running requested AGH VQIs on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-04-01 to 2023-04-30_5507PDFs_pictures\doc_10_15_img_8.jpg)
-2024-10-17 15:55:00,299 __main__ INFO: All results stored in the VQIs_for_doc_10_15_img_8.csv file
-2024-10-17 15:55:00,301 __main__ INFO: No IQIs were selected. Running 15 AGH VQIs only.
-2024-10-17 15:55:00,351 __main__ INFO: Running requested AGH VQIs on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-04-01 to 2023-04-30_5507PDFs_pictures\doc_10_15_img_9.jpg)
-2024-10-17 15:55:00,503 __main__ INFO: All results stored in the VQIs_for_doc_10_15_img_9.csv file
-2024-10-17 15:55:00,505 __main__ INFO: No IQIs were selected. Running 15 AGH VQIs only.
-2024-10-17 15:55:00,554 __main__ INFO: Running requested AGH VQIs on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-04-01 to 2023-04-30_5507PDFs_pictures\doc_10_20_img_1.jpg)
-2024-10-17 15:55:00,701 __main__ INFO: All results stored in the VQIs_for_doc_10_20_img_1.csv file
-2024-10-17 15:55:00,703 __main__ INFO: No IQIs were selected. Running 15 AGH VQIs only.
-2024-10-17 15:55:00,753 __main__ INFO: Running requested AGH VQIs on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-04-01 to 2023-04-30_5507PDFs_pictures\doc_10_22_img_1.jpg)
-2024-10-17 15:55:00,884 __main__ INFO: All results stored in the VQIs_for_doc_10_22_img_1.csv file
-2024-10-17 15:55:00,885 __main__ INFO: No IQIs were selected. Running 15 AGH VQIs only.
-2024-10-17 15:55:00,939 __main__ INFO: Running requested AGH VQIs on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-04-01 to 2023-04-30_5507PDFs_pictures\doc_10_23_img_1.jpg)
+2024-10-18 19:25:14,142 __main__ INFO: Running the Colourfulness IQI on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-01-01 to 2023-01-31_3724PDFs_pictures\doc_10_12_img_1.jpg)
+2024-10-18 19:25:14,158 __main__ INFO: Running requested AGH VQIs on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-01-01 to 2023-01-31_3724PDFs_pictures\doc_10_12_img_1.jpg)
+2024-10-18 19:25:14,330 __main__ INFO: All results stored in the VQIs_for_doc_10_12_img_1.csv file
+2024-10-18 19:25:14,402 __main__ INFO: Running the Colourfulness IQI on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-01-01 to 2023-01-31_3724PDFs_pictures\doc_10_12_img_10.jpg)
+2024-10-18 19:25:14,411 __main__ INFO: Running requested AGH VQIs on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-01-01 to 2023-01-31_3724PDFs_pictures\doc_10_12_img_10.jpg)
+2024-10-18 19:25:14,589 __main__ INFO: All results stored in the VQIs_for_doc_10_12_img_10.csv file
+2024-10-18 19:25:14,658 __main__ INFO: Running the Colourfulness IQI on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-01-01 to 2023-01-31_3724PDFs_pictures\doc_10_12_img_11.jpg)
+2024-10-18 19:25:14,666 __main__ INFO: Running requested AGH VQIs on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-01-01 to 2023-01-31_3724PDFs_pictures\doc_10_12_img_11.jpg)
+2024-10-18 19:25:14,844 __main__ INFO: All results stored in the VQIs_for_doc_10_12_img_11.csv file
+2024-10-18 19:25:14,908 __main__ INFO: Running the Colourfulness IQI on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-01-01 to 2023-01-31_3724PDFs_pictures\doc_10_12_img_12.jpg)
+2024-10-18 19:25:14,914 __main__ INFO: Running requested AGH VQIs on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-01-01 to 2023-01-31_3724PDFs_pictures\doc_10_12_img_12.jpg)
+2024-10-18 19:25:15,079 __main__ INFO: All results stored in the VQIs_for_doc_10_12_img_12.csv file
+2024-10-18 19:25:15,207 __main__ INFO: Running the Colourfulness IQI on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-01-01 to 2023-01-31_3724PDFs_pictures\doc_10_12_img_13.jpg)
+2024-10-18 19:25:15,221 __main__ INFO: Running requested AGH VQIs on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-01-01 to 2023-01-31_3724PDFs_pictures\doc_10_12_img_13.jpg)
+2024-10-18 19:25:15,448 __main__ INFO: All results stored in the VQIs_for_doc_10_12_img_13.csv file
+2024-10-18 19:25:15,534 __main__ INFO: Running the Colourfulness IQI on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-01-01 to 2023-01-31_3724PDFs_pictures\doc_10_12_img_14.jpg)
+2024-10-18 19:25:15,542 __main__ INFO: Running requested AGH VQIs on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-01-01 to 2023-01-31_3724PDFs_pictures\doc_10_12_img_14.jpg)
+2024-10-18 19:25:15,758 __main__ INFO: All results stored in the VQIs_for_doc_10_12_img_14.csv file
+2024-10-18 19:25:15,834 __main__ INFO: Running the Colourfulness IQI on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-01-01 to 2023-01-31_3724PDFs_pictures\doc_10_12_img_2.jpg)
+2024-10-18 19:25:15,842 __main__ INFO: Running requested AGH VQIs on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-01-01 to 2023-01-31_3724PDFs_pictures\doc_10_12_img_2.jpg)
+2024-10-18 19:25:16,025 __main__ INFO: All results stored in the VQIs_for_doc_10_12_img_2.csv file
+2024-10-18 19:25:16,102 __main__ INFO: Running the Colourfulness IQI on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-01-01 to 2023-01-31_3724PDFs_pictures\doc_10_12_img_3.jpg)
+2024-10-18 19:25:16,109 __main__ INFO: Running requested AGH VQIs on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-01-01 to 2023-01-31_3724PDFs_pictures\doc_10_12_img_3.jpg)
+2024-10-18 19:25:16,292 __main__ INFO: All results stored in the VQIs_for_doc_10_12_img_3.csv file
+2024-10-18 19:25:16,361 __main__ INFO: Running the Colourfulness IQI on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-01-01 to 2023-01-31_3724PDFs_pictures\doc_10_12_img_4.jpg)
+2024-10-18 19:25:16,368 __main__ INFO: Running requested AGH VQIs on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-01-01 to 2023-01-31_3724PDFs_pictures\doc_10_12_img_4.jpg)
+2024-10-18 19:25:16,543 __main__ INFO: All results stored in the VQIs_for_doc_10_12_img_4.csv file
+2024-10-18 19:25:16,613 __main__ INFO: Running the Colourfulness IQI on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-01-01 to 2023-01-31_3724PDFs_pictures\doc_10_12_img_5.jpg)
+2024-10-18 19:25:16,621 __main__ INFO: Running requested AGH VQIs on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-01-01 to 2023-01-31_3724PDFs_pictures\doc_10_12_img_5.jpg)
+2024-10-18 19:25:16,852 __main__ INFO: All results stored in the VQIs_for_doc_10_12_img_5.csv file
+2024-10-18 19:25:16,930 __main__ INFO: Running the Colourfulness IQI on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-01-01 to 2023-01-31_3724PDFs_pictures\doc_10_12_img_6.jpg)
+2024-10-18 19:25:16,935 __main__ INFO: Running requested AGH VQIs on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-01-01 to 2023-01-31_3724PDFs_pictures\doc_10_12_img_6.jpg)
+2024-10-18 19:25:17,176 __main__ INFO: All results stored in the VQIs_for_doc_10_12_img_6.csv file
+2024-10-18 19:25:17,258 __main__ INFO: Running the Colourfulness IQI on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-01-01 to 2023-01-31_3724PDFs_pictures\doc_10_12_img_7.jpg)
+2024-10-18 19:25:17,268 __main__ INFO: Running requested AGH VQIs on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-01-01 to 2023-01-31_3724PDFs_pictures\doc_10_12_img_7.jpg)
+2024-10-18 19:25:17,501 __main__ INFO: All results stored in the VQIs_for_doc_10_12_img_7.csv file
+2024-10-18 19:25:17,584 __main__ INFO: Running the Colourfulness IQI on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-01-01 to 2023-01-31_3724PDFs_pictures\doc_10_12_img_8.jpg)
+2024-10-18 19:25:17,593 __main__ INFO: Running requested AGH VQIs on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-01-01 to 2023-01-31_3724PDFs_pictures\doc_10_12_img_8.jpg)
+2024-10-18 19:25:17,770 __main__ INFO: All results stored in the VQIs_for_doc_10_12_img_8.csv file
+2024-10-18 19:25:17,838 __main__ INFO: Running the Colourfulness IQI on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-01-01 to 2023-01-31_3724PDFs_pictures\doc_10_12_img_9.jpg)
+2024-10-18 19:25:17,845 __main__ INFO: Running requested AGH VQIs on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-01-01 to 2023-01-31_3724PDFs_pictures\doc_10_12_img_9.jpg)
+2024-10-18 19:25:18,022 __main__ INFO: All results stored in the VQIs_for_doc_10_12_img_9.csv file
+2024-10-18 19:25:18,091 __main__ INFO: Running the Colourfulness IQI on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-01-01 to 2023-01-31_3724PDFs_pictures\doc_10_14_img_1.jpg)
+2024-10-18 19:25:18,108 __main__ INFO: Running requested AGH VQIs on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-01-01 to 2023-01-31_3724PDFs_pictures\doc_10_14_img_1.jpg)
+2024-10-18 19:25:18,348 helpers ERROR: Calling C:\Users\jakub_lk\OneDrive\.in퓓nierka\image_processing\venv\Lib\site-packages\agh_vqis\binaries\agh_vqis_win64_mt.exe failed with the following return code: 3221225477
+2024-10-18 19:25:18,348 helpers ERROR: C:\Users\jakub_lk\OneDrive\.in퓓nierka\image_processing\venv\Lib\site-packages\agh_vqis\binaries\agh_vqis_win64_mt.exe's output: 
+2024-10-18 19:25:18,425 __main__ INFO: Running the Colourfulness IQI on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-01-01 to 2023-01-31_3724PDFs_pictures\doc_10_14_img_10.jpg)
+2024-10-18 19:25:18,434 __main__ INFO: Running requested AGH VQIs on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-01-01 to 2023-01-31_3724PDFs_pictures\doc_10_14_img_10.jpg)
+2024-10-18 19:25:18,645 helpers ERROR: Calling C:\Users\jakub_lk\OneDrive\.in퓓nierka\image_processing\venv\Lib\site-packages\agh_vqis\binaries\agh_vqis_win64_mt.exe failed with the following return code: 3221225477
+2024-10-18 19:25:18,646 helpers ERROR: C:\Users\jakub_lk\OneDrive\.in퓓nierka\image_processing\venv\Lib\site-packages\agh_vqis\binaries\agh_vqis_win64_mt.exe's output: 
+2024-10-18 19:25:18,723 __main__ INFO: Running the Colourfulness IQI on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-01-01 to 2023-01-31_3724PDFs_pictures\doc_10_14_img_2.jpg)
+2024-10-18 19:25:18,734 __main__ INFO: Running requested AGH VQIs on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-01-01 to 2023-01-31_3724PDFs_pictures\doc_10_14_img_2.jpg)
+2024-10-18 19:25:18,913 __main__ INFO: All results stored in the VQIs_for_doc_10_14_img_2.csv file
+2024-10-18 19:25:18,981 __main__ INFO: Running the Colourfulness IQI on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-01-01 to 2023-01-31_3724PDFs_pictures\doc_10_14_img_3.jpg)
+2024-10-18 19:25:18,989 __main__ INFO: Running requested AGH VQIs on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-01-01 to 2023-01-31_3724PDFs_pictures\doc_10_14_img_3.jpg)
+2024-10-18 19:25:19,203 helpers ERROR: Calling C:\Users\jakub_lk\OneDrive\.in퓓nierka\image_processing\venv\Lib\site-packages\agh_vqis\binaries\agh_vqis_win64_mt.exe failed with the following return code: 3221225477
+2024-10-18 19:25:19,204 helpers ERROR: C:\Users\jakub_lk\OneDrive\.in퓓nierka\image_processing\venv\Lib\site-packages\agh_vqis\binaries\agh_vqis_win64_mt.exe's output: 
+2024-10-18 19:25:19,275 __main__ INFO: Running the Colourfulness IQI on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-01-01 to 2023-01-31_3724PDFs_pictures\doc_10_14_img_4.jpg)
+2024-10-18 19:25:19,285 __main__ INFO: Running requested AGH VQIs on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-01-01 to 2023-01-31_3724PDFs_pictures\doc_10_14_img_4.jpg)
+2024-10-18 19:25:19,526 helpers ERROR: Calling C:\Users\jakub_lk\OneDrive\.in퓓nierka\image_processing\venv\Lib\site-packages\agh_vqis\binaries\agh_vqis_win64_mt.exe failed with the following return code: 3221225477
+2024-10-18 19:25:19,526 helpers ERROR: C:\Users\jakub_lk\OneDrive\.in퓓nierka\image_processing\venv\Lib\site-packages\agh_vqis\binaries\agh_vqis_win64_mt.exe's output: 
+2024-10-18 19:25:19,600 __main__ INFO: Running the Colourfulness IQI on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-01-01 to 2023-01-31_3724PDFs_pictures\doc_10_14_img_5.jpg)
+2024-10-18 19:25:19,608 __main__ INFO: Running requested AGH VQIs on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-01-01 to 2023-01-31_3724PDFs_pictures\doc_10_14_img_5.jpg)
+2024-10-18 19:25:19,800 __main__ INFO: All results stored in the VQIs_for_doc_10_14_img_5.csv file
+2024-10-18 19:25:19,875 __main__ INFO: Running the Colourfulness IQI on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-01-01 to 2023-01-31_3724PDFs_pictures\doc_10_14_img_6.jpg)
+2024-10-18 19:25:19,886 __main__ INFO: Running requested AGH VQIs on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-01-01 to 2023-01-31_3724PDFs_pictures\doc_10_14_img_6.jpg)
+2024-10-18 19:25:20,074 __main__ INFO: All results stored in the VQIs_for_doc_10_14_img_6.csv file
+2024-10-18 19:25:20,155 __main__ INFO: Running the Colourfulness IQI on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-01-01 to 2023-01-31_3724PDFs_pictures\doc_10_14_img_7.jpg)
+2024-10-18 19:25:20,166 __main__ INFO: Running requested AGH VQIs on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-01-01 to 2023-01-31_3724PDFs_pictures\doc_10_14_img_7.jpg)
+2024-10-18 19:25:20,406 helpers ERROR: Calling C:\Users\jakub_lk\OneDrive\.in퓓nierka\image_processing\venv\Lib\site-packages\agh_vqis\binaries\agh_vqis_win64_mt.exe failed with the following return code: 3221225477
+2024-10-18 19:25:20,407 helpers ERROR: C:\Users\jakub_lk\OneDrive\.in퓓nierka\image_processing\venv\Lib\site-packages\agh_vqis\binaries\agh_vqis_win64_mt.exe's output: 
+2024-10-18 19:25:20,488 __main__ INFO: Running the Colourfulness IQI on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-01-01 to 2023-01-31_3724PDFs_pictures\doc_10_14_img_8.jpg)
+2024-10-18 19:25:20,498 __main__ INFO: Running requested AGH VQIs on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-01-01 to 2023-01-31_3724PDFs_pictures\doc_10_14_img_8.jpg)
+2024-10-18 19:25:20,731 helpers ERROR: Calling C:\Users\jakub_lk\OneDrive\.in퓓nierka\image_processing\venv\Lib\site-packages\agh_vqis\binaries\agh_vqis_win64_mt.exe failed with the following return code: 3221225477
+2024-10-18 19:25:20,732 helpers ERROR: C:\Users\jakub_lk\OneDrive\.in퓓nierka\image_processing\venv\Lib\site-packages\agh_vqis\binaries\agh_vqis_win64_mt.exe's output: 
+2024-10-18 19:25:20,805 __main__ INFO: Running the Colourfulness IQI on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-01-01 to 2023-01-31_3724PDFs_pictures\doc_10_14_img_9.jpg)
+2024-10-18 19:25:20,814 __main__ INFO: Running requested AGH VQIs on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-01-01 to 2023-01-31_3724PDFs_pictures\doc_10_14_img_9.jpg)
+2024-10-18 19:25:20,998 __main__ INFO: All results stored in the VQIs_for_doc_10_14_img_9.csv file
+2024-10-18 19:25:21,062 __main__ INFO: Running the Colourfulness IQI on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-01-01 to 2023-01-31_3724PDFs_pictures\doc_10_1_img_1.jpg)
+2024-10-18 19:25:21,081 __main__ INFO: Running requested AGH VQIs on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-01-01 to 2023-01-31_3724PDFs_pictures\doc_10_1_img_1.jpg)
+2024-10-18 19:25:21,261 __main__ INFO: All results stored in the VQIs_for_doc_10_1_img_1.csv file
+2024-10-18 19:25:21,332 __main__ INFO: Running the Colourfulness IQI on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-01-01 to 2023-01-31_3724PDFs_pictures\doc_10_1_img_10.jpg)
+2024-10-18 19:25:21,344 __main__ INFO: Running requested AGH VQIs on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-01-01 to 2023-01-31_3724PDFs_pictures\doc_10_1_img_10.jpg)
+2024-10-18 19:25:21,587 helpers ERROR: Calling C:\Users\jakub_lk\OneDrive\.in퓓nierka\image_processing\venv\Lib\site-packages\agh_vqis\binaries\agh_vqis_win64_mt.exe failed with the following return code: 3221225477
+2024-10-18 19:25:21,588 helpers ERROR: C:\Users\jakub_lk\OneDrive\.in퓓nierka\image_processing\venv\Lib\site-packages\agh_vqis\binaries\agh_vqis_win64_mt.exe's output: 
+2024-10-18 19:25:21,675 __main__ INFO: Running the Colourfulness IQI on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-01-01 to 2023-01-31_3724PDFs_pictures\doc_10_1_img_11.jpg)
+2024-10-18 19:25:21,687 __main__ INFO: Running requested AGH VQIs on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-01-01 to 2023-01-31_3724PDFs_pictures\doc_10_1_img_11.jpg)
+2024-10-18 19:25:21,960 helpers ERROR: Calling C:\Users\jakub_lk\OneDrive\.in퓓nierka\image_processing\venv\Lib\site-packages\agh_vqis\binaries\agh_vqis_win64_mt.exe failed with the following return code: 3221225477
+2024-10-18 19:25:21,961 helpers ERROR: C:\Users\jakub_lk\OneDrive\.in퓓nierka\image_processing\venv\Lib\site-packages\agh_vqis\binaries\agh_vqis_win64_mt.exe's output: 
+2024-10-18 19:25:22,049 __main__ INFO: Running the Colourfulness IQI on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-01-01 to 2023-01-31_3724PDFs_pictures\doc_10_1_img_2.jpg)
+2024-10-18 19:25:22,090 __main__ INFO: Running requested AGH VQIs on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-01-01 to 2023-01-31_3724PDFs_pictures\doc_10_1_img_2.jpg)
+2024-10-18 19:25:22,332 __main__ INFO: All results stored in the VQIs_for_doc_10_1_img_2.csv file
+2024-10-18 19:25:22,398 __main__ INFO: Running the Colourfulness IQI on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-01-01 to 2023-01-31_3724PDFs_pictures\doc_10_1_img_3.jpg)
+2024-10-18 19:25:22,411 __main__ INFO: Running requested AGH VQIs on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-01-01 to 2023-01-31_3724PDFs_pictures\doc_10_1_img_3.jpg)
+2024-10-18 19:25:22,636 helpers ERROR: Calling C:\Users\jakub_lk\OneDrive\.in퓓nierka\image_processing\venv\Lib\site-packages\agh_vqis\binaries\agh_vqis_win64_mt.exe failed with the following return code: 3221225477
+2024-10-18 19:25:22,637 helpers ERROR: C:\Users\jakub_lk\OneDrive\.in퓓nierka\image_processing\venv\Lib\site-packages\agh_vqis\binaries\agh_vqis_win64_mt.exe's output: 
+2024-10-18 19:25:22,711 __main__ INFO: Running the Colourfulness IQI on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-01-01 to 2023-01-31_3724PDFs_pictures\doc_10_1_img_4.jpg)
+2024-10-18 19:25:22,733 __main__ INFO: Running requested AGH VQIs on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-01-01 to 2023-01-31_3724PDFs_pictures\doc_10_1_img_4.jpg)
+2024-10-18 19:25:22,964 helpers ERROR: Calling C:\Users\jakub_lk\OneDrive\.in퓓nierka\image_processing\venv\Lib\site-packages\agh_vqis\binaries\agh_vqis_win64_mt.exe failed with the following return code: 3221225477
+2024-10-18 19:25:22,964 helpers ERROR: C:\Users\jakub_lk\OneDrive\.in퓓nierka\image_processing\venv\Lib\site-packages\agh_vqis\binaries\agh_vqis_win64_mt.exe's output: 
+2024-10-18 19:25:23,031 __main__ INFO: Running the Colourfulness IQI on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-01-01 to 2023-01-31_3724PDFs_pictures\doc_10_1_img_5.jpg)
+2024-10-18 19:25:23,057 __main__ INFO: Running requested AGH VQIs on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-01-01 to 2023-01-31_3724PDFs_pictures\doc_10_1_img_5.jpg)
+2024-10-18 19:25:23,255 __main__ INFO: All results stored in the VQIs_for_doc_10_1_img_5.csv file
+2024-10-18 19:25:23,332 __main__ INFO: Running the Colourfulness IQI on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-01-01 to 2023-01-31_3724PDFs_pictures\doc_10_1_img_6.jpg)
+2024-10-18 19:25:23,343 __main__ INFO: Running requested AGH VQIs on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-01-01 to 2023-01-31_3724PDFs_pictures\doc_10_1_img_6.jpg)
+2024-10-18 19:25:23,523 __main__ INFO: All results stored in the VQIs_for_doc_10_1_img_6.csv file
+2024-10-18 19:25:23,598 __main__ INFO: Running the Colourfulness IQI on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-01-01 to 2023-01-31_3724PDFs_pictures\doc_10_1_img_7.jpg)
+2024-10-18 19:25:23,607 __main__ INFO: Running requested AGH VQIs on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-01-01 to 2023-01-31_3724PDFs_pictures\doc_10_1_img_7.jpg)
+2024-10-18 19:25:23,791 __main__ INFO: All results stored in the VQIs_for_doc_10_1_img_7.csv file
+2024-10-18 19:25:23,865 __main__ INFO: Running the Colourfulness IQI on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-01-01 to 2023-01-31_3724PDFs_pictures\doc_10_1_img_8.jpg)
+2024-10-18 19:25:23,887 __main__ INFO: Running requested AGH VQIs on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-01-01 to 2023-01-31_3724PDFs_pictures\doc_10_1_img_8.jpg)
+2024-10-18 19:25:24,141 helpers ERROR: Calling C:\Users\jakub_lk\OneDrive\.in퓓nierka\image_processing\venv\Lib\site-packages\agh_vqis\binaries\agh_vqis_win64_mt.exe failed with the following return code: 3221225477
+2024-10-18 19:25:24,141 helpers ERROR: C:\Users\jakub_lk\OneDrive\.in퓓nierka\image_processing\venv\Lib\site-packages\agh_vqis\binaries\agh_vqis_win64_mt.exe's output: 
+2024-10-18 19:25:24,239 __main__ INFO: Running the Colourfulness IQI on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-01-01 to 2023-01-31_3724PDFs_pictures\doc_10_1_img_9.jpg)
+2024-10-18 19:25:24,251 __main__ INFO: Running requested AGH VQIs on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-01-01 to 2023-01-31_3724PDFs_pictures\doc_10_1_img_9.jpg)
+2024-10-18 19:25:24,548 helpers ERROR: Calling C:\Users\jakub_lk\OneDrive\.in퓓nierka\image_processing\venv\Lib\site-packages\agh_vqis\binaries\agh_vqis_win64_mt.exe failed with the following return code: 3221225477
+2024-10-18 19:25:24,548 helpers ERROR: C:\Users\jakub_lk\OneDrive\.in퓓nierka\image_processing\venv\Lib\site-packages\agh_vqis\binaries\agh_vqis_win64_mt.exe's output: 
+2024-10-18 19:25:24,625 __main__ INFO: Running the Colourfulness IQI on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-01-01 to 2023-01-31_3724PDFs_pictures\doc_10_20_img_1.jpg)
+2024-10-18 19:25:24,635 __main__ INFO: Running requested AGH VQIs on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-01-01 to 2023-01-31_3724PDFs_pictures\doc_10_20_img_1.jpg)
+2024-10-18 19:25:24,825 __main__ INFO: All results stored in the VQIs_for_doc_10_20_img_1.csv file
+2024-10-18 19:25:24,888 __main__ INFO: Running the Colourfulness IQI on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-01-01 to 2023-01-31_3724PDFs_pictures\doc_10_20_img_2.jpg)
+2024-10-18 19:25:24,898 __main__ INFO: Running requested AGH VQIs on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-01-01 to 2023-01-31_3724PDFs_pictures\doc_10_20_img_2.jpg)
+2024-10-18 19:25:25,126 helpers ERROR: Calling C:\Users\jakub_lk\OneDrive\.in퓓nierka\image_processing\venv\Lib\site-packages\agh_vqis\binaries\agh_vqis_win64_mt.exe failed with the following return code: 3221225477
+2024-10-18 19:25:25,127 helpers ERROR: C:\Users\jakub_lk\OneDrive\.in퓓nierka\image_processing\venv\Lib\site-packages\agh_vqis\binaries\agh_vqis_win64_mt.exe's output: 
+2024-10-18 19:25:25,195 __main__ INFO: Running the Colourfulness IQI on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-01-01 to 2023-01-31_3724PDFs_pictures\doc_10_20_img_3.jpg)
+2024-10-18 19:25:25,204 __main__ INFO: Running requested AGH VQIs on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-01-01 to 2023-01-31_3724PDFs_pictures\doc_10_20_img_3.jpg)
+2024-10-18 19:25:25,392 __main__ INFO: All results stored in the VQIs_for_doc_10_20_img_3.csv file
+2024-10-18 19:25:25,466 __main__ INFO: Running the Colourfulness IQI on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-01-01 to 2023-01-31_3724PDFs_pictures\doc_10_21_img_1.jpg)
+2024-10-18 19:25:25,562 __main__ INFO: Running requested AGH VQIs on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-01-01 to 2023-01-31_3724PDFs_pictures\doc_10_21_img_1.jpg)
+2024-10-18 19:25:25,786 __main__ INFO: All results stored in the VQIs_for_doc_10_21_img_1.csv file
+2024-10-18 19:25:25,858 __main__ INFO: Running the Colourfulness IQI on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-01-01 to 2023-01-31_3724PDFs_pictures\doc_10_21_img_2.jpg)
+2024-10-18 19:25:25,883 __main__ INFO: Running requested AGH VQIs on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-01-01 to 2023-01-31_3724PDFs_pictures\doc_10_21_img_2.jpg)
+2024-10-18 19:25:26,082 __main__ INFO: All results stored in the VQIs_for_doc_10_21_img_2.csv file
+2024-10-18 19:25:26,224 __main__ INFO: Running the Colourfulness IQI on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-01-01 to 2023-01-31_3724PDFs_pictures\doc_10_21_img_3.jpg)
+2024-10-18 19:25:26,250 __main__ INFO: Running requested AGH VQIs on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-01-01 to 2023-01-31_3724PDFs_pictures\doc_10_21_img_3.jpg)
+2024-10-18 19:25:26,436 __main__ INFO: All results stored in the VQIs_for_doc_10_21_img_3.csv file
+2024-10-18 19:25:26,505 __main__ INFO: Running the Colourfulness IQI on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-01-01 to 2023-01-31_3724PDFs_pictures\doc_10_21_img_4.jpg)
+2024-10-18 19:25:26,523 __main__ INFO: Running requested AGH VQIs on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-01-01 to 2023-01-31_3724PDFs_pictures\doc_10_21_img_4.jpg)
+2024-10-18 19:25:26,700 __main__ INFO: All results stored in the VQIs_for_doc_10_21_img_4.csv file
+2024-10-18 19:25:26,776 __main__ INFO: Running the Colourfulness IQI on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-01-01 to 2023-01-31_3724PDFs_pictures\doc_10_42_img_1.jpg)
+2024-10-18 19:25:26,787 __main__ INFO: Running requested AGH VQIs on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-01-01 to 2023-01-31_3724PDFs_pictures\doc_10_42_img_1.jpg)
+2024-10-18 19:25:26,985 __main__ INFO: All results stored in the VQIs_for_doc_10_42_img_1.csv file
+2024-10-18 19:25:27,046 __main__ INFO: Running the Colourfulness IQI on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-01-01 to 2023-01-31_3724PDFs_pictures\doc_10_42_img_10.jpg)
+2024-10-18 19:25:27,074 __main__ INFO: Running requested AGH VQIs on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-01-01 to 2023-01-31_3724PDFs_pictures\doc_10_42_img_10.jpg)
+2024-10-18 19:25:27,265 __main__ INFO: All results stored in the VQIs_for_doc_10_42_img_10.csv file
+2024-10-18 19:25:27,345 __main__ INFO: Running the Colourfulness IQI on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-01-01 to 2023-01-31_3724PDFs_pictures\doc_10_42_img_2.jpg)
+2024-10-18 19:25:27,356 __main__ INFO: Running requested AGH VQIs on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-01-01 to 2023-01-31_3724PDFs_pictures\doc_10_42_img_2.jpg)
+2024-10-18 19:25:27,530 __main__ INFO: All results stored in the VQIs_for_doc_10_42_img_2.csv file
+2024-10-18 19:25:27,600 __main__ INFO: Running the Colourfulness IQI on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-01-01 to 2023-01-31_3724PDFs_pictures\doc_10_42_img_3.jpg)
+2024-10-18 19:25:27,653 __main__ INFO: Running requested AGH VQIs on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-01-01 to 2023-01-31_3724PDFs_pictures\doc_10_42_img_3.jpg)
+2024-10-18 19:25:27,845 __main__ INFO: All results stored in the VQIs_for_doc_10_42_img_3.csv file
+2024-10-18 19:25:27,924 __main__ INFO: Running the Colourfulness IQI on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-01-01 to 2023-01-31_3724PDFs_pictures\doc_10_42_img_4.jpg)
+2024-10-18 19:25:27,998 __main__ INFO: Running requested AGH VQIs on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-01-01 to 2023-01-31_3724PDFs_pictures\doc_10_42_img_4.jpg)
+2024-10-18 19:25:28,204 __main__ INFO: All results stored in the VQIs_for_doc_10_42_img_4.csv file
+2024-10-18 19:25:28,270 __main__ INFO: Running the Colourfulness IQI on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-01-01 to 2023-01-31_3724PDFs_pictures\doc_10_42_img_5.jpg)
+2024-10-18 19:25:28,320 __main__ INFO: Running requested AGH VQIs on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-01-01 to 2023-01-31_3724PDFs_pictures\doc_10_42_img_5.jpg)
+2024-10-18 19:25:28,517 __main__ INFO: All results stored in the VQIs_for_doc_10_42_img_5.csv file
+2024-10-18 19:25:28,586 __main__ INFO: Running the Colourfulness IQI on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-01-01 to 2023-01-31_3724PDFs_pictures\doc_10_42_img_6.jpg)
+2024-10-18 19:25:28,658 __main__ INFO: Running requested AGH VQIs on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-01-01 to 2023-01-31_3724PDFs_pictures\doc_10_42_img_6.jpg)
+2024-10-18 19:25:28,866 __main__ INFO: All results stored in the VQIs_for_doc_10_42_img_6.csv file
+2024-10-18 19:25:28,946 __main__ INFO: Running the Colourfulness IQI on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-01-01 to 2023-01-31_3724PDFs_pictures\doc_10_42_img_7.jpg)
+2024-10-18 19:25:29,002 __main__ INFO: Running requested AGH VQIs on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-01-01 to 2023-01-31_3724PDFs_pictures\doc_10_42_img_7.jpg)
+2024-10-18 19:25:29,244 __main__ INFO: All results stored in the VQIs_for_doc_10_42_img_7.csv file
+2024-10-18 19:25:29,329 __main__ INFO: Running the Colourfulness IQI on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-01-01 to 2023-01-31_3724PDFs_pictures\doc_10_42_img_8.jpg)
+2024-10-18 19:25:29,400 __main__ INFO: Running requested AGH VQIs on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-01-01 to 2023-01-31_3724PDFs_pictures\doc_10_42_img_8.jpg)
+2024-10-18 19:25:29,614 __main__ INFO: All results stored in the VQIs_for_doc_10_42_img_8.csv file
+2024-10-18 19:25:29,686 __main__ INFO: Running the Colourfulness IQI on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-01-01 to 2023-01-31_3724PDFs_pictures\doc_10_42_img_9.jpg)
+2024-10-18 19:25:29,741 __main__ INFO: Running requested AGH VQIs on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-01-01 to 2023-01-31_3724PDFs_pictures\doc_10_42_img_9.jpg)
+2024-10-18 19:25:29,945 __main__ INFO: All results stored in the VQIs_for_doc_10_42_img_9.csv file
+2024-10-18 19:25:30,026 __main__ INFO: Running the Colourfulness IQI on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-01-01 to 2023-01-31_3724PDFs_pictures\doc_10_47_img_1.jpg)
+2024-10-18 19:25:30,097 __main__ INFO: Running requested AGH VQIs on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-01-01 to 2023-01-31_3724PDFs_pictures\doc_10_47_img_1.jpg)
+2024-10-18 19:25:30,288 __main__ INFO: All results stored in the VQIs_for_doc_10_47_img_1.csv file
+2024-10-18 19:25:30,392 __main__ INFO: Running the Colourfulness IQI on the input (C:\Users\jakub_lk\OneDrive\.in퓓nierka\Es_pdfs(Art2)\From 2023-01-01 to 2023-01-31_3724PDFs_pictures\doc_10_47_img_10.jpg)
