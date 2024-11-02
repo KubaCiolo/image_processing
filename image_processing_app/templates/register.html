@@ -1,4 +1,4 @@
-<!-- image_processing_app/templates/register.html -->
+<!-- templates/register.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,11 +8,11 @@
 </head>
 <body>
     <h1>Register</h1>
-    <form method="POST">
+    <form method="POST" action="{% url 'account_signup' %}">
         {% csrf_token %}
         {{ form.as_p }}
         <button type="submit">Register</button>
     </form>
-    <a href="{% url 'login' %}">Login</a>
+    <a href="{% url 'account_login' %}">Login</a>
 </body>
 </html>

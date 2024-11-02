@@ -1,8 +1,8 @@
-import psycopg2
-import glob
-import csv
 import os
 import re
+import csv
+import psycopg2
+import glob
 from load_headlines import load_headlines
 
 # Database connection parameters
@@ -31,12 +31,20 @@ expected_columns = 17
 headlines = load_headlines(headlines_file_path)
 print(f"Total headlines loaded: {len(headlines)}")  # Debugging statement
 
+# Print the loaded headlines for debugging
+for key, value in headlines.items():
+    print(f"Headline key: {key}, value: {value}")
+
 # Function to insert data from a CSV file into the PostgreSQL table
 def insert_data_from_csv(file_path):
     vqis_filename = os.path.basename(file_path)  # Extract the file name from the path
     # Extract doc_filename from the CSV filename using regex
     match = re.search(r'for_(doc_\d+_\d+)_img', vqis_filename)
-    doc_filename = match.group(1) if match else "doc_filename_example"
+    doc_filename = match.group(1) + '.pdf' if match else "doc_filename_example.pdf"
+    
+    # Ensure doc_filename ends with .pdf
+    if not doc_filename.endswith('.pdf'):
+        doc_filename += '.pdf'
     
     # Strip any leading/trailing spaces from doc_filename
     doc_filename = doc_filename.strip()
