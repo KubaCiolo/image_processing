@@ -134,6 +134,7 @@ EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'imageprogessing@gmail.com'
 EMAIL_HOST_PASSWORD = 'fpfa tivv wbyf mcnn'
 
+
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
 ACCOUNT_AUTHENTICATION_METHOD = 'email'
