@@ -16,13 +16,3 @@ def index(request):
 def archive(request):
     metrics = VideoQualityMetrics.objects.all()
     return render(request, 'archive.html', {'metrics': metrics})
-
-def search_view(request):
-    form = SearchForm()
-    results = []
-    if request.method == 'GET':
-        form = SearchForm(request.GET)
-        if form.is_valid():
-            query = form.cleaned_data['query']
-            results = VideoQualityMetrics.objects.filter(vqis_filename__icontains=query)
-    return render(request, 'search.html', {'form': form, 'results': results})
