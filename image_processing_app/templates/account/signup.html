@@ -1,16 +1,18 @@
 <!-- templates/account/signup.html -->
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Sign Up</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
 </head>
 <body>
-    <h2>Sign Up</h2>
-    <form method="post" action="{% url 'account_signup' %}">
+    <h1>Register</h1>
+    <form method="POST" action="{% url 'account_signup' %}">
         {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit">Sign Up</button>
+        <button type="submit">Register</button>
     </form>
-    <p>Already have an account? <a href="{% url 'account_login' %}">Login</a></p>
+    <a href="{% url 'account_login' %}">Login</a>
 </body>
 </html>
