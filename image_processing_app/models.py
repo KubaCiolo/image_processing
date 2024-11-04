@@ -1,13 +1,5 @@
 # image_processing_app/models.py
 from django.db import models
-
-class UploadedImage(models.Model):
-    image = models.ImageField(upload_to='uploaded_images/')
-    vqis_result = models.TextField(blank=True, null=True)
-    uploaded_at = models.DateTimeField(auto_now_add=True)
-
-    def __str__(self):
-        return f"Image uploaded at {self.uploaded_at}"
     
 class VideoQualityMetrics(models.Model):
     vqis_filename = models.CharField(max_length=255, unique=True, default='default_vqis_filename')

@@ -1,57 +1,113 @@
-# image_processing/image_processing_app/views.py
-
+# image_processing_app/views.py
 from django.shortcuts import render, redirect
-from .forms import ImageUploadForm
-from .models import UploadedImage, VideoQualityMetrics
-from agh_vqis import VQIs
+from django.http import HttpResponse
+from .forms import UploadImageForm
+from .models import VideoQualityMetrics
 from pathlib import Path
-import csv
+import logging
+from agh_vqis import VQIs, process_single_mm_file  # Import the necessary functions and classes
+import io
 
-def calculate_vqis(image_path):
-    vqis_processor = VQIs()  # Initialize the VQIs processor
+logger = logging.getLogger(__name__)
+
+def custom_process_image(image_path):
+    logger.info(f"Starting custom_process_image with image_path: {image_path}")
     try:
-        # Assuming VQIs class has a method to process a single file and generate a CSV file
-        result_file = vqis_processor.process_file(Path(image_path))
-        print(f"VQIS result file: {result_file}")  # Debugging statement
+        logger.info(f"Processing image: {image_path}")
+        vqis_processor = VQIs()  # Initialize the VQIs processor
         
-        # Read the CSV file and extract data
-        vqis_result = {}
-        with open(result_file, mode='r') as file:
-            reader = csv.DictReader(file)
-            for row in reader:
-                for key, value in row.items():
-                    vqis_result[key] = value
+        # Create an in-memory file-like object to store the CSV content
+        output_file = io.StringIO()
         
-        print(f"VQIS result data: {vqis_result}")  # Debugging statement
-        return vqis_result
-    except FileNotFoundError as e:
-        print(f"File not found: {e}")
-        return {"Error": "File not found"}
-    except csv.Error as e:
-        print(f"CSV error: {e}")
-        return {"Error": "CSV error"}
+        # Process the file
+        try:
+            result = process_single_mm_file(image_path, vqis_processor, output_file)
+        except Exception as e:
+            logger.error(f"Error during processing {image_path} - {e}")
+            return None
+        
+        # Get the CSV content from the in-memory file-like object
+        csv_content = output_file.getvalue()
+        output_file.close()
+        
+        logger.info(f"VQIS result file generated for {image_path}")
+        return csv_content
     except Exception as e:
-        print(f"Error processing {image_path}: {e}")
-        return {"Error": "Error calculating VQIS"}
+        logger.error(f"Error processing {image_path}: {e}")
+        return None
+
+def upload_image(request):
+    logger.info("Starting upload_image view")
+    if request.method == 'POST':
+        form = UploadImageForm(request.POST, request.FILES)
+        if form.is_valid():
+            image = form.cleaned_data['image']
+            
+            # Define the path to save the uploaded image
+            image_path = Path('uploads') / image.name
+            
+            # Ensure the uploads directory exists
+            image_path.parent.mkdir(parents=True, exist_ok=True)
+            
+            # Save the uploaded image to the defined path
+            logger.info(f"Uploading image to {image_path}")
+            with open(image_path, 'wb+') as destination:
+                for chunk in image.chunks():
+                    destination.write(chunk)
+
+            # Process the image and get the CSV content
+            csv_content = custom_process_image(image_path)
+            if csv_content:
+                logger.info(f"VQIS result file generated for {image_path}")
+                response = HttpResponse(csv_content, content_type='text/csv')
+                response['Content-Disposition'] = f'attachment; filename="VQIs_for_{image_path.stem}.csv"'
+                return response
+            else:
+                logger.error("Error processing image")
+                return HttpResponse("Error processing image", status=500)
+        else:
+            logger.error("Form is not valid")
+    else:
+        form = UploadImageForm()
+    return render(request, 'upload_image.html', {'form': form})
 
 def index(request):
-    form = ImageUploadForm()
+    logger.info("Starting index view")
+    form = UploadImageForm()
     return render(request, 'index.html', {'form': form})
 
 def archive(request):
+    logger.info("Starting archive view")
     metrics = VideoQualityMetrics.objects.all()
     return render(request, 'archive.html', {'metrics': metrics})
 
 def home(request):
+    logger.info("Starting home view")
     if request.method == 'POST':
-        form = ImageUploadForm(request.POST, request.FILES)
+        form = UploadImageForm(request.POST, request.FILES)
         if form.is_valid():
-            uploaded_image = form.save()
-            # Process the image and calculate VQIS
-            vqis_result = calculate_vqis(uploaded_image.image.path)
-            uploaded_image.vqis_result = vqis_result
-            uploaded_image.save()
-            return render(request, 'results.html', {'vqis_result': vqis_result})
+            image = form.cleaned_data['image']
+            
+            # Define the path to save the uploaded image
+            image_path = Path('uploads') / image.name
+            
+            # Ensure the uploads directory exists
+            image_path.parent.mkdir(parents=True, exist_ok=True)
+            
+            # Save the uploaded image to the defined path
+            logger.info(f"Uploading image to {image_path}")
+            with open(image_path, 'wb+') as destination:
+                for chunk in image.chunks():
+                    destination.write(chunk)
+
+            # Process the image and get the CSV content
+            csv_content = custom_process_image(image_path)
+            if csv_content:
+                response = HttpResponse(csv_content, content_type='text/csv')
+                response['Content-Disposition'] = f'attachment; filename="VQIs_for_{image_path.stem}.csv"'
+                return response
+            else:
+                return HttpResponse("Error processing image", status=500)
     else:
-        form = ImageUploadForm()
+        form = UploadImageForm()
     return render(request, 'index.html', {'form': form})
