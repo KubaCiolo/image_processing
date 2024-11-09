@@ -15,6 +15,7 @@
             <th>Doc Filename</th>
             <th>Doc Headline</th>
             <th>Doc URL</th>
+            <th>Image</th> <!-- Added new column header for Image -->
             <th>Frame</th>
             <th>Blockiness</th>
             <th>SA</th>
@@ -39,6 +40,7 @@
             <td>{{ metric.doc_filename }}</td>
             <td>{{ metric.doc_headline }}</td>
             <td><a href="{{ metric.doc_url }}">{{ metric.doc_url }}</a></td>
+            <td><img src="{{ metric.image.url }}" alt="Image" width="100"></td> <!-- Added new data cell for Image -->
             <td>{{ metric.frame }}</td>
             <td>{{ metric.blockiness }}</td>
             <td>{{ metric.sa }}</td>

@@ -1,3 +1,5 @@
+version: '3'
+
 services:
   db:
     image: postgres:13
@@ -20,6 +22,7 @@ services:
       DB_PASSWORD: mysecretpassword
     volumes:
       - ./data:/data
+      - ./media:/app/media  # Map the host's ./media directory to the container's /app/media directory
     depends_on:
       - db
     ports:

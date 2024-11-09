@@ -6,10 +6,14 @@
 </head>
 <body>
     <h1>Upload Image</h1>
-    <form method="post" enctype="multipart/form-data">
+    <form method="post" enctype="multipart/form-data" action="{% url 'upload_image' %}">
         {% csrf_token %}
         {{ form.as_p }}
         <button type="submit">Upload</button>
     </form>
+
+    {% if message %}
+        <p>{{ message }}</p>
+    {% endif %}
 </body>
 </html>
