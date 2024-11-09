@@ -13,8 +13,6 @@ COPY requirements.txt .
 # Install the dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 
-mkdir -p media/uploads
-
 # Copy the application code into the container
 COPY . .
 

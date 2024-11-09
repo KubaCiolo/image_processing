@@ -6,6 +6,9 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'app', 'media')
+
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'your-secret-key'
 
@@ -127,10 +130,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-MEDIA_URL = '/media/'
-
-# Internationalization
+# Interntionalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
 
 LANGUAGE_CODE = 'en-us'
