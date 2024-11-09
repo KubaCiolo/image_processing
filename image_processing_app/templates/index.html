@@ -6,7 +6,7 @@
 </head>
 <body>
     <h1>Upload Picture</h1>
-    <form method="post" enctype="multipart/form-data" action="{% url 'upload_image' %}">
+    <form method="post" enctype="multipart/form-data" action="{% url 'home' %}">
         {% csrf_token %}
         {{ form.as_p }}
         <button type="submit">Upload</button>
@@ -21,6 +21,15 @@
         <a href="{% url 'account_login' %}">Sign In</a>
         <br>
         <a href="{% url 'account_signup' %}">Sign Up</a>
+    {% endif %}
+
+    <!-- Display messages -->
+    {% if messages %}
+        <ul>
+            {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
     {% endif %}
 </body>
 </html>

@@ -20,6 +20,7 @@ services:
       DB_PASSWORD: mysecretpassword
     volumes:
       - ./data:/data
+      - ./media:/app/media
     depends_on:
       - db
     ports:
