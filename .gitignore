@@ -4,3 +4,6 @@ db.sqlite3
 /env
 *.env
 .vscode
+venv/
+.venv/
+node_modules
