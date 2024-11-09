@@ -21,8 +21,8 @@ services:
       DB_USER: postgres
       DB_PASSWORD: mysecretpassword
     volumes:
-      - .:/app
-      - ./media:/app/app/media  # Map the host's ./media directory to the container's /app/media directory
+      - ./data:/data
+      - ./media:/app/media
     depends_on:
       - db
     ports:

@@ -26,5 +26,14 @@
         <br>
         <a href="{% url 'account_signup' %}">Sign Up</a>
     {% endif %}
+
+    <!-- Display messages -->
+    {% if messages %}
+        <ul>
+            {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
 </body>
 </html>

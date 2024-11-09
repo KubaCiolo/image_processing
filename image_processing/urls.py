@@ -9,8 +9,9 @@ urlpatterns = [
     path('upload/', upload_image, name='upload_image'),
     path('archive/', archive, name='archive'),
     path('', include('image_processing_app.urls')),
-    path('accounts/', include('allauth.urls')),  # Add this line
-]
+    path('accounts/', include('allauth.urls')),
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
