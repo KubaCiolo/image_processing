@@ -1,9 +1,9 @@
 # image_processing_app/urls.py
 from django.urls import path
-from .views import index, archive, home
+from . import views
 
 urlpatterns = [
-    path('', index, name='index'),
-    path('archive/', archive, name='archive'),
-    path('home/', home, name='home'),
+    path('', views.index, name='index'),
+    path('archive/', views.archive, name='archive'),
+    path('download_csv/<str:filename>/', views.download_csv, name='download_csv'),
 ]

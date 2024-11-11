@@ -1,103 +1,93 @@
-# image_processing_app/views.py
-from django.shortcuts import render, redirect
-from django.http import HttpResponse
-from .forms import UploadImageForm
-from .models import VideoQualityMetrics
+import argparse
 from pathlib import Path
-import logging
-from agh_vqis import VQIs, process_single_mm_file  # Import the necessary functions and classes
+from agh_vqis import process_single_mm_file, VQIs
+import json
 
-logger = logging.getLogger(__name__)
+def extract_parent_dir_name(file_path):
+    parent_dir_name = file_path.parent.name
+    parent_dir_substring = parent_dir_name.split()[1][:7]
+    return parent_dir_substring
 
-def custom_process_image(image_path, output_dir):
-    logger.info(f"Starting custom_process_image with image_path: {image_path} and output_dir: {output_dir}")
-    try:
-        logger.info(f"Processing image: {image_path}")
-        vqis_processor = VQIs()  # Initialize the VQIs processor
+def load_processed_files(log_file):
+    if log_file.exists():
+        with open(log_file, 'r') as f:
+            return set(json.load(f))
+    return set()
+
+def save_processed_files(log_file, processed_files):
+    with open(log_file, 'w') as f:
+        json.dump(list(processed_files), f)
+
+def process_files_in_directory(directory, log_file):
+    vqis_processor = VQIs()  # Initialize the VQIs processor
+    directory_path = Path(directory)
+    output_dir = Path(r"C:\Users\jakub_lk\OneDrive\.inżynierka\image_processing\data")
+    
+    # Ensure the output directory exists
+    output_dir.mkdir(parents=True, exist_ok=True)
+    
+    # Load the list of processed files
+    processed_files = load_processed_files(log_file)
+    
+    for file_path in directory_path.glob("*.jpg"):  # Adjust the pattern if needed
+        if str(file_path) in processed_files:
+            print(f"Skipping {file_path}: Already processed")
+            continue
         
-        # Define the output file path
-        output_file = output_dir / f"VQIs_for_{image_path.stem}.csv"
-        
-        # Process the file
         try:
-            result = process_single_mm_file(image_path, vqis_processor)
+            # Extract the parent directory substring
+            parent_dir_substring = extract_parent_dir_name(file_path)
+            
+            # Define the output file path
+            output_file = output_dir / f"VQIs_{parent_dir_substring}_for_{file_path.stem}.csv"
+            
+            # Check if the output file already exists
+            if output_file.exists():
+                print(f"Skipping {file_path}: Output file already exists")
+                processed_files.add(str(file_path))
+                save_processed_files(log_file, processed_files)
+                continue
+            
+            # Process the file
+            try:
+                result = process_single_mm_file(file_path, vqis_processor)
+            except Exception as e:
+                print(f"Skipping {file_path}: Error during processing - {e}")
+                processed_files.add(str(file_path))
+                save_processed_files(log_file, processed_files)
+                continue
+            
+            # Move the generated CSV file to the specified output directory
+            generated_file = Path.cwd() / f"VQIs_for_{file_path.stem}.csv"
+            if generated_file.exists():
+                generated_file.rename(output_file)
+            else:
+                print(f"Error: Expected output file {generated_file} not found.")
+            
+            print(f"Processed {file_path}: {result}")
+            print(f"Output saved to {output_file}")
+            
+            # Mark the file as processed
+            processed_files.add(str(file_path))
+            save_processed_files(log_file, processed_files)
         except Exception as e:
-            logger.error(f"Skipping {image_path}: Error during processing - {e}")
-            return None
+            print(f"Error processing {file_path}: {e}")
+            processed_files.add(str(file_path))
+            save_processed_files(log_file, processed_files)
         
-        # Check if the generated CSV file exists
-        if output_file.exists():
-            logger.info(f"VQIS result file generated: {output_file}")
-            return output_file
-        else:
-            logger.error(f"Error: Expected output file {output_file} not found.")
-            return None
-    except Exception as e:
-        logger.error(f"Error processing {image_path}: {e}")
-        return None
+        # Clean up any unexpected directories
+        for item in Path.cwd().iterdir():
+            if item.is_dir() and len(item.name) == 36 and '-' in item.name:
+                print(f"Removing unexpected directory: {item}")
+                for sub_item in item.iterdir():
+                    sub_item.unlink()
+                item.rmdir()
 
-def upload_image(request):
-    logger.info("Starting upload_image view")
-    if request.method == 'POST':
-        form = UploadImageForm(request.POST, request.FILES)
-        if form.is_valid():
-            image = form.cleaned_data['image']
-            image_path = Path('uploads') / image.name
-            output_dir = Path('outputs')
-            output_dir.mkdir(parents=True, exist_ok=True)
-            logger.info(f"Uploading image to {image_path}")
-            with open(image_path, 'wb+') as destination:
-                for chunk in image.chunks():
-                    destination.write(chunk)
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description="Process multimedia files in a specified directory using AGH VQIs.")
+    parser.add_argument("path", type=str, help="Path to the directory containing multimedia files to be processed")
+    args = parser.parse_args()
 
-            result_file = custom_process_image(image_path, output_dir)
-            if result_file:
-                logger.info(f"VQIS result file: {result_file}")
-                with open(result_file, 'r') as file:
-                    response = HttpResponse(file.read(), content_type='text/csv')
-                    response['Content-Disposition'] = f'attachment; filename="{result_file.name}"'
-                    return response
-            else:
-                logger.error("Error processing image")
-                return HttpResponse("Error processing image", status=500)
-        else:
-            logger.error("Form is not valid")
-    else:
-        form = UploadImageForm()
-    return render(request, 'upload_image.html', {'form': form})
-
-def index(request):
-    logger.info("Starting index view")
-    form = UploadImageForm()
-    return render(request, 'index.html', {'form': form})
-
-def archive(request):
-    logger.info("Starting archive view")
-    metrics = VideoQualityMetrics.objects.all()
-    return render(request, 'archive.html', {'metrics': metrics})
-
-def home(request):
-    logger.info("Starting home view")
-    if request.method == 'POST':
-        form = UploadImageForm(request.POST, request.FILES)
-        if form.is_valid():
-            image = form.cleaned_data['image']
-            image_path = Path('uploads') / image.name
-            output_dir = Path('outputs')
-            output_dir.mkdir(parents=True, exist_ok=True)
-            logger.info(f"Uploading image to {image_path}")
-            with open(image_path, 'wb+') as destination:
-                for chunk in image.chunks():
-                    destination.write(chunk)
-
-            result_file = custom_process_image(image_path, output_dir)
-            if result_file:
-                with open(result_file, 'r') as file:
-                    response = HttpResponse(file.read(), content_type='text/csv')
-                    response['Content-Disposition'] = f'attachment; filename="{result_file.name}"'
-                    return response
-            else:
-                return HttpResponse("Error processing image", status=500)
-    else:
-        form = UploadImageForm()
-    return render(request, 'index.html', {'form': form})
+    directory = Path(args.path)
+    log_file = Path("processed_files_log.json")
+    process_files_in_directory(directory, log_file)

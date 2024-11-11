@@ -6,7 +6,7 @@
 </head>
 <body>
     <h1>Upload Picture</h1>
-    <form method="post" enctype="multipart/form-data" action="{% url 'home' %}">
+    <form method="post" enctype="multipart/form-data" action="{% url 'index' %}">
         {% csrf_token %}
         {{ form.as_p }}
         <button type="submit">Upload</button>
@@ -27,7 +27,7 @@
     {% if messages %}
         <ul>
             {% for message in messages %}
-                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message|safe }}</li>
             {% endfor %}
         </ul>
     {% endif %}

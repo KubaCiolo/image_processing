@@ -8,7 +8,6 @@ python-dotenv
 numpy==1.22.3  # Downgraded to a compatible version
 scikit-learn==1.2.0
 xgboost==1.7.5  # Updated to a compatible version
-django
 djangorestframework
 django-allauth
 requests
@@ -17,3 +16,4 @@ cryptography
 django-crispy-forms
 django-environ
 gunicorn
+ffmpeg
