@@ -23,13 +23,12 @@ def process_image(image_path: Path, options=None):
     # Manually set up the arguments to avoid parsing command-line arguments
     args = argparse.Namespace(
         path=image_path,
-        colourfulness=True,
-        blur_amount=True,
+        colourfulness=False,
+        blur_amount=False,
         ugc=False,
         exec=None,
         vqis="0x7FFF"
     )
-
     # Call the process_single_mm_file function directly with the necessary arguments
     try:
         status = process_single_mm_file(args.path, cli=False, options=options, args=args)
