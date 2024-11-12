@@ -7,7 +7,7 @@ from .forms import UploadImageForm
 from .models import VideoQualityMetrics
 from pathlib import Path
 import logging
-from image_processing_app.utils.image_processing import process_image  # Import the process_image function
+from .utils.image_processing import process_image  # Import the process_image function
 from django.utils.safestring import mark_safe
 
 logger = logging.getLogger(__name__)
