@@ -79,15 +79,15 @@ def insert_data_from_csv(file_path):
             # Replace empty strings with '0.0' for float columns
             row = ['0.0' if x == '' else x for x in row]
 
-            # Prepend the vqis_filename, doc_filename, doc_headline, and doc_url to the row
-            row = [vqis_filename, doc_filename, doc_headline, doc_url] + row
+            # Prepend the vqis_filename, doc_filename, doc_headline, doc_url, and add a default image path to the row
+            row = [vqis_filename, doc_filename, doc_headline, doc_url] + row + ['uploads/not_found']
             print(f"Row to be inserted: {row}")  # Print the row to be inserted
 
             try:
                 cur.execute(
                     """
-                    INSERT INTO image_processing_app_videoqualitymetrics (vqis_filename, doc_filename, doc_headline, doc_url, frame, blockiness, sa, letterbox, pillarbox, blockloss, blur, ta, blackout, freezing, "Exposure(bri)", contrast, interlace, noise, slice, flickering, colourfulness)
-                    VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+                    INSERT INTO image_processing_app_videoqualitymetrics (vqis_filename, doc_filename, doc_headline, doc_url, frame, blockiness, sa, letterbox, pillarbox, blockloss, blur, ta, blackout, freezing, "Exposure(bri)", contrast, interlace, noise, slice, flickering, colourfulness, image)
+                    VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
                     ON CONFLICT (vqis_filename) DO UPDATE SET
                         doc_filename = EXCLUDED.doc_filename,
                         doc_headline = EXCLUDED.doc_headline,
@@ -108,7 +108,8 @@ def insert_data_from_csv(file_path):
                         noise = EXCLUDED.noise,
                         slice = EXCLUDED.slice,
                         flickering = EXCLUDED.flickering,
-                        colourfulness = EXCLUDED.colourfulness
+                        colourfulness = EXCLUDED.colourfulness,
+                        image = EXCLUDED.image
                     """,
                     row
                 )

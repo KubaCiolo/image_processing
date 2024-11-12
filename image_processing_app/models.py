@@ -23,6 +23,14 @@ class VideoQualityMetrics(models.Model):
     slice = models.FloatField(default=0.0)
     flickering = models.FloatField(default=0.0)
     colourfulness = models.FloatField(default=0.0)
+    image = models.ImageField(upload_to='uploads/', default='uploads/not_found', null=True, blank=True)  # Add this line
 
     def __str__(self):
         return f"Frame {self.frame}"
+    
+class UploadedImage(models.Model):
+    image = models.ImageField(upload_to='uploads/')
+    uploaded_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.image.name
