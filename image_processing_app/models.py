@@ -1,28 +1,30 @@
 # image_processing_app/models.py
 from django.db import models
-    
+from django.contrib.auth.models import User
+
 class VideoQualityMetrics(models.Model):
-    vqis_filename = models.CharField(max_length=255, unique=True, default='default_vqis_filename')
-    doc_filename = models.CharField(max_length=255, default='default_doc_filename')
-    doc_headline = models.TextField(default='default_doc_headline')
-    doc_url = models.URLField(default='http://example.com')
-    frame = models.IntegerField(default=0)
-    blockiness = models.FloatField(default=0.0)
-    sa = models.FloatField(default=0.0)
-    letterbox = models.FloatField(default=0.0)
-    pillarbox = models.FloatField(default=0.0)
-    blockloss = models.FloatField(default=0.0)
-    blur = models.FloatField(default=0.0)
-    ta = models.FloatField(default=0.0)
-    blackout = models.IntegerField(default=0)
-    freezing = models.IntegerField(default=0)
-    exposure_bri = models.FloatField(db_column='Exposure(bri)', default=0.0)  # Use db_column to match the exact column name
-    contrast = models.FloatField(default=0.0)
-    interlace = models.FloatField(default=0.0)
-    noise = models.FloatField(default=0.0)
-    slice = models.FloatField(default=0.0)
-    flickering = models.FloatField(default=0.0)
-    colourfulness = models.FloatField(default=0.0)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    image = models.ImageField(upload_to='uploads/%Y/%m/%d/')
+    name = models.CharField(max_length=255)
+    source_url = models.URLField(blank=True, null=True)
+    upload_date = models.DateTimeField(auto_now_add=True)
+    frame = models.IntegerField()
+    blockiness = models.FloatField()
+    sa = models.FloatField()
+    letterbox = models.FloatField()
+    pillarbox = models.FloatField()
+    blockloss = models.FloatField()
+    blur = models.FloatField()
+    ta = models.FloatField()
+    blackout = models.FloatField()
+    freezing = models.FloatField()
+    exposure_bri = models.FloatField()
+    contrast = models.FloatField()
+    interlace = models.FloatField()
+    noise = models.FloatField()
+    slice = models.FloatField()
+    flickering = models.FloatField()
+    colourfulness = models.FloatField()
 
     def __str__(self):
-        return f"Frame {self.frame}"
+        return self.name
