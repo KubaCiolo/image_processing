@@ -1,11 +1,50 @@
+# Byte-compiled / optimized / DLL files
 *.pyc
-__pycache__
+__pycache__/
+
+# Database
 db.sqlite3
-/env
+
+# Environment variables
 *.env
-.vscode
+
+# VS Code settings
+.vscode/
+
+# Virtual environments
 venv/
 .venv/
-node_modules
+env/
+.env/
+
+# Node modules
+node_modules/
+
+# Media files
 media/uploads/
 media/results/
+
+# Logs
+*.log
+
+# Django migrations
+*/migrations/*
+
+# Coverage reports
+htmlcov/
+.coverage
+.coverage.*
+
+# MyPy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Pytest
+.pytest_cache/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# PyCharm
+.idea/
