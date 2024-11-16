@@ -16,6 +16,7 @@ from django.contrib.auth.decorators import login_required
 from django.core.files.base import ContentFile, File
 from datetime import datetime
 from django.utils.text import get_valid_filename
+from urllib.parse import urlparse, unquote
 
 logger = logging.getLogger(__name__)
 
@@ -38,11 +39,17 @@ def index(request):
                 # Download the image from the URL
                 response = requests.get(image_url)
                 if response.status_code == 200:
-                    original_name = get_valid_filename(Path(image_url).name)
+                    # Extract the file name and extension from the URL
+                    parsed_url = urlparse(image_url)
+                    original_name = get_valid_filename(unquote(Path(parsed_url.path).name))
+                    if not original_name:
+                        messages.error(request, "Failed to extract file name from URL")
+                        return redirect('index')
                     image_path = upload_dir / original_name
                     logger.info(f"Saving downloaded image to {image_path}")
                     with open(image_path, 'wb') as f:
                         f.write(response.content)
+                    source_url = image_url  # Assign the image URL to source_url
                 else:
                     messages.error(request, "Failed to download image from URL")
                     return redirect('index')
