@@ -134,14 +134,15 @@ def delete_metric(request, metric_id):
         # Delete the image file from the filesystem
         image_path = metric.image.path
         base_name = '_'.join(Path(image_path).stem.split('_')[:-1])  # Get the base name without the last part after the underscore
+        extension = Path(image_path).suffix  # Get the file extension
 
         # Define the upload directory based on the date the file was uploaded
         upload_date = metric.upload_date  # Assuming you have an upload_date field in your model
         upload_dir = Path(settings.MEDIA_ROOT) / 'uploads' / upload_date.strftime('%Y/%m/%d')
 
         # Construct paths for additional files
-        original_image_path = upload_dir / f"{base_name}.png"
-        result_file_path = Path(settings.MEDIA_ROOT) / 'results' / f"{base_name}_results"
+        original_image_path = upload_dir / f"{base_name}{extension}"
+        result_file_path = Path(settings.MEDIA_ROOT) / 'results' / f"{base_name}_results.csv"
 
         # Log the paths
         logger.info(f"Image Path: {image_path}")
