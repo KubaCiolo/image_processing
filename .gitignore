@@ -1,0 +1,53 @@
+# .dockerignore
+
+# Ignore virtual environments
+venv/
+.venv/
+env/
+.env/
+
+# Ignore node modules
+node_modules/
+
+# Ignore media files
+media/
+
+# Ignore log files
+*.log
+
+# Ignore Python cache files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Ignore SQLite database files
+*.sqlite3
+
+# Ignore macOS specific files
+.DS_Store
+
+# Ignore VS Code settings
+.vscode/
+
+# Ignore Django migrations
+*/migrations/*
+
+# Ignore coverage reports
+htmlcov/
+.coverage
+.coverage.*
+
+# Ignore MyPy cache
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Ignore Pytest cache
+.pytest_cache/
+
+# Ignore Jupyter Notebook checkpoints
+.ipynb_checkpoints
+
+# Ignore PyCharm settings
+.idea/

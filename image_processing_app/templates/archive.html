@@ -1,0 +1,73 @@
+<!-- templates/archive.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Archive</title>
+</head>
+<body>
+    <h1>Archive</h1>
+    <a href="{% url 'index' %}">Go to Homepage</a>
+    <table>
+        <thead>
+            <tr>
+                <th>Image</th>
+                <th>Name</th>
+                <th>Source URL</th>
+                <th>User ID</th>
+                <th>Upload Date</th>
+                <th>Blockiness</th>
+                <th>SA</th>
+                <th>Letterbox</th>
+                <th>Pillarbox</th>
+                <th>Blockloss</th>
+                <th>Blur</th>
+                <th>TA</th>
+                <th>Blackout</th>
+                <th>Freezing</th>
+                <th>Exposure (bri)</th>
+                <th>Contrast</th>
+                <th>Interlace</th>
+                <th>Noise</th>
+                <th>Slice</th>
+                <th>Flickering</th>
+                <th>Colourfulness</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for metric in metrics %}
+            <tr>
+                <td><img src="{{ metric.image.url }}" alt="{{ metric.name }}" width="100"></td>
+                <td>{{ metric.name }}</td>
+                <td><a href="{{ metric.source_url }}">{{ metric.source_url }}</a></td>
+                <td>{{ metric.user.id }}</td>
+                <td>{{ metric.upload_date }}</td>
+                <td>{{ metric.blockiness }}</td>
+                <td>{{ metric.sa }}</td>
+                <td>{{ metric.letterbox }}</td>
+                <td>{{ metric.pillarbox }}</td>
+                <td>{{ metric.blockloss }}</td>
+                <td>{{ metric.blur }}</td>
+                <td>{{ metric.ta }}</td>
+                <td>{{ metric.blackout }}</td>
+                <td>{{ metric.freezing }}</td>
+                <td>{{ metric.exposure_bri }}</td>
+                <td>{{ metric.contrast }}</td>
+                <td>{{ metric.interlace }}</td>
+                <td>{{ metric.noise }}</td>
+                <td>{{ metric.slice }}</td>
+                <td>{{ metric.flickering }}</td>
+                <td>{{ metric.colourfulness }}</td>
+                <td>
+                    <a href="{% url 'download_csv' metric.name %}" class="button">Download</a>
+                    <form method="post" action="{% url 'delete_metric' metric.id %}" style="display:inline;">
+                        {% csrf_token %}
+                        <button type="submit" class="button">Delete</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
