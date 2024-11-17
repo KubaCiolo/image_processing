@@ -1,4 +1,5 @@
 # image_processing_app/views.py
+# image_processing_app/views.py
 import os
 import logging
 import requests
@@ -16,6 +17,7 @@ from django.contrib.auth.decorators import login_required
 from django.core.files.base import ContentFile, File
 from datetime import datetime
 from django.utils.text import get_valid_filename
+from urllib.parse import urlparse, unquote
 
 logger = logging.getLogger(__name__)
 
@@ -38,7 +40,12 @@ def index(request):
                 # Download the image from the URL
                 response = requests.get(image_url)
                 if response.status_code == 200:
-                    original_name = get_valid_filename(Path(image_url).name)
+                    # Extract the file name and extension from the URL
+                    parsed_url = urlparse(image_url)
+                    original_name = get_valid_filename(unquote(Path(parsed_url.path).name))
+                    if not original_name:
+                        messages.error(request, "Failed to extract file name from URL")
+                        return redirect('index')
                     image_path = upload_dir / original_name
                     logger.info(f"Saving downloaded image to {image_path}")
                     with open(image_path, 'wb') as f:
@@ -126,10 +133,37 @@ def delete_metric(request, metric_id):
     if request.method == 'POST':
         # Delete the image file from the filesystem
         image_path = metric.image.path
+        base_name = '_'.join(Path(image_path).stem.split('_')[:-1])  # Get the base name without the last part after the underscore
+        extension = Path(image_path).suffix  # Get the file extension
+
+        # Define the upload directory based on the date the file was uploaded
+        upload_date = metric.upload_date  # Assuming you have an upload_date field in your model
+        upload_dir = Path(settings.MEDIA_ROOT) / 'uploads' / upload_date.strftime('%Y/%m/%d')
+
+        # Construct paths for additional files
+        original_image_path = upload_dir / f"{base_name}{extension}"
+        result_file_path = Path(settings.MEDIA_ROOT) / 'results' / f"{base_name}_results.csv"
+
+        # Log the paths
+        logger.info(f"Image Path: {image_path}")
+        logger.info(f"Base Name: {base_name}")
+        logger.info(f"Original Image Path: {original_image_path}")
+        logger.info(f"Result File Path: {result_file_path}")
+
+        # Delete the original image file
+        if os.path.exists(original_image_path):
+            os.remove(original_image_path)
+
+        # Delete the result file
+        if os.path.exists(result_file_path):
+            os.remove(result_file_path)
+
+        # Delete the image file associated with the metric
         if os.path.exists(image_path):
             os.remove(image_path)
-        
+
+        # Delete the metric from the database
         metric.delete()
-        messages.success(request, "Metric and associated image deleted successfully")
+        messages.success(request, "Metric and associated files deleted successfully")
         return redirect('archive')
     return render(request, 'archive.html')
