@@ -127,6 +127,21 @@ def download_csv(request, filename):
         messages.error(request, "File not found")
         return redirect('index')
 
+def download_from_archive(request, image_name):
+    logger.info(f"Received image_name: {image_name}")
+    base_name = Path(image_name).stem  # Get the base name without the extension
+    filename = f"{base_name}_results.csv"
+    file_path = Path(settings.MEDIA_ROOT) / 'results' / filename
+    logger.info(f"Looking for file: {file_path}")
+    if file_path.exists():
+        logger.info(f"File found: {file_path}")
+        response = FileResponse(open(file_path, 'rb'), as_attachment=True, filename=filename)
+        return response
+    else:
+        logger.error(f"File not found: {file_path}")
+        messages.error(request, "File not found")
+        return redirect('archive')
+    
 @login_required
 def delete_metric(request, metric_id):
     metric = get_object_or_404(VideoQualityMetrics, id=metric_id)

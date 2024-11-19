@@ -59,7 +59,7 @@
                 <td>{{ metric.flickering }}</td>
                 <td>{{ metric.colourfulness }}</td>
                 <td>
-                    <a href="{% url 'download_csv' metric.name %}" class="button">Download</a>
+                    <a href="{% url 'download_from_archive' metric.name %}" class="button">Download</a>
                     <form method="post" action="{% url 'delete_metric' metric.id %}" style="display:inline;">
                         {% csrf_token %}
                         <button type="submit" class="button">Delete</button>
