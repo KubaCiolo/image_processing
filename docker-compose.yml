@@ -26,6 +26,7 @@ services:
     volumes:
       - ./data:/data
       - ./media:/app/media
+      - C:/Users/jakub_lk/OneDrive/.inżynierka/image_processing:/app
     depends_on:
       db:
         condition: service_healthy
