@@ -1,0 +1,26 @@
+<!-- templates/edit_profile.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Profile</title>
+</head>
+<body>
+    <h1>Edit Profile</h1>
+    <h2>Change Password</h2>
+    <form method="post" action="{% url 'account_change_password' %}">
+        {% csrf_token %}
+        {{ password_form.as_p }}
+        <button type="submit">Change Password</button>
+    </form>
+
+    <h2>Change Email</h2>
+    <form method="post" action="{% url 'account_email' %}">
+        {% csrf_token %}
+        {{ email_form.as_p }}
+        <button type="submit">Change Email</button>
+    </form>
+
+    <br>
+    <a href="{% url 'profile' %}">Back to Profile</a>
+</body>
+</html>

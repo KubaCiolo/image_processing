@@ -1,5 +1,4 @@
 # image_processing_app/views.py
-# image_processing_app/views.py
 import os
 import logging
 import requests
@@ -18,6 +17,7 @@ from django.core.files.base import ContentFile, File
 from datetime import datetime
 from django.utils.text import get_valid_filename
 from urllib.parse import urlparse, unquote
+from allauth.account.forms import ChangePasswordForm, AddEmailForm
 
 logger = logging.getLogger(__name__)
 
@@ -118,6 +118,37 @@ def archive(request):
     metrics = VideoQualityMetrics.objects.all()
     return render(request, 'archive.html', {'metrics': metrics})
 
+@login_required
+def profile(request):
+    logger.info("Starting profile view")
+    user_metrics = VideoQualityMetrics.objects.filter(user=request.user)
+    return render(request, 'profile.html', {
+        'user_metrics': user_metrics
+    })
+
+@login_required
+def edit_profile(request):
+    logger.info("Starting edit profile view")
+    password_form = ChangePasswordForm(request.user)
+    email_form = AddEmailForm()
+    if request.method == 'POST':
+        if 'password' in request.POST:
+            password_form = ChangePasswordForm(request.user, request.POST)
+            if password_form.is_valid():
+                password_form.save()
+                messages.success(request, "Password changed successfully")
+                return redirect('profile')
+        elif 'email' in request.POST:
+            email_form = AddEmailForm(request.POST)
+            if email_form.is_valid():
+                email_form.save()
+                messages.success(request, "Email added successfully")
+                return redirect('profile')
+    return render(request, 'edit_profile.html', {
+        'password_form': password_form,
+        'email_form': email_form
+    })
+
 def download_csv(request, filename):
     file_path = Path(settings.MEDIA_ROOT) / 'results' / filename
     if file_path.exists():
@@ -180,5 +211,5 @@ def delete_metric(request, metric_id):
         # Delete the metric from the database
         metric.delete()
         messages.success(request, "Metric and associated files deleted successfully")
-        return redirect('archive')
-    return render(request, 'archive.html')
+        return redirect('profile')
+    return render(request, 'profile.html')
