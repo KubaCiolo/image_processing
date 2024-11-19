@@ -2,7 +2,9 @@
 from django.conf import settings
 from django.conf.urls.static import static
 from django.urls import path
-from .views import index, archive, download_csv, delete_metric, download_from_archive, profile, edit_profile
+from .views_profile import profile, edit_profile
+from .views_image import index
+from .views_file import archive, download_csv, download_from_archive, delete_metric
 
 urlpatterns = [
     path('', index, name='index'),
