@@ -1,10 +1,8 @@
-# image_processing_app/views.py
-import os
+# image_processing_app/views_image.py
 import logging
 import requests
 import csv
-from django.shortcuts import render, redirect, get_object_or_404
-from django.http import HttpResponse, FileResponse
+from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.conf import settings
 from .forms import UploadImageForm
@@ -13,11 +11,10 @@ from pathlib import Path
 from .utils.image_processing import process_image  # Import the process_image function
 from django.utils.safestring import mark_safe
 from django.contrib.auth.decorators import login_required
-from django.core.files.base import ContentFile, File
+from django.core.files.base import File
 from datetime import datetime
 from django.utils.text import get_valid_filename
 from urllib.parse import urlparse, unquote
-from allauth.account.forms import ChangePasswordForm, AddEmailForm
 
 logger = logging.getLogger(__name__)
 
@@ -29,7 +26,6 @@ def index(request):
         if form.is_valid():
             image = form.cleaned_data.get('image')
             image_url = form.cleaned_data.get('image_url')
-            source_url = form.cleaned_data.get('source_url', '')
 
             # Define the path to save the uploaded image
             today = datetime.today()
@@ -82,7 +78,6 @@ def index(request):
                         user=request.user,
                         image=File(img_file, name=image_path.name),
                         name=original_name,
-                        source_url=source_url if source_url else None,
                         frame=int(metrics.get('Frame', 0)),
                         blockiness=float(metrics.get('Blockiness', 0.0)),
                         sa=float(metrics.get('SA', 0.0)),
@@ -112,104 +107,3 @@ def index(request):
     else:
         form = UploadImageForm()
     return render(request, 'index.html', {'form': form})
-
-def archive(request):
-    logger.info("Starting archive view")
-    metrics = VideoQualityMetrics.objects.all()
-    return render(request, 'archive.html', {'metrics': metrics})
-
-@login_required
-def profile(request):
-    logger.info("Starting profile view")
-    user_metrics = VideoQualityMetrics.objects.filter(user=request.user)
-    return render(request, 'profile.html', {
-        'user_metrics': user_metrics
-    })
-
-@login_required
-def edit_profile(request):
-    logger.info("Starting edit profile view")
-    password_form = ChangePasswordForm(request.user)
-    email_form = AddEmailForm()
-    if request.method == 'POST':
-        if 'password' in request.POST:
-            password_form = ChangePasswordForm(request.user, request.POST)
-            if password_form.is_valid():
-                password_form.save()
-                messages.success(request, "Password changed successfully")
-                return redirect('profile')
-        elif 'email' in request.POST:
-            email_form = AddEmailForm(request.POST)
-            if email_form.is_valid():
-                email_form.save()
-                messages.success(request, "Email added successfully")
-                return redirect('profile')
-    return render(request, 'edit_profile.html', {
-        'password_form': password_form,
-        'email_form': email_form
-    })
-
-def download_csv(request, filename):
-    file_path = Path(settings.MEDIA_ROOT) / 'results' / filename
-    if file_path.exists():
-        response = FileResponse(open(file_path, 'rb'), as_attachment=True, filename=filename)
-        return response
-    else:
-        messages.error(request, "File not found")
-        return redirect('index')
-
-def download_from_archive(request, image_name):
-    logger.info(f"Received image_name: {image_name}")
-    base_name = Path(image_name).stem  # Get the base name without the extension
-    filename = f"{base_name}_results.csv"
-    file_path = Path(settings.MEDIA_ROOT) / 'results' / filename
-    logger.info(f"Looking for file: {file_path}")
-    if file_path.exists():
-        logger.info(f"File found: {file_path}")
-        response = FileResponse(open(file_path, 'rb'), as_attachment=True, filename=filename)
-        return response
-    else:
-        logger.error(f"File not found: {file_path}")
-        messages.error(request, "File not found")
-        return redirect('archive')
-    
-@login_required
-def delete_metric(request, metric_id):
-    metric = get_object_or_404(VideoQualityMetrics, id=metric_id)
-    if request.method == 'POST':
-        # Delete the image file from the filesystem
-        image_path = metric.image.path
-        base_name = '_'.join(Path(image_path).stem.split('_')[:-1])  # Get the base name without the last part after the underscore
-        extension = Path(image_path).suffix  # Get the file extension
-
-        # Define the upload directory based on the date the file was uploaded
-        upload_date = metric.upload_date  # Assuming you have an upload_date field in your model
-        upload_dir = Path(settings.MEDIA_ROOT) / 'uploads' / upload_date.strftime('%Y/%m/%d')
-
-        # Construct paths for additional files
-        original_image_path = upload_dir / f"{base_name}{extension}"
-        result_file_path = Path(settings.MEDIA_ROOT) / 'results' / f"{base_name}_results.csv"
-
-        # Log the paths
-        logger.info(f"Image Path: {image_path}")
-        logger.info(f"Base Name: {base_name}")
-        logger.info(f"Original Image Path: {original_image_path}")
-        logger.info(f"Result File Path: {result_file_path}")
-
-        # Delete the original image file
-        if os.path.exists(original_image_path):
-            os.remove(original_image_path)
-
-        # Delete the result file
-        if os.path.exists(result_file_path):
-            os.remove(result_file_path)
-
-        # Delete the image file associated with the metric
-        if os.path.exists(image_path):
-            os.remove(image_path)
-
-        # Delete the metric from the database
-        metric.delete()
-        messages.success(request, "Metric and associated files deleted successfully")
-        return redirect('profile')
-    return render(request, 'profile.html')

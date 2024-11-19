@@ -6,7 +6,6 @@ from django import forms
 class UploadImageForm(forms.Form):
     image = forms.ImageField(required=False)
     image_url = forms.URLField(required=False)
-    source_URL = forms.URLField(required=False)
 
     def clean(self):
         cleaned_data = super().clean()
