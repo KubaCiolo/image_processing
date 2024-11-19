@@ -1,0 +1,9 @@
+<!-- templates/allauth/elements/button.html -->
+{% load i18n %}
+<button type="{{ type }}" class="btn {% if tags %}{{ tags|join:" " }}{% endif %}"
+    {% if href %}href="{{ href }}"{% endif %}
+    {% if id %}id="{{ id }}"{% endif %}
+    {% if name %}name="{{ name }}"{% endif %}
+    {% if value %}value="{{ value }}"{% endif %}>
+    {% blocktrans %}{{ value }}{% endblocktrans %}
+</button>

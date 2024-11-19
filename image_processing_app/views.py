@@ -16,6 +16,10 @@ from django.contrib.auth.decorators import login_required
 from django.core.files.base import ContentFile, File
 from datetime import datetime
 from django.utils.text import get_valid_filename
+from allauth.account.forms import SignupForm
+from allauth.account.utils import complete_signup
+from allauth.account.views import SignupView
+from allauth.account.models import EmailAddress
 
 logger = logging.getLogger(__name__)
 
@@ -160,3 +164,37 @@ def delete_metric(request, metric_id):
         messages.success(request, "Metric and associated files deleted successfully")
         return redirect('archive')
     return render(request, 'archive.html')
+
+def register(request):
+    if request.method == 'POST':
+        form = SignupForm(request.POST)
+        if form.is_valid():
+            try:
+                user = form.save(request)
+                user.save()  # Ensure the user is saved to the database
+                logger.info(f"User created with ID: {user.id}")
+                
+                # Set up the user email
+                email = form.cleaned_data.get('email')
+                if email:
+                    email_address = EmailAddress.objects.create(user=user, email=email, primary=True, verified=False)
+                    email_address.save()
+                    logger.info(f"Email address created for user ID: {user.id}")
+                
+                complete_signup(request, user, 'optional', None)
+                return redirect('index')
+            except ValueError as e:
+                logger.error(f"Error during registration: {e}")
+                messages.error(request, f"Error during registration: {e}")
+            except Exception as e:
+                logger.error(f"Unexpected error during registration: {e}")
+                messages.error(request, f"Unexpected error during registration: {e}")
+        else:
+            messages.error(request, "Form is not valid")
+    else:
+        form = SignupForm()
+    context = {
+        'form': form,
+        'SOCIALACCOUNT_ENABLED': 'allauth.socialaccount' in settings.INSTALLED_APPS,
+    }
+    return render(request, 'account/signup.html', context)
