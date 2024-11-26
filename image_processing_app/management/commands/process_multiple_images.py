@@ -2,12 +2,6 @@ import argparse
 from pathlib import Path
 from agh_vqis import process_single_mm_file, VQIs
 import json
-import logging
-import ffmpeg
-
-# Configure logging
-logging.basicConfig(level=logging.INFO)
-logger = logging.getLogger(__name__)
 
 def extract_parent_dir_name(file_path):
     parent_dir_name = file_path.parent.name
@@ -27,7 +21,7 @@ def save_processed_files(log_file, processed_files):
 def process_files_in_directory(directory, log_file):
     vqis_processor = VQIs()  # Initialize the VQIs processor
     directory_path = Path(directory)
-    output_dir = Path(r"C:\Users\jakub_lk\OneDrive\.inżynierka\image_processing\data")
+    output_dir = Path(r"C:\Users\jakub_lk\OneDrive\.inżynierka\data1")
     
     # Ensure the output directory exists
     output_dir.mkdir(parents=True, exist_ok=True)
@@ -37,7 +31,7 @@ def process_files_in_directory(directory, log_file):
     
     for file_path in directory_path.glob("*.jpg"):  # Adjust the pattern if needed
         if str(file_path) in processed_files:
-            logger.info(f"Skipping {file_path}: Already processed")
+            print(f"Skipping {file_path}: Already processed")
             continue
         
         try:
@@ -49,7 +43,7 @@ def process_files_in_directory(directory, log_file):
             
             # Check if the output file already exists
             if output_file.exists():
-                logger.info(f"Skipping {file_path}: Output file already exists")
+                print(f"Skipping {file_path}: Output file already exists")
                 processed_files.add(str(file_path))
                 save_processed_files(log_file, processed_files)
                 continue
@@ -58,7 +52,7 @@ def process_files_in_directory(directory, log_file):
             try:
                 result = process_single_mm_file(file_path, vqis_processor)
             except Exception as e:
-                logger.error(f"Skipping {file_path}: Error during processing - {e}")
+                print(f"Skipping {file_path}: Error during processing - {e}")
                 processed_files.add(str(file_path))
                 save_processed_files(log_file, processed_files)
                 continue
@@ -68,23 +62,23 @@ def process_files_in_directory(directory, log_file):
             if generated_file.exists():
                 generated_file.rename(output_file)
             else:
-                logger.error(f"Error: Expected output file {generated_file} not found.")
+                print(f"Error: Expected output file {generated_file} not found.")
             
-            logger.info(f"Processed {file_path}: {result}")
-            logger.info(f"Output saved to {output_file}")
+            print(f"Processed {file_path}: {result}")
+            print(f"Output saved to {output_file}")
             
             # Mark the file as processed
             processed_files.add(str(file_path))
             save_processed_files(log_file, processed_files)
         except Exception as e:
-            logger.error(f"Error processing {file_path}: {e}")
+            print(f"Error processing {file_path}: {e}")
             processed_files.add(str(file_path))
             save_processed_files(log_file, processed_files)
         
         # Clean up any unexpected directories
         for item in Path.cwd().iterdir():
             if item.is_dir() and len(item.name) == 36 and '-' in item.name:
-                logger.info(f"Removing unexpected directory: {item}")
+                print(f"Removing unexpected directory: {item}")
                 for sub_item in item.iterdir():
                     sub_item.unlink()
                 item.rmdir()
