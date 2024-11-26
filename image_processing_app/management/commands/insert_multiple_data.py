@@ -3,7 +3,7 @@ import django
 import pandas as pd
 import json
 from django.conf import settings
-#from ...models import VideoQualityMetrics 
+from ...models import VideoQualityMetrics 
 
 # Setup Django environment
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'your_project.settings')

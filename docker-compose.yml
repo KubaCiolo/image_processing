@@ -26,7 +26,9 @@ services:
     volumes:
       - ./data:/data
       - ./media:/app/media
-      - C:/Users/jakub_lk/OneDrive/.inżynierka/image_processing:/app
+      - "C:/Users/jakub_lk/OneDrive/.inżynierka/image_processing:/app"
+      - "C:/Users/jakub_lk/OneDrive/.inżynierka/data1:/app/data"
+      - "C:/Users/jakub_lk/OneDrive/.inżynierka/Es_pdfs(Art2)/From 2023-01-01 to 2023-01-31_3724PDFs_pictures:/app/images"
     depends_on:
       db:
         condition: service_healthy

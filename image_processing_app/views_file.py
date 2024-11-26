@@ -7,14 +7,69 @@ from django.contrib import messages
 from django.conf import settings
 from .models import VideoQualityMetrics
 from pathlib import Path
+from django.core.paginator import Paginator
+from django.db.models import Q
 from django.contrib.auth.decorators import login_required
 
 logger = logging.getLogger(__name__)
 
 def archive(request):
     logger.info("Starting archive view")
-    metrics = VideoQualityMetrics.objects.all()
-    return render(request, 'archive.html', {'metrics': metrics})
+
+    # Get sorting parameters from the request
+    sort_by = request.GET.get('sort_by', 'upload_date')
+    sort_order = request.GET.get('sort_order', 'desc')
+    per_page = request.GET.get('per_page', 25)
+    page = request.GET.get('page', 1)
+    query = request.GET.get('query', '')
+
+    logger.info(f"Received query parameters: sort_by={sort_by}, sort_order={sort_order}, per_page={per_page}, page={page}, query={query}")
+
+    # Determine the sorting order
+    if sort_order == 'asc':
+        order_by = sort_by
+    else:
+        order_by = f'-{sort_by}'
+
+    # Filter metrics based on the search query
+    metrics_list = VideoQualityMetrics.objects.filter(
+        Q(name__icontains=query) |
+        Q(doc_headline__icontains=query) |
+        Q(source_url__icontains=query) |
+        Q(blockiness__icontains=query) |
+        Q(sa__icontains=query) |
+        Q(letterbox__icontains=query) |
+        Q(pillarbox__icontains=query) |
+        Q(blockloss__icontains=query) |
+        Q(blur__icontains=query) |
+        Q(ta__icontains=query) |
+        Q(blackout__icontains=query) |
+        Q(freezing__icontains=query) |
+        Q(exposure_bri__icontains=query) |
+        Q(contrast__icontains=query) |
+        Q(interlace__icontains=query) |
+        Q(noise__icontains=query) |
+        Q(slice__icontains=query) |
+        Q(flickering__icontains=query) |
+        Q(colourfulness__icontains=query)
+    ).order_by(order_by)
+
+    logger.info(f"Filtered metrics count: {metrics_list.count()}")
+
+    # Paginate the metrics
+    paginator = Paginator(metrics_list, per_page)
+    metrics = paginator.get_page(page)
+
+    logger.info(f"Paginated metrics: {metrics}")
+
+    return render(request, 'archive.html', {
+        'metrics': metrics,
+        'paginator': paginator,
+        'sort_by': sort_by,
+        'sort_order': sort_order,
+        'per_page': per_page,
+        'query': query,
+    })
 
 def download_csv(request, filename):
     file_path = Path(settings.MEDIA_ROOT) / 'results' / filename

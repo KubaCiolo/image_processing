@@ -26,8 +26,8 @@ headlines_file_path = '/app/data/headlines(Art2).txt'
 # Path to the images directory within the Docker container
 images_dir = '/app/images'
 
-# Path to the media uploads directory (overwritten to use /app/pdf_images)
-media_uploads_dir = '/app/pdf_images'
+# Path to the media uploads directory (overwritten to use /app/media/uploads/pdf_images)
+media_uploads_dir = '/app/media/uploads/pdf_images'
 
 # Verify the images directory path
 print(f"Images directory: {images_dir}")
@@ -68,13 +68,17 @@ for key, value in headlines.items():
 def insert_data_from_csv(file_path):
     vqis_filename = os.path.basename(file_path)  # Extract the file name from the path
     # Extract doc_filename and img_name from the CSV filename using regex
-    match = re.search(r'for_(doc_\d+_\d+_img_\d+)', vqis_filename)
+    match = re.search(r'VQIs_(\d{4}-\d{2})_for_(doc_\d+_\d+_img_\d+)', vqis_filename)
     if match:
-        doc_filename = match.group(1).split('_img_')[0] + '.pdf'
-        img_name = match.group(1) + '.jpg'
+        date_part = match.group(1)
+        doc_img_part = match.group(2)
+        doc_filename = doc_img_part.split('_img_')[0] + '.pdf'
+        img_name = doc_img_part + '.jpg'
+        new_img_name = date_part + '_' + doc_img_part + '.jpg'
     else:
         doc_filename = "doc_filename_example.pdf"
         img_name = "img_name_example.jpg"
+        new_img_name = "new_img_name_example.jpg"
     
     # Ensure doc_filename ends with .pdf
     if not doc_filename.endswith('.pdf'):
@@ -86,6 +90,7 @@ def insert_data_from_csv(file_path):
     # Print the extracted doc_filename and img_name for debugging
     print(f"Extracted doc_filename: {doc_filename}")
     print(f"Extracted img_name: {img_name}")
+    print(f"New image name: {new_img_name}")
     
     # Get doc_headline and doc_url from headlines data
     if doc_filename in headlines:
@@ -101,7 +106,10 @@ def insert_data_from_csv(file_path):
     upload_date = datetime.now()
     
     # Set the destination path for the image
-    dest_image_path = os.path.join(media_uploads_dir, img_name)
+    dest_image_path = os.path.join(media_uploads_dir, new_img_name)
+    
+    # Ensure the destination directory exists
+    os.makedirs(media_uploads_dir, exist_ok=True)
     
     # Copy the image to the media uploads directory
     src_image_path = image_dict.get(img_name)
@@ -137,7 +145,8 @@ def insert_data_from_csv(file_path):
             row = ['0.0' if x == '' else x for x in row]
 
             # Prepend the user_id, image, name, source_url, doc_headline, and upload_date to the row
-            row = [3, dest_image_path, img_name, doc_url, doc_headline, upload_date] + row
+            relative_image_path = os.path.relpath(dest_image_path, '/app/media')
+            row = [3, os.path.join('uploads/pdf_images', new_img_name), new_img_name, doc_url, doc_headline, upload_date] + row
             print(f"Row to be inserted: {row}")  # Print the row to be inserted
 
             # Ensure the number of placeholders matches the number of values

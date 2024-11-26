@@ -12,15 +12,58 @@
     <br>
     <a href="{% url 'index' %}">Go to Homepage</a>
     <br>
+    <a href="{% url 'archive' %}">Go to Archive</a>
+    <br>
     <a href="{% url 'account_logout' %}">Logout</a>
 
     <h2>Your Uploaded Files</h2>
+
+    <div>
+        <label for="per_page">Records per page:</label>
+        <select id="per_page" onchange="updateProfile()">
+            <option value="25" {% if per_page == '25' %}selected{% endif %}>25</option>
+            <option value="50" {% if per_page == '50' %}selected{% endif %}>50</option>
+            <option value="100" {% if per_page == '100' %}selected{% endif %}>100</option>
+        </select>
+
+        <label for="sort_by">Sort by:</label>
+        <select id="sort_by" onchange="updateProfile()">
+            <option value="upload_date" {% if sort_by == 'upload_date' %}selected{% endif %}>Upload Date</option>
+            <option value="name" {% if sort_by == 'name' %}selected{% endif %}>Name</option>
+            <option value="source_url" {% if sort_by == 'source_url' %}selected{% endif %}>Source URL</option>
+            <option value="doc_headline" {% if sort_by == 'doc_headline' %}selected{% endif %}>Doc Title</option>
+            <option value="blockiness" {% if sort_by == 'blockiness' %}selected{% endif %}>Blockiness</option>
+            <option value="sa" {% if sort_by == 'sa' %}selected{% endif %}>SA</option>
+            <option value="letterbox" {% if sort_by == 'letterbox' %}selected{% endif %}>Letterbox</option>
+            <option value="pillarbox" {% if sort_by == 'pillarbox' %}selected{% endif %}>Pillarbox</option>
+            <option value="blockloss" {% if sort_by == 'blockloss' %}selected{% endif %}>Blockloss</option>
+            <option value="blur" {% if sort_by == 'blur' %}selected{% endif %}>Blur</option>
+            <option value="ta" {% if sort_by == 'ta' %}selected{% endif %}>TA</option>
+            <option value="blackout" {% if sort_by == 'blackout' %}selected{% endif %}>Blackout</option>
+            <option value="freezing" {% if sort_by == 'freezing' %}selected{% endif %}>Freezing</option>
+            <option value="exposure_bri" {% if sort_by == 'exposure_bri' %}selected{% endif %}>Exposure (bri)</option>
+            <option value="contrast" {% if sort_by == 'contrast' %}selected{% endif %}>Contrast</option>
+            <option value="interlace" {% if sort_by == 'interlace' %}selected{% endif %}>Interlace</option>
+            <option value="noise" {% if sort_by == 'noise' %}selected{% endif %}>Noise</option>
+            <option value="slice" {% if sort_by == 'slice' %}selected{% endif %}>Slice</option>
+            <option value="flickering" {% if sort_by == 'flickering' %}selected{% endif %}>Flickering</option>
+            <option value="colourfulness" {% if sort_by == 'colourfulness' %}selected{% endif %}>Colourfulness</option>
+        </select>
+
+        <form id="search_form" method="get" action="{% url 'profile' %}">
+            <label for="query">Search:</label>
+            <input type="text" id="query" name="query" value="{{ query }}">
+            <button type="submit">Search</button>
+        </form>
+    </div>
+
     <table>
         <thead>
             <tr>
                 <th>Image</th>
                 <th>Name</th>
                 <th>Source URL</th>
+                <th>Doc Title</th>
                 <th>Upload Date</th>
                 <th>Blockiness</th>
                 <th>SA</th>
@@ -47,6 +90,7 @@
                 <td><img src="{{ metric.image.url }}" alt="{{ metric.name }}" width="100"></td>
                 <td>{{ metric.name }}</td>
                 <td><a href="{{ metric.source_url }}">{{ metric.source_url }}</a></td>
+                <td>{{ metric.doc_headline }}</td>
                 <td>{{ metric.upload_date }}</td>
                 <td>{{ metric.blockiness }}</td>
                 <td>{{ metric.sa }}</td>
@@ -65,8 +109,8 @@
                 <td>{{ metric.flickering }}</td>
                 <td>{{ metric.colourfulness }}</td>
                 <td>
-                    <a href="{% url 'download_from_archive' metric.name %}" class="button">Download</a>
-                    <form method="post" action="{% url 'delete_metric' metric.id %}" style="display:inline;">
+                    <a href="{% url 'download_from_archive' metric.name %}?page={{ user_metrics.number }}&per_page={{ per_page }}&sort_by={{ sort_by }}&sort_order={{ sort_order }}&query={{ query }}" class="button">Download</a>
+                    <form method="post" action="{% url 'delete_metric' metric.id %}?page={{ user_metrics.number }}&per_page={{ per_page }}&sort_by={{ sort_by }}&sort_order={{ sort_order }}&query={{ query }}" style="display:inline;">
                         {% csrf_token %}
                         <button type="submit" class="button">Delete</button>
                     </form>
@@ -75,5 +119,45 @@
             {% endfor %}
         </tbody>
     </table>
+
+    <div>
+        <span>Page {{ user_metrics.number }} of {{ user_metrics.paginator.num_pages }}</span>
+        <div>
+            {% if user_metrics.has_previous %}
+                <a href="?page=1&per_page={{ per_page }}&sort_by={{ sort_by }}&sort_order={{ sort_order }}&query={{ query }}">First</a>
+                <a href="?page={{ user_metrics.previous_page_number }}&per_page={{ per_page }}&sort_by={{ sort_by }}&sort_order={{ sort_order }}&query={{ query }}">Previous</a>
+                {% if user_metrics.number > 2 %}
+                    <a href="?page={{ user_metrics.number|add:"-2" }}&per_page={{ per_page }}&sort_by={{ sort_by }}&sort_order={{ sort_order }}&query={{ query }}">{{ user_metrics.number|add:"-2" }}</a>
+                {% endif %}
+                {% if user_metrics.number > 1 %}
+                    <a href="?page={{ user_metrics.number|add:"-1" }}&per_page={{ per_page }}&sort_by={{ sort_by }}&sort_order={{ sort_order }}&query={{ query }}">{{ user_metrics.number|add:"-1" }}</a>
+                {% endif %}
+            {% endif %}
+
+            {% if user_metrics.has_next %}
+                {% if user_metrics.number < user_metrics.paginator.num_pages %}
+                    <a href="?page={{ user_metrics.number|add:"1" }}&per_page={{ per_page }}&sort_by={{ sort_by }}&sort_order={{ sort_order }}&query={{ query }}">{{ user_metrics.number|add:"1" }}</a>
+                {% endif %}
+                {% if user_metrics.number < user_metrics.paginator.num_pages|add:"-1" %}
+                    <a href="?page={{ user_metrics.number|add:"2" }}&per_page={{ per_page }}&sort_by={{ sort_by }}&sort_order={{ sort_order }}&query={{ query }}">{{ user_metrics.number|add:"2" }}</a>
+                {% endif %}
+                <a href="?page={{ user_metrics.next_page_number }}&per_page={{ per_page }}&sort_by={{ sort_by }}&sort_order={{ sort_order }}&query={{ query }}">Next</a>
+                <a href="?page={{ user_metrics.paginator.num_pages }}&per_page={{ per_page }}&sort_by={{ sort_by }}&sort_order={{ sort_order }}&query={{ query }}">Last</a>
+            {% endif %}
+        </div>
+    </div>
+
+    <script>
+        function updateProfile() {
+            const perPage = document.getElementById('per_page').value;
+            const sortBy = document.getElementById('sort_by').value;
+            const query = document.getElementById('query').value;
+            const url = new URL(window.location.href);
+            url.searchParams.set('per_page', perPage);
+            url.searchParams.set('sort_by', sortBy);
+            url.searchParams.set('query', query);
+            window.location.href = url.toString();
+        }
+    </script>
 </body>
 </html>

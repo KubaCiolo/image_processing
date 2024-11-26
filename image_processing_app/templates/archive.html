@@ -8,9 +8,50 @@
     <h1>Archive</h1>
     <a href="{% url 'index' %}">Go to Homepage</a>
     <br>
+    <a href="{% url 'profile' %}">Go to Profile</a>
+    <br>
     {% if user.is_authenticated %}
         <a href="{% url 'account_logout' %}">Logout</a>
     {% endif %}
+
+    <div>
+        <label for="per_page">Records per page:</label>
+        <select id="per_page" onchange="updateArchive()">
+            <option value="25" {% if per_page == '25' %}selected{% endif %}>25</option>
+            <option value="50" {% if per_page == '50' %}selected{% endif %}>50</option>
+            <option value="100" {% if per_page == '100' %}selected{% endif %}>100</option>
+        </select>
+
+        <label for="sort_by">Sort by:</label>
+        <select id="sort_by" onchange="updateArchive()">
+            <option value="upload_date" {% if sort_by == 'upload_date' %}selected{% endif %}>Upload Date</option>
+            <option value="name" {% if sort_by == 'name' %}selected{% endif %}>Name</option>
+            <option value="source_url" {% if sort_by == 'source_url' %}selected{% endif %}>Source URL</option>
+            <option value="doc_headline" {% if sort_by == 'doc_headline' %}selected{% endif %}>Doc Title</option>
+            <option value="blockiness" {% if sort_by == 'blockiness' %}selected{% endif %}>Blockiness</option>
+            <option value="sa" {% if sort_by == 'sa' %}selected{% endif %}>SA</option>
+            <option value="letterbox" {% if sort_by == 'letterbox' %}selected{% endif %}>Letterbox</option>
+            <option value="pillarbox" {% if sort_by == 'pillarbox' %}selected{% endif %}>Pillarbox</option>
+            <option value="blockloss" {% if sort_by == 'blockloss' %}selected{% endif %}>Blockloss</option>
+            <option value="blur" {% if sort_by == 'blur' %}selected{% endif %}>Blur</option>
+            <option value="ta" {% if sort_by == 'ta' %}selected{% endif %}>TA</option>
+            <option value="blackout" {% if sort_by == 'blackout' %}selected{% endif %}>Blackout</option>
+            <option value="freezing" {% if sort_by == 'freezing' %}selected{% endif %}>Freezing</option>
+            <option value="exposure_bri" {% if sort_by == 'exposure_bri' %}selected{% endif %}>Exposure (bri)</option>
+            <option value="contrast" {% if sort_by == 'contrast' %}selected{% endif %}>Contrast</option>
+            <option value="interlace" {% if sort_by == 'interlace' %}selected{% endif %}>Interlace</option>
+            <option value="noise" {% if sort_by == 'noise' %}selected{% endif %}>Noise</option>
+            <option value="slice" {% if sort_by == 'slice' %}selected{% endif %}>Slice</option>
+            <option value="flickering" {% if sort_by == 'flickering' %}selected{% endif %}>Flickering</option>
+            <option value="colourfulness" {% if sort_by == 'colourfulness' %}selected{% endif %}>Colourfulness</option>
+        </select>
+
+        <form id="search_form" method="get" action="{% url 'archive' %}">
+            <label for="query">Search:</label>
+            <input type="text" id="query" name="query" value="{{ query }}">
+            <button type="submit">Search</button>
+        </form>
+    </div>
 
     <table>
         <thead>
@@ -18,7 +59,7 @@
                 <th>Image</th>
                 <th>Name</th>
                 <th>Source URL</th>
-                <th>User ID</th>
+                <th>Doc Title</th>
                 <th>Upload Date</th>
                 <th>Blockiness</th>
                 <th>SA</th>
@@ -36,6 +77,7 @@
                 <th>Slice</th>
                 <th>Flickering</th>
                 <th>Colourfulness</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -44,7 +86,7 @@
                 <td><img src="{{ metric.image.url }}" alt="{{ metric.name }}" width="100"></td>
                 <td>{{ metric.name }}</td>
                 <td><a href="{{ metric.source_url }}">{{ metric.source_url }}</a></td>
-                <td>{{ metric.user.id }}</td>
+                <td>{{ metric.doc_headline }}</td>
                 <td>{{ metric.upload_date }}</td>
                 <td>{{ metric.blockiness }}</td>
                 <td>{{ metric.sa }}</td>
@@ -62,9 +104,52 @@
                 <td>{{ metric.slice }}</td>
                 <td>{{ metric.flickering }}</td>
                 <td>{{ metric.colourfulness }}</td>
+                <td>
+                    <a href="{% url 'download_from_archive' metric.name %}" class="button">Download</a>
+                </td>
             </tr>
             {% endfor %}
         </tbody>
     </table>
+
+    <div>
+        <span>Page {{ metrics.number }} of {{ metrics.paginator.num_pages }}</span>
+        <div>
+            {% if metrics.has_previous %}
+                <a href="?page=1&per_page={{ per_page }}&sort_by={{ sort_by }}&sort_order={{ sort_order }}&query={{ query }}">First</a>
+                <a href="?page={{ metrics.previous_page_number }}&per_page={{ per_page }}&sort_by={{ sort_by }}&sort_order={{ sort_order }}&query={{ query }}">Previous</a>
+                {% if metrics.number > 2 %}
+                    <a href="?page={{ metrics.number|add:"-2" }}&per_page={{ per_page }}&sort_by={{ sort_by }}&sort_order={{ sort_order }}&query={{ query }}">{{ metrics.number|add:"-2" }}</a>
+                {% endif %}
+                {% if metrics.number > 1 %}
+                    <a href="?page={{ metrics.number|add:"-1" }}&per_page={{ per_page }}&sort_by={{ sort_by }}&sort_order={{ sort_order }}&query={{ query }}">{{ metrics.number|add:"-1" }}</a>
+                {% endif %}
+            {% endif %}
+
+            {% if metrics.has_next %}
+                {% if metrics.number < metrics.paginator.num_pages %}
+                    <a href="?page={{ metrics.number|add:"1" }}&per_page={{ per_page }}&sort_by={{ sort_by }}&sort_order={{ sort_order }}&query={{ query }}">{{ metrics.number|add:"1" }}</a>
+                {% endif %}
+                {% if metrics.number < metrics.paginator.num_pages|add:"-1" %}
+                    <a href="?page={{ metrics.number|add:"2" }}&per_page={{ per_page }}&sort_by={{ sort_by }}&sort_order={{ sort_order }}&query={{ query }}">{{ metrics.number|add:"2" }}</a>
+                {% endif %}
+                <a href="?page={{ metrics.next_page_number }}&per_page={{ per_page }}&sort_by={{ sort_by }}&sort_order={{ sort_order }}&query={{ query }}">Next</a>
+                <a href="?page={{ metrics.paginator.num_pages }}&per_page={{ per_page }}&sort_by={{ sort_by }}&sort_order={{ sort_order }}&query={{ query }}">Last</a>
+            {% endif %}
+        </div>
+    </div>
+
+    <script>
+        function updateArchive() {
+            const perPage = document.getElementById('per_page').value;
+            const sortBy = document.getElementById('sort_by').value;
+            const query = document.getElementById('query').value;
+            const url = new URL(window.location.href);
+            url.searchParams.set('per_page', perPage);
+            url.searchParams.set('sort_by', sortBy);
+            url.searchParams.set('query', query);
+            window.location.href = url.toString();
+        }
+    </script>
 </body>
 </html>
