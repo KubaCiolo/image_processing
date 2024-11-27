@@ -1,6 +1,7 @@
 # image_processing_app/views_file.py
 import logging
 import os
+import pandas as pd
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import FileResponse
 from django.contrib import messages
@@ -10,6 +11,8 @@ from pathlib import Path
 from django.core.paginator import Paginator
 from django.db.models import Q
 from django.contrib.auth.decorators import login_required
+from urllib.parse import urlencode
+from django.urls import reverse
 
 logger = logging.getLogger(__name__)
 
@@ -86,6 +89,40 @@ def download_from_archive(request, image_name):
     filename = f"{base_name}_results.csv"
     file_path = Path(settings.MEDIA_ROOT) / 'results' / filename
     logger.info(f"Looking for file: {file_path}")
+
+    if not file_path.exists():
+        logger.info(f"File not found: {file_path}. Creating new results file.")
+        # Ensure the results directory exists
+        results_dir = Path(settings.MEDIA_ROOT) / 'results'
+        results_dir.mkdir(parents=True, exist_ok=True)
+
+        # Get the metrics for the image
+        metric = get_object_or_404(VideoQualityMetrics, name=image_name)
+        # Create a DataFrame with the metrics
+        data = {
+            "Frame": [metric.frame],
+            "Blockiness": [metric.blockiness],
+            "SA": [metric.sa],
+            "Letterbox": [metric.letterbox],
+            "Pillarbox": [metric.pillarbox],
+            "Blockloss": [metric.blockloss],
+            "Blur": [metric.blur],
+            "TA": [metric.ta],
+            "Blackout": [metric.blackout],
+            "Freezing": [metric.freezing],
+            "Exposure(bri)": [metric.exposure_bri],
+            "Contrast": [metric.contrast],
+            "Interlace": [metric.interlace],
+            "Noise": [metric.noise],
+            "Slice": [metric.slice],
+            "Flickering": [metric.flickering],
+            "Colourfulness": [metric.colourfulness]
+        }
+        df = pd.DataFrame(data)
+        # Save the DataFrame to a CSV file
+        df.to_csv(file_path, index=False)
+        logger.info(f"Results file created: {file_path}")
+
     if file_path.exists():
         logger.info(f"File found: {file_path}")
         response = FileResponse(open(file_path, 'rb'), as_attachment=True, filename=filename)
@@ -133,7 +170,19 @@ def delete_metric(request, metric_id):
         # Delete the metric from the database
         metric.delete()
         messages.success(request, "Metric and associated files deleted successfully")
-        if 'profile' in request.META.get('HTTP_REFERER', ''):
-            return redirect('profile')
-        return redirect('archive')
+
+        # Get the current state parameters
+        per_page = request.POST.get('per_page', '25')
+        sort_by = request.POST.get('sort_by', 'upload_date')
+        query = request.POST.get('query', '')
+        page = request.POST.get('page', '1')
+
+        # Redirect to the profile page with the current state parameters
+        query_params = urlencode({
+            'per_page': per_page,
+            'sort_by': sort_by,
+            'query': query,
+            'page': page
+        })
+        return redirect(f"{reverse('profile')}?{query_params}")
     return render(request, 'profile.html')

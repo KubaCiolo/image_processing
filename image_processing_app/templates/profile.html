@@ -54,6 +54,9 @@
             <label for="query">Search:</label>
             <input type="text" id="query" name="query" value="{{ query }}">
             <button type="submit">Search</button>
+            <input type="hidden" name="per_page" value="{{ per_page }}">
+            <input type="hidden" name="sort_by" value="{{ sort_by }}">
+            <input type="hidden" name="sort_order" value="{{ sort_order }}">
         </form>
     </div>
 
@@ -110,8 +113,13 @@
                 <td>{{ metric.colourfulness }}</td>
                 <td>
                     <a href="{% url 'download_from_archive' metric.name %}?page={{ user_metrics.number }}&per_page={{ per_page }}&sort_by={{ sort_by }}&sort_order={{ sort_order }}&query={{ query }}" class="button">Download</a>
-                    <form method="post" action="{% url 'delete_metric' metric.id %}?page={{ user_metrics.number }}&per_page={{ per_page }}&sort_by={{ sort_by }}&sort_order={{ sort_order }}&query={{ query }}" style="display:inline;">
+                    <form method="post" action="{% url 'delete_metric' metric.id %}" style="display:inline;">
                         {% csrf_token %}
+                        <input type="hidden" name="per_page" value="{{ per_page }}">
+                        <input type="hidden" name="sort_by" value="{{ sort_by }}">
+                        <input type="hidden" name="sort_order" value="{{ sort_order }}">
+                        <input type="hidden" name="query" value="{{ query }}">
+                        <input type="hidden" name="page" value="{{ user_metrics.number }}">
                         <button type="submit" class="button">Delete</button>
                     </form>
                 </td>

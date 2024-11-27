@@ -16,13 +16,19 @@ RUN apt-get update && apt-get install -y \
 COPY requirements.txt .
 
 # Install the dependencies
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install -r requirements.txt
 
-# Copy the application code into the container
+# Copy the rest of the application code into the container
 COPY . .
 
-# Ensure the binary file has the correct executable permissions
-RUN chmod +x /usr/local/lib/python3.9/site-packages/agh_vqis/binaries/agh_vqis_linux_x86_64_mt
+# Create the media/uploads and media/results directories
+RUN mkdir -p /app/media/uploads /app/media/results
 
-# Run the Django development server by default
-CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+# Verify the creation of the directories
+RUN ls -la /app/media
+
+# Expose the port the app runs on
+EXPOSE 8000
+
+# Run the application
+CMD ["sh", "-c", "python manage.py migrate && python manage.py runserver 0.0.0.0:8000"]
