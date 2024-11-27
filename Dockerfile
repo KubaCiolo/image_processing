@@ -21,11 +21,14 @@ RUN pip install -r requirements.txt
 # Copy the rest of the application code into the container
 COPY . .
 
+# Set execute permissions for the AGH VQIS binary
+RUN chmod +x /usr/local/lib/python3.9/site-packages/agh_vqis/binaries/agh_vqis_linux_x86_64_mt
+
 # Create the media/uploads and media/results directories
 RUN mkdir -p /app/media/uploads /app/media/results
 
-# Verify the creation of the directories
-RUN ls -la /app/media
+# Create the media/uploads and media/results directories
+RUN mkdir -p /app/media/uploads /app/media/results
 
 # Expose the port the app runs on
 EXPOSE 8000
