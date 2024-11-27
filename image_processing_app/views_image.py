@@ -46,7 +46,7 @@ def index(request):
         try:
             output_csv_path = process_image(image_path)
             download_link = f"/download_csv/{output_csv_path.name}"
-            messages.success(request, mark_safe(f"Image processed successfully. <a href='{download_link}'>Download the results here</a>."))
+            messages.success(request, mark_safe(f"Image processed successfully. <a href='{download_link}' class='download-link'>Download</a>"))
 
             # Parse the CSV file and extract metrics
             metrics = {}

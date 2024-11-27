@@ -15,6 +15,13 @@
             background-repeat: no-repeat;
             background-color: white;
         }
+        .message-popup {
+            position: fixed;
+            bottom: 50px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 50;
+        }
     </style>
 </head>
 <body class="bg-white min-h-screen flex flex-col">
@@ -71,7 +78,6 @@
                             </div>
                         </div>
                         <div class="Desc self-stretch h-5 text-neutral-500 text-sm font-normal font-['Inter'] leading-tight mb-2">Support for .jpg, .png, .bmp, .tiff, .webp, .mp4, .avi, .mov, .mkv, .wmv files</div>
-                        <!-- Changed justify-start to justify-end to align the button to the right -->
                         <div class="Buttons w-full flex justify-end items-start gap-4 mt-2">
                             <div class="ButtonRoundedFilled flex">
                                 <div class="MasterButton px-4 py-3 bg-blue-700 rounded-lg flex justify-center items-center gap-2">
@@ -87,5 +93,27 @@
             </div>
         </div>
     </div>
+    <!-- Display messages as popup -->
+    {% if messages %}
+        <div class="message-popup">
+            {% for message in messages %}
+                <div class="Message w-96 h-48 p-6 bg-white rounded-2xl shadow flex-col justify-start items-start gap-4 inline-flex">
+                    <div class="Main w-80 h-20 flex-col justify-start items-start gap-0.5 flex">
+                        <div class="Message self-stretch text-neutral-950 text-lg font-bold font-['Inter'] leading-relaxed">{{ message.tags|title }}</div>
+                        <div class="Desc self-stretch grow shrink basis-0 text-neutral-500 text-sm font-normal font-['Inter'] leading-tight">{{ message|safe }}</div>
+                    </div>
+                    {% if "download-link" in message.tags %}
+                        <div class="Buttons self-stretch justify-center items-center gap-4 inline-flex">
+                            <div class="ButtonRoundedFilled justify-start items-start flex">
+                                <div class="MasterButton px-4 py-3 bg-blue-700 rounded-lg justify-center items-center gap-2 flex">
+                                    <a href="{{ message|safe }}" class="Button text-white text-sm font-semibold font-['Inter'] leading-tight">Download</a>
+                                </div>
+                            </div>
+                        </div>
+                    {% endif %}
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
 </body>
 </html>
