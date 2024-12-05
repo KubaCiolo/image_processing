@@ -1,171 +1,217 @@
 <!-- templates/profile.html -->
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <title>Profile</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        .fixed-width-container {
+            width: 100%;
+            max-width: 1200px; /* Adjust the max-width as needed */
+            margin: 0 auto;
+        }
+        .truncate {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+    </style>
 </head>
-<body>
-    <h1>Profile</h1>
-    <h2>Current Email: {{ user.email }}</h2>
-    <h2>Current Password: ********</h2>
-    <a href="{% url 'edit_profile' %}">Edit Profile</a>
-    <br>
-    <a href="{% url 'index' %}">Go to Homepage</a>
-    <br>
-    <a href="{% url 'archive' %}">Go to Archive</a>
-    <br>
-    <a href="{% url 'account_logout' %}">Logout</a>
-
-    <h2>Your Uploaded Files</h2>
-
-    <div>
-        <label for="per_page">Records per page:</label>
-        <select id="per_page" onchange="updateProfile()">
-            <option value="25" {% if per_page == '25' %}selected{% endif %}>25</option>
-            <option value="50" {% if per_page == '50' %}selected{% endif %}>50</option>
-            <option value="100" {% if per_page == '100' %}selected{% endif %}>100</option>
-        </select>
-
-        <label for="sort_by">Sort by:</label>
-        <select id="sort_by" onchange="updateProfile()">
-            <option value="upload_date" {% if sort_by == 'upload_date' %}selected{% endif %}>Upload Date</option>
-            <option value="name" {% if sort_by == 'name' %}selected{% endif %}>Name</option>
-            <option value="source_url" {% if sort_by == 'source_url' %}selected{% endif %}>Source URL</option>
-            <option value="doc_headline" {% if sort_by == 'doc_headline' %}selected{% endif %}>Doc Title</option>
-            <option value="blockiness" {% if sort_by == 'blockiness' %}selected{% endif %}>Blockiness</option>
-            <option value="sa" {% if sort_by == 'sa' %}selected{% endif %}>SA</option>
-            <option value="letterbox" {% if sort_by == 'letterbox' %}selected{% endif %}>Letterbox</option>
-            <option value="pillarbox" {% if sort_by == 'pillarbox' %}selected{% endif %}>Pillarbox</option>
-            <option value="blockloss" {% if sort_by == 'blockloss' %}selected{% endif %}>Blockloss</option>
-            <option value="blur" {% if sort_by == 'blur' %}selected{% endif %}>Blur</option>
-            <option value="ta" {% if sort_by == 'ta' %}selected{% endif %}>TA</option>
-            <option value="blackout" {% if sort_by == 'blackout' %}selected{% endif %}>Blackout</option>
-            <option value="freezing" {% if sort_by == 'freezing' %}selected{% endif %}>Freezing</option>
-            <option value="exposure_bri" {% if sort_by == 'exposure_bri' %}selected{% endif %}>Exposure (bri)</option>
-            <option value="contrast" {% if sort_by == 'contrast' %}selected{% endif %}>Contrast</option>
-            <option value="interlace" {% if sort_by == 'interlace' %}selected{% endif %}>Interlace</option>
-            <option value="noise" {% if sort_by == 'noise' %}selected{% endif %}>Noise</option>
-            <option value="slice" {% if sort_by == 'slice' %}selected{% endif %}>Slice</option>
-            <option value="flickering" {% if sort_by == 'flickering' %}selected{% endif %}>Flickering</option>
-            <option value="colourfulness" {% if sort_by == 'colourfulness' %}selected{% endif %}>Colourfulness</option>
-        </select>
-
-        <form id="search_form" method="get" action="{% url 'profile' %}">
-            <label for="query">Search:</label>
-            <input type="text" id="query" name="query" value="{{ query }}">
-            <button type="submit">Search</button>
-            <input type="hidden" name="per_page" value="{{ per_page }}">
-            <input type="hidden" name="sort_by" value="{{ sort_by }}">
-            <input type="hidden" name="sort_order" value="{{ sort_order }}">
-        </form>
-    </div>
-
-    <table>
-        <thead>
-            <tr>
-                <th>Image</th>
-                <th>Name</th>
-                <th>Source URL</th>
-                <th>Doc Title</th>
-                <th>Upload Date</th>
-                <th>Blockiness</th>
-                <th>SA</th>
-                <th>Letterbox</th>
-                <th>Pillarbox</th>
-                <th>Blockloss</th>
-                <th>Blur</th>
-                <th>TA</th>
-                <th>Blackout</th>
-                <th>Freezing</th>
-                <th>Exposure (bri)</th>
-                <th>Contrast</th>
-                <th>Interlace</th>
-                <th>Noise</th>
-                <th>Slice</th>
-                <th>Flickering</th>
-                <th>Colourfulness</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for metric in user_metrics %}
-            <tr>
-                <td><img src="{{ metric.image.url }}" alt="{{ metric.name }}" width="100"></td>
-                <td>{{ metric.name }}</td>
-                <td><a href="{{ metric.source_url }}">{{ metric.source_url }}</a></td>
-                <td>{{ metric.doc_headline }}</td>
-                <td>{{ metric.upload_date }}</td>
-                <td>{{ metric.blockiness }}</td>
-                <td>{{ metric.sa }}</td>
-                <td>{{ metric.letterbox }}</td>
-                <td>{{ metric.pillarbox }}</td>
-                <td>{{ metric.blockloss }}</td>
-                <td>{{ metric.blur }}</td>
-                <td>{{ metric.ta }}</td>
-                <td>{{ metric.blackout }}</td>
-                <td>{{ metric.freezing }}</td>
-                <td>{{ metric.exposure_bri }}</td>
-                <td>{{ metric.contrast }}</td>
-                <td>{{ metric.interlace }}</td>
-                <td>{{ metric.noise }}</td>
-                <td>{{ metric.slice }}</td>
-                <td>{{ metric.flickering }}</td>
-                <td>{{ metric.colourfulness }}</td>
-                <td>
-                    <a href="{% url 'download_from_archive' metric.name %}?page={{ user_metrics.number }}&per_page={{ per_page }}&sort_by={{ sort_by }}&sort_order={{ sort_order }}&query={{ query }}" class="button">Download</a>
-                    <form method="post" action="{% url 'delete_metric' metric.id %}" style="display:inline;">
-                        {% csrf_token %}
+<body class="bg-slate-50 min-h-screen flex flex-col"  style="background-color: #F1F1F1;">
+    <header class="w-full px-12 py-5 bg-slate-50 flex justify-between items-center" style="background-color: #FFFFFF;">
+        <div class="flex items-center gap-1.5">
+            <img class="w-16 h-16" src="https://via.placeholder.com/70x70" alt="Logo" />
+            <h1 class="text-zinc-800 text-xl font-bold font-['Poppins'] leading-7">Video Quality Indicators</h1>
+        </div>
+        <nav class="flex items-center gap-12">
+            <a href="{% url 'index' %}" class="text-blue-700 text-base font-semibold font-['Poppins'] leading-normal">Home</a>
+            <a href="{% url 'archive' %}" class="text-blue-700 text-base font-semibold font-['Poppins'] leading-normal">Archive</a>
+            {% if user.is_authenticated %}
+                <a href="{% url 'account_logout' %}" class="px-12 py-4 bg-slate-200 rounded-2xl text-blue-700 text-base font-semibold font-['Poppins'] leading-normal">Log out</a>
+            {% endif %}
+        </nav>
+    </header>
+    <div class="container mx-auto p-4" style="max-width: calc(100%);">
+        <div class="bg-zinc-100 p-6 rounded-2xl shadow flex flex-col gap-4" style="background-color: #FFFFFF; max-width: calc(40%); margin: 0 auto;">
+            <h1 class="text-2xl font-bold">Profile</h1>
+            <div class="flex flex-col gap-2">
+                <div class="flex justify-between items-center">
+                    <span class="text-black text-base font-normal font-['Poppins']">Full Name</span>
+                    <span class="text-black text-base font-normal font-['Poppins']">{{ user.get_full_name }}</span>
+                </div>
+                <div class="flex justify-between items-center">
+                    <span class="text-black text-base font-normal font-['Poppins']">Email</span>
+                    <span class="text-black text-base font-normal font-['Poppins']">{{ user.email }}</span>
+                </div>
+                <div class="flex justify-between items-center">
+                    <span class="text-black text-base font-normal font-['Poppins']">Password</span>
+                    <span class="text-black text-base font-normal font-['Poppins']">********</span>
+                </div>
+            </div>
+            <div class="flex gap-4">
+                <a href="{% url 'edit_profile' %}" class="px-4 py-2 bg-blue-600 text-white rounded-lg">Edit account</a>
+            </div>
+        </div>
+        <div class="mt-8">
+            <h2 class="text-xl font-bold">Your Uploaded Files</h2>
+            <div class="container mx-auto px-4 py-4" style="max-width: calc(100%);">
+                <div class="flex justify-between items-center mb-4">
+                    <div class="flex items-center gap-3">
+                        <label for="per_page" class="text-black text-xs font-medium font-['Montserrat']">Show</label>
+                        <select id="per_page" class="px-2 py-2 bg-neutral-200 rounded-lg text-black text-xs font-medium font-['Montserrat']" onchange="updateProfile()">
+                            <option value="25" {% if per_page == '25' %}selected{% endif %}>25</option>
+                            <option value="50" {% if per_page == '50' %}selected{% endif %}>50</option>
+                            <option value="100" {% if per_page == '100' %}selected{% endif %}>100</option>
+                        </select>
+                        <span class="text-black text-xs font-medium font-['Montserrat']">entries</span>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <label for="sort_by" class="text-black text-xs font-medium font-['Montserrat']">Sort by</label>
+                        <select id="sort_by" class="px-2 py-2 bg-neutral-200 rounded-lg text-black text-xs font-medium font-['Montserrat']" onchange="updateProfile()">
+                            <option value="upload_date" {% if sort_by == 'upload_date' %}selected{% endif %}>Upload Date</option>
+                            <option value="name" {% if sort_by == 'name' %}selected{% endif %}>Name</option>
+                            <option value="source_url" {% if sort_by == 'source_url' %}selected{% endif %}>Source URL</option>
+                            <option value="doc_headline" {% if sort_by == 'doc_headline' %}selected{% endif %}>Doc Title</option>
+                            <option value="blockiness" {% if sort_by == 'blockiness' %}selected{% endif %}>Blockiness</option>
+                            <option value="sa" {% if sort_by == 'sa' %}selected{% endif %}>SA</option>
+                            <option value="letterbox" {% if sort_by == 'letterbox' %}selected{% endif %}>Letterbox</option>
+                            <option value="pillarbox" {% if sort_by == 'pillarbox' %}selected{% endif %}>Pillarbox</option>
+                            <option value="blockloss" {% if sort_by == 'blockloss' %}selected{% endif %}>Blockloss</option>
+                            <option value="blur" {% if sort_by == 'blur' %}selected{% endif %}>Blur</option>
+                            <option value="ta" {% if sort_by == 'ta' %}selected{% endif %}>TA</option>
+                            <option value="blackout" {% if sort_by == 'blackout' %}selected{% endif %}>Blackout</option>
+                            <option value="freezing" {% if sort_by == 'freezing' %}selected{% endif %}>Freezing</option>
+                            <option value="exposure_bri" {% if sort_by == 'exposure_bri' %}selected{% endif %}>Exposure (bri)</option>
+                            <option value="contrast" {% if sort_by == 'contrast' %}selected{% endif %}>Contrast</option>
+                            <option value="interlace" {% if sort_by == 'interlace' %}selected{% endif %}>Interlace</option>
+                            <option value="noise" {% if sort_by == 'noise' %}selected{% endif %}>Noise</option>
+                            <option value="slice" {% if sort_by == 'slice' %}selected{% endif %}>Slice</option>
+                            <option value="flickering" {% if sort_by == 'flickering' %}selected{% endif %}>Flickering</option>
+                            <option value="colourfulness" {% if sort_by == 'colourfulness' %}selected{% endif %}>Colourfulness</option>
+                        </select>
+                        <label for="sort_order" class="text-black text-xs font-medium font-['Montserrat']">Sort Order</label>
+                        <select id="sort_order" class="px-2 py-2 bg-neutral-200 rounded-lg text-black text-xs font-medium font-['Montserrat']" onchange="updateProfile()">
+                            <option value="asc" {% if sort_order == 'asc' %}selected{% endif %}>Ascending</option>
+                            <option value="desc" {% if sort_order == 'desc' %}selected{% endif %}>Descending</option>
+                        </select>
+                    </div>
+                    <form id="search_form" method="get" action="{% url 'profile' %}" class="flex items-center gap-2">
+                        <input type="text" id="query" name="query" value="{{ query }}" placeholder="Search..." class="px-2 py-2 rounded-lg border border-neutral-400 text-neutral-400 text-xs font-medium font-['Montserrat']">
+                        <button type="submit" class="px-2 py-2 bg-neutral-200 rounded-lg text-black text-xs font-medium font-['Montserrat']">Search</button>
                         <input type="hidden" name="per_page" value="{{ per_page }}">
                         <input type="hidden" name="sort_by" value="{{ sort_by }}">
                         <input type="hidden" name="sort_order" value="{{ sort_order }}">
-                        <input type="hidden" name="query" value="{{ query }}">
-                        <input type="hidden" name="page" value="{{ user_metrics.number }}">
-                        <button type="submit" class="button">Delete</button>
                     </form>
-                </td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+                </div>
 
-    <div>
-        <span>Page {{ user_metrics.number }} of {{ user_metrics.paginator.num_pages }}</span>
-        <div>
-            {% if user_metrics.has_previous %}
-                <a href="?page=1&per_page={{ per_page }}&sort_by={{ sort_by }}&sort_order={{ sort_order }}&query={{ query }}">First</a>
-                <a href="?page={{ user_metrics.previous_page_number }}&per_page={{ per_page }}&sort_by={{ sort_by }}&sort_order={{ sort_order }}&query={{ query }}">Previous</a>
-                {% if user_metrics.number > 2 %}
-                    <a href="?page={{ user_metrics.number|add:"-2" }}&per_page={{ per_page }}&sort_by={{ sort_by }}&sort_order={{ sort_order }}&query={{ query }}">{{ user_metrics.number|add:"-2" }}</a>
-                {% endif %}
-                {% if user_metrics.number > 1 %}
-                    <a href="?page={{ user_metrics.number|add:"-1" }}&per_page={{ per_page }}&sort_by={{ sort_by }}&sort_order={{ sort_order }}&query={{ query }}">{{ user_metrics.number|add:"-1" }}</a>
-                {% endif %}
-            {% endif %}
+                <div class="flex flex-col gap-4">
+                    {% for metric in user_metrics %}
+                    <div class="p-4 bg-white rounded-2xl shadow flex justify-between items-center w-full" style="max-width: calc(100% - 20px);">
+                        <div class="flex items-center gap-2 w-1/3">
+                            <img src="{{ metric.image.url }}" alt="{{ metric.name }}" class="w-40 h-40 rounded-lg">
+                            <div class="flex flex-col" style="min-width: 200px; max-width: 400px;">
+                                <span  class="text-black text-sm font-bold font-['Montserrat']">{{ metric.name }}</span>
+                                <a href="{{ metric.source_url }}" class="text-blue-700 text-sm font-medium font-['Montserrat'] truncate">{{ metric.source_url }}</a>
+                                <span class="text-black text-sm font-medium font-['Montserrat']">{{ metric.doc_headline }}</span>
+                                <span class="text-black text-sm font-medium font-['Montserrat']">{{ metric.upload_date }}</span>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-4 gap-4 w-2/3 ml-8" style="min-width: 800px; max-width: 1000px;">
+                            <span class="text-black text-sm font-bold font-['Montserrat']">Blockiness: <span class="font-normal">{{ metric.blockiness }}</span></span>
+                            <span class="text-black text-sm font-bold font-['Montserrat']">SA: <span class="font-normal">{{ metric.sa }}</span></span>
+                            <span class="text-black text-sm font-bold font-['Montserrat']">Letterbox: <span class="font-normal">{{ metric.letterbox }}</span></span>
+                            <span class="text-black text-sm font-bold font-['Montserrat']">Pillarbox: <span class="font-normal">{{ metric.pillarbox }}</span></span>
+                            <span class="text-black text-sm font-bold font-['Montserrat']">Blockloss: <span class="font-normal">{{ metric.blockloss }}</span></span>
+                            <span class="text-black text-sm font-bold font-['Montserrat']">Blur: <span class="font-normal">{{ metric.blur }}</span></span>
+                            <span class="text-black text-sm font-bold font-['Montserrat']">TA: <span class="font-normal">{{ metric.ta }}</span></span>
+                            <span class="text-black text-sm font-bold font-['Montserrat']">Blackout: <span class="font-normal">{{ metric.blackout }}</span></span>
+                            <span class="text-black text-sm font-bold font-['Montserrat']">Freezing: <span class="font-normal">{{ metric.freezing }}</span></span>
+                            <span class="text-black text-sm font-bold font-['Montserrat']">Exposure (bri): <span class="font-normal">{{ metric.exposure_bri }}</span></span>
+                            <span class="text-black text-sm font-bold font-['Montserrat']">Contrast: <span class="font-normal">{{ metric.contrast }}</span></span>
+                            <span class="text-black text-sm font-bold font-['Montserrat']">Interlace: <span class="font-normal">{{ metric.interlace }}</span></span>
+                            <span class="text-black text-sm font-bold font-['Montserrat']">Noise: <span class="font-normal">{{ metric.noise }}</span></span>
+                            <span class="text-black text-sm font-bold font-['Montserrat']">Slice: <span class="font-normal">{{ metric.slice }}</span></span>
+                            <span class="text-black text-sm font-bold font-['Montserrat']">Flickering: <span class="font-normal">{{ metric.flickering }}</span></span>
+                            <span class="text-black text-sm font-bold font-['Montserrat']">Colourfulness: <span class="font-normal">{{ metric.colourfulness }}</span></span>
+                        </div>
+                        <div class="flex flex-col gap-4"> 
+                            <a href="{% url 'download_from_archive' metric.name %}?page={{ user_metrics.number }}&per_page={{ per_page }}&sort_by={{ sort_by }}&sort_order={{ sort_order }}&query={{ query }}" class="w-full px-4 py-2 bg-blue-700 rounded-lg text-white text-sm font-semibold font-['Inter'] leading-tight text-center">Download</a>
+                            <form method="post" action="{% url 'delete_metric' metric.id %}" class="w-full">
+                                {% csrf_token %}
+                                <input type="hidden" name="per_page" value="{{ per_page }}">
+                                <input type="hidden" name="sort_by" value="{{ sort_by }}">
+                                <input type="hidden" name="sort_order" value="{{ sort_order }}">
+                                <input type="hidden" name="query" value="{{ query }}">
+                                <input type="hidden" name="page" value="{{ user_metrics.number }}">
+                                <button type="submit" class="w-full px-4 py-2 bg-red-600 text-white rounded-lg text-sm font-semibold font-['Inter'] leading-tight text-center">Delete</button>
+                            </form>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                <div class="flex justify-center items-center mt-4">
+                    <div class="w-full max-w-5xl p-4 bg-white rounded-lg flex justify-between items-center">
+                        <span class="text-black text-sm font-medium font-['Montserrat']">Page {{ user_metrics.number }} of {{ user_metrics.paginator.num_pages }}</span>
+                        <div class="flex items-center gap-2">
+                            <a href="?page=1&per_page={{ per_page }}&sort_by={{ sort_by }}&sort_order={{ sort_order }}&query={{ query }}" class="text-blue-700 text-xs font-medium font-['Montserrat']">First</a>
+                            {% if user_metrics.has_previous %}
+                                {% if user_metrics.number > 2 %}
+                                    <a href="?page={{ user_metrics.number|add:'-2' }}&per_page={{ per_page }}&sort_by={{ sort_by }}&sort_order={{ sort_order }}&query={{ query }}" class="px-2 py-1 bg-gray-200 text-blue-700 text-xs font-medium font-['Montserrat'] rounded-lg">{{ user_metrics.number|add:'-2' }}</a>
+                                {% endif %}
+                                {% if user_metrics.number > 1 %}
+                                    <a href="?page={{ user_metrics.number|add:'-1' }}&per_page={{ per_page }}&sort_by={{ sort_by }}&sort_order={{ sort_order }}&query={{ query }}" class="px-2 py-1 bg-gray-200 text-blue-700 text-xs font-medium font-['Montserrat'] rounded-lg">{{ user_metrics.number|add:'-1' }}</a>
+                                {% endif %}
+                            {% endif %}
 
-            {% if user_metrics.has_next %}
-                {% if user_metrics.number < user_metrics.paginator.num_pages %}
-                    <a href="?page={{ user_metrics.number|add:"1" }}&per_page={{ per_page }}&sort_by={{ sort_by }}&sort_order={{ sort_order }}&query={{ query }}">{{ user_metrics.number|add:"1" }}</a>
-                {% endif %}
-                {% if user_metrics.number < user_metrics.paginator.num_pages|add:"-1" %}
-                    <a href="?page={{ user_metrics.number|add:"2" }}&per_page={{ per_page }}&sort_by={{ sort_by }}&sort_order={{ sort_order }}&query={{ query }}">{{ user_metrics.number|add:"2" }}</a>
-                {% endif %}
-                <a href="?page={{ user_metrics.next_page_number }}&per_page={{ per_page }}&sort_by={{ sort_by }}&sort_order={{ sort_order }}&query={{ query }}">Next</a>
-                <a href="?page={{ user_metrics.paginator.num_pages }}&per_page={{ per_page }}&sort_by={{ sort_by }}&sort_order={{ sort_order }}&query={{ query }}">Last</a>
-            {% endif %}
-        </div>
-    </div>
+                            <span class="px-2 py-1 bg-blue-700 text-white text-xs font-medium font-['Montserrat'] rounded-lg">{{ user_metrics.number }}</span>
 
-    <script>
-        function updateProfile() {
-            const perPage = document.getElementById('per_page').value;
-            const sortBy = document.getElementById('sort_by').value;
-            const query = document.getElementById('query').value;
-            const url = new URL(window.location.href);
-            url.searchParams.set('per_page', perPage);
-            url.searchParams.set('sort_by', sortBy);
-            url.searchParams.set('query', query);
-            window.location.href = url.toString();
-        }
-    </script>
-</body>
+                            {% if user_metrics.has_next %}
+                                {% if user_metrics.number < user_metrics.paginator.num_pages %}
+                                    <a href="?page={{ user_metrics.number|add:'1' }}&per_page={{ per_page }}&sort_by={{ sort_by }}&sort_order={{ sort_order }}&query={{ query }}" class="px-2 py-1 bg-gray-200 text-blue-700 text-xs font-medium font-['Montserrat'] rounded-lg">{{ user_metrics.number|add:'1' }}</a>
+                                {% endif %}
+                                {% if user_metrics.number < user_metrics.paginator.num_pages|add:'-1' %}
+                                    <a href="?page={{ user_metrics.number|add:'2' }}&per_page={{ per_page }}&sort_by={{ sort_by }}&sort_order={{ sort_order }}&query={{ query }}" class="px-2 py-1 bg-gray-200 text-blue-700 text-xs font-medium font-['Montserrat'] rounded-lg">{{ user_metrics.number|add:'2' }}</a>
+                                {% endif %}
+                            {% endif %}
+                            <a href="?page={{ user_metrics.paginator.num_pages }}&per_page={{ per_page }}&sort_by={{ sort_by }}&sort_order={{ sort_order }}&query={{ query }}" class="text-blue-700 text-xs font-medium font-['Montserrat']">Last</a>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <label for="jump_to_page" class="text-black text-xs font-medium font-['Montserrat']">Jump to page:</label>
+                            <input type="number" id="jump_to_page" class="px-2 py-1 rounded-lg border border-neutral-400 text-neutral-400 text-xs font-medium font-['Montserrat']" min="1" max="{{ user_metrics.paginator.num_pages }}">
+                            <button onclick="jumpToPage()" class="px-2 py-1 bg-blue-700 text-white text-xs font-medium font-['Montserrat'] rounded-lg">Go</button>
+                        </div>
+                    </div>
+                </div>
+
+                <script>
+                    function updateProfile() {
+                        const perPage = document.getElementById('per_page').value;
+                        const sortOrder = document.getElementById('sort_order').value;
+                        const sortBy = document.getElementById('sort_by').value;
+                        const query = document.getElementById('query').value;
+                        const url = new URL(window.location.href);
+                        url.searchParams.set('page', 1); // Set page to 1
+                        url.searchParams.set('sort_order', sortOrder);
+                        url.searchParams.set('per_page', perPage);
+                        url.searchParams.set('sort_by', sortBy);
+                        url.searchParams.set('query', query);
+                        window.location.href = url.toString();
+                    }
+
+                    function jumpToPage() {
+                        const page = document.getElementById('jump_to_page').value;
+                        const perPage = {{ per_page }};
+                        const sortBy = "{{ sort_by }}";
+                        const sortOrder = "{{ sort_order }}";
+                        const query = "{{ query }}";
+                        const url = new URL(window.location.href);
+                        url.searchParams.set('page', page);
+                        url.searchParams.set('per_page', perPage);
+                        url.searchParams.set('sort_by', sortBy);
+                        url.searchParams.set('sort_order', sortOrder);
+                        url.searchParams.set('query', query);
+                        window.location.href = url.toString();
+                    }
+                </script>
+        </body>
 </html>

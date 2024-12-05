@@ -5,6 +5,18 @@
     <title>Archive</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     {% load static %}
+    <style>
+        .fixed-width-container {
+            width: 100%;
+            max-width: 1200px; /* Adjust the max-width as needed */
+            margin: 0 auto;
+        }
+        .truncate {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+    </style>
 </head>
 <body class="bg-slate-50 min-h-screen flex flex-col" style="background-color: #F1F1F1;">
     <header class="w-full px-12 py-5 bg-slate-50 flex justify-between items-center" style="background-color: #FFFFFF;">
@@ -56,6 +68,11 @@
                     <option value="flickering" {% if sort_by == 'flickering' %}selected{% endif %}>Flickering</option>
                     <option value="colourfulness" {% if sort_by == 'colourfulness' %}selected{% endif %}>Colourfulness</option>
                 </select>
+                <label for="sort_order" class="text-black text-xs font-medium font-['Montserrat']">Sort Order</label>
+                <select id="sort_order" class="px-2 py-2 bg-neutral-200 rounded-lg text-black text-xs font-medium font-['Montserrat']" onchange="updateArchive()">
+                    <option value="asc" {% if sort_order == 'asc' %}selected{% endif %}>Ascending</option>
+                    <option value="desc" {% if sort_order == 'desc' %}selected{% endif %}>Descending</option>
+                </select>
             </div>
             <form id="search_form" method="get" action="{% url 'archive' %}" class="flex items-center gap-2">
                 <input type="text" id="query" name="query" value="{{ query }}" placeholder="Search..." class="px-2 py-2 rounded-lg border border-neutral-400 text-neutral-400 text-xs font-medium font-['Montserrat']">
@@ -71,14 +88,14 @@
             <div class="p-4 bg-white rounded-2xl shadow flex justify-between items-center w-full" style="max-width: calc(100% - 20px);">
                 <div class="flex items-center gap-2 w-1/3">
                     <img src="{{ metric.image.url }}" alt="{{ metric.name }}" class="w-40 h-40 rounded-lg">
-                    <div class="flex flex-col">
+                    <div class="flex flex-col" style="min-width: 200px; max-width: 400px;">
                         <span class="text-black text-sm font-bold font-['Montserrat']">{{ metric.name }}</span>
-                        <a href="{{ metric.source_url }}" class="text-blue-700 text-sm font-medium font-['Montserrat']">{{ metric.source_url }}</a>
+                        <a href="{{ metric.source_url }}" class="text-blue-700 text-sm font-medium font-['Montserrat'] truncate">{{ metric.source_url }}</a>
                         <span class="text-black text-sm font-medium font-['Montserrat']">{{ metric.doc_headline }}</span>
                         <span class="text-black text-sm font-medium font-['Montserrat']">{{ metric.upload_date }}</span>
                     </div>
                 </div>
-                <div class="grid grid-cols-4 gap-4 w-2/3 ml-8">
+                <div class="grid grid-cols-4 gap-4 w-2/3 ml-8" style="min-width: 800px; max-width: 1000px;">
                     <span class="text-black text-sm font-bold font-['Montserrat']">Blockiness: <span class="font-normal">{{ metric.blockiness }}</span></span>
                     <span class="text-black text-sm font-bold font-['Montserrat']">SA: <span class="font-normal">{{ metric.sa }}</span></span>
                     <span class="text-black text-sm font-bold font-['Montserrat']">Letterbox: <span class="font-normal">{{ metric.letterbox }}</span></span>
@@ -140,10 +157,12 @@
         <script>
             function updateArchive() {
                 const perPage = document.getElementById('per_page').value;
+                const sortOrder = document.getElementById('sort_order').value;
                 const sortBy = document.getElementById('sort_by').value;
                 const query = document.getElementById('query').value;
                 const url = new URL(window.location.href);
                 url.searchParams.set('page', 1); // Set page to 1
+                url.searchParams.set('sort_order', sortOrder);
                 url.searchParams.set('per_page', perPage);
                 url.searchParams.set('sort_by', sortBy);
                 url.searchParams.set('query', query);
