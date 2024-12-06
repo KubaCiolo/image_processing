@@ -1,5 +1,3 @@
-# settings.py
-
 import os
 from pathlib import Path
 
@@ -31,7 +29,6 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount.providers.google',
     'image_processing_app',
-    
 ]
 
 SITE_ID = 1
@@ -81,8 +78,11 @@ DATABASES = {
         'NAME': os.getenv('DB_NAME', 'postgres'),
         'USER': os.getenv('DB_USER', 'postgres'),
         'PASSWORD': os.getenv('DB_PASSWORD', 'mysecretpassword'),
-        'HOST': os.getenv('DB_HOST', 'localhost'),  # Use 'localhost' if running Docker on local machine
-        'PORT': os.getenv('DB_PORT', '5433'),
+        'HOST': os.getenv('DB_HOST', 'db'),  # Use 'db' if running Docker on local machine
+        'PORT': os.getenv('DB_PORT', '5432'),
+        'TEST': {
+            'NAME': 'test_postgres',  # Explicitly define the test database name
+        },
     }
 }
 
@@ -111,7 +111,6 @@ LOGGING = {
         },
     },
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators

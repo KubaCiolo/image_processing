@@ -10,7 +10,6 @@ class UploadImageForm(forms.Form):
     def clean(self):
         cleaned_data = super().clean()
         image = cleaned_data.get("image")
-
         if not image:
             raise forms.ValidationError("You must provide an image file.")
         return cleaned_data
