@@ -53,6 +53,10 @@
             </div>
             <div class="flex gap-4">
                 <a href="{% url 'edit_profile' %}" class="px-4 py-2 bg-blue-600 text-white rounded-lg">Edit account</a>
+                <form method="post" action="{% url 'delete_account' %}" onsubmit="return confirm('Are you sure you want to delete your account? This action cannot be undone.');">
+                    {% csrf_token %}
+                    <button type="submit" class="px-4 py-2 bg-red-600 text-white rounded-lg">Delete account</button>
+                </form>
             </div>
         </div>
         <div class="mt-8">

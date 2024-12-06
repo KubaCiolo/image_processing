@@ -97,16 +97,16 @@
     {% if messages %}
         <div class="message-popup">
             {% for message in messages %}
-                <div class="Message w-96 h-48 p-6 bg-white rounded-2xl shadow flex-col justify-center items-start gap-4 inline-flex">
+                <div class="Message w-96 h-48 p-6 bg-white rounded-2xl shadow flex-col justify-start items-start gap-4 inline-flex">
                     <div class="Main w-80 h-20 flex-col justify-start items-start gap-0.5 flex">
                         <div class="Message self-stretch text-neutral-950 text-lg font-bold font-['Inter'] leading-relaxed">{{ message.tags|title }}</div>
                         <div class="Desc self-stretch grow shrink basis-0 text-neutral-500 text-sm font-normal font-['Inter'] leading-tight">{{ message|safe }}</div>
                     </div>
                     {% if "download-link" in message.tags %}
-                        <div class="Buttons self-stretch justify-center items-center gap-4 inline-flex">
-                            <div class="ButtonRoundedFilled justify-start items-start flex">
-                                <div class="MasterButton px-4 py-3 bg-blue-700 rounded-lg justify-center items-center gap-2 flex">
-                                    <a href="{{ message|safe }}" class="Button text-white text-sm font-semibold font-['Inter'] leading-tight">Download</a>
+                        <div class="Buttons self-stretch items-center gap-4 inline-flex">
+                            <div class="ButtonRoundedFilled items-start flex">
+                                <div class="MasterButton px-4 py-3 bg-blue-700 rounded-lg items-center gap-2 flex">
+                                    <a href="{{ message|safe }}" class="Button text-white text-sm font-semibold font-['Inter'] leading-tight">Download Here</a>
                                 </div>
                             </div>
                         </div>

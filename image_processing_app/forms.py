@@ -1,7 +1,8 @@
 # image_processing/image_processing_app/forms.py
 from django import forms
 from django.contrib.auth.models import User
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+from django.contrib.auth.hashers import check_password
 
 class UploadImageForm(forms.Form):
     image = forms.ImageField(required=False)
@@ -29,6 +30,14 @@ class CustomUserCreationForm(UserCreationForm):
         model = User
         fields = ("email", "password1", "password2")
 
+    def clean_password1(self):
+        password1 = self.cleaned_data.get("password1")
+        if User.objects.filter(password__isnull=False).exists():
+            for user in User.objects.all():
+                if check_password(password1, user.password):
+                    raise forms.ValidationError("This password is already in use. Please choose a different password.")
+        return password1
+
     def save(self, commit=True):
         user = super(CustomUserCreationForm, self).save(commit=False)
         user.email = self.cleaned_data["email"]
@@ -36,3 +45,6 @@ class CustomUserCreationForm(UserCreationForm):
         if commit:
             user.save()
         return user
+
+class EmailAuthenticationForm(AuthenticationForm):
+    username = forms.EmailField(label='Email', max_length=254, widget=forms.EmailInput(attrs={'autofocus': True}))

@@ -5,12 +5,11 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login as auth_login
 from django.contrib.auth import logout as auth_logout
-from allauth.account.forms import ChangePasswordForm, AddEmailForm
-from django.contrib.auth.forms import AuthenticationForm
+from allauth.account.forms import ChangePasswordForm, AddEmailForm, LoginForm
 from allauth.account.models import EmailAddress, EmailConfirmationHMAC
 from django.middleware.csrf import get_token
 from allauth.account.views import ConfirmEmailView
-from .forms import UserProfileForm , CustomUserCreationForm
+from .forms import UserProfileForm , CustomUserCreationForm, EmailAuthenticationForm
 from .models import VideoQualityMetrics
 from django.core.paginator import Paginator
 from django.db.models import Q
@@ -20,28 +19,39 @@ logger = logging.getLogger(__name__)
 
 def login(request):
     if request.method == 'POST':
-        form = AuthenticationForm(request, data=request.POST)
+        form = EmailAuthenticationForm(request, data=request.POST)
         if form.is_valid():
-            auth_login(request, form.get_user())
-            return redirect('index')
+            user = form.get_user()
+            email_address = EmailAddress.objects.filter(user=user, email=user.email).first()
+            if email_address and not email_address.verified:
+                messages.error(request, 'Please verify your email address to complete the login.')
+            else:
+                auth_login(request, user)
+                return redirect('index')
         else:
-            messages.error(request, 'Invalid username or password.')
+            messages.error(request, 'Invalid email or password.')
     else:
-        form = AuthenticationForm()
+        form = EmailAuthenticationForm()
     return render(request, 'account/custom_login.html', {'form': form})
 
 def signup(request):
     csrf_token = get_token(request)
-    logger.info(f"CSRF Token: {csrf_token}")
     if request.method == 'POST':
         form = CustomUserCreationForm(request.POST)
         if form.is_valid():
-            user = form.save()
-            # Create email address record and send verification email
-            email_address = EmailAddress.objects.create(user=user, email=user.email, primary=True)
-            email_address.send_confirmation(request)
-            messages.success(request, 'Please confirm your email address to complete the registration.')
-            return redirect('account_login')
+            user = form.save(commit=False)
+            email = form.cleaned_data.get('email')
+            if EmailAddress.objects.filter(email=email).exists():
+                messages.error(request, 'This email address is already in use.')
+            else:
+                user.save()
+                email_address = EmailAddress.objects.create(user=user, email=email, primary=True)
+                email_address.send_confirmation(request)
+                messages.success(request, 'Please confirm your email address to complete the registration.')
+                return redirect('account_login')
+        else:
+            for error in form.errors.values():
+                messages.error(request, error)
     else:
         form = CustomUserCreationForm()
     return render(request, 'account/custom_signup.html', {'form': form, 'csrf_token': csrf_token})
@@ -71,6 +81,15 @@ def logout_confirmation(request):
         messages.success(request, 'You have been logged out.')
         return redirect('index')
     return render(request, 'account/logout_confirmation.html')
+
+@login_required
+def delete_account(request):
+    if request.method == 'POST':
+        user = request.user
+        user.delete()
+        messages.success(request, 'Your account has been deleted successfully.')
+        return redirect('index')
+    return render(request, 'account/delete_account_confirmation.html')
 
 @login_required
 def profile(request):

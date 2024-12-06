@@ -13,6 +13,15 @@
             transform: translateX(-50%);
             z-index: 50;
         }
+        .styled-input {
+            padding: 0.5rem;
+            border-radius: 0.5rem;
+            border: 1px solid #d1d5db; /* neutral-400 */
+            color: #6b7280; /* neutral-400 */
+            font-size: 0.875rem; /* text-xs */
+            font-weight: 500; /* font-medium */
+            font-family: 'Montserrat', sans-serif;
+        }
     </style>
 </head>
 <body class="bg-slate-50 min-h-screen flex flex-col" style="background-color: #F1F1F1;">
@@ -33,7 +42,14 @@
                 <div class="flex flex-col gap-4">
                     <div>
                         <h2 class="text-xl font-semibold">User Information</h2>
-                        {{ user_form.as_p }}
+                        <p>
+                            <label for="id_first_name">First name:</label>
+                            <input type="text" name="first_name" value="{{ user.first_name }}" maxlength="150" id="id_first_name" class="styled-input">
+                        </p>
+                        <p>
+                            <label for="id_last_name">Last name:</label>
+                            <input type="text" name="last_name" value="{{ user.last_name }}" maxlength="150" id="id_last_name" class="styled-input">
+                        </p>
                         <p class="text-black text-base font-normal font-['Poppins']">Date Joined: {{ date_joined }}</p>
                         <p class="text-black text-base font-normal font-['Poppins']">Last Login: {{ last_login }}</p>
                         <button type="submit" name="update_profile" class="px-4 py-2 bg-blue-600 text-white rounded-lg mt-2">Update Profile</button>
@@ -45,7 +61,18 @@
                 <div class="flex flex-col gap-4">
                     <div>
                         <h2 class="text-xl font-semibold">Change Password</h2>
-                        {{ password_form.as_p }}
+                        <p>
+                            <label for="id_oldpassword">Current Password:</label>
+                            <input type="password" name="oldpassword" placeholder="Current Password" autocomplete="current-password" required="" id="id_oldpassword" class="styled-input">
+                        </p>
+                        <p>
+                            <label for="id_password1">New Password:</label>
+                            <input type="password" name="password1" placeholder="New Password" autocomplete="new-password" required="" id="id_password1" class="styled-input">
+                        </p>
+                        <p>
+                            <label for="id_password2">Confirm New Password:</label>
+                            <input type="password" name="password2" placeholder="Confirm New Password" autocomplete="new-password" required="" id="id_password2" class="styled-input">
+                        </p>
                         <button type="submit" name="change_password" class="px-4 py-2 bg-blue-600 text-white rounded-lg mt-2">Change Password</button>
                     </div>
                 </div>
@@ -55,7 +82,10 @@
                 <div class="flex flex-col gap-4">
                     <div>
                         <h2 class="text-xl font-semibold">Change Email</h2>
-                        {{ email_form.as_p }}
+                        <p>
+                            <label for="id_email">New Email:</label>
+                            <input type="email" name="email" placeholder="New Email" required="" id="id_email" class="styled-input">
+                        </p>
                         <button type="submit" name="change_email" class="px-4 py-2 bg-blue-600 text-white rounded-lg mt-2">Change Email</button>
                     </div>
                 </div>
