@@ -46,7 +46,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'allauth.account.middleware.AccountMiddleware',  # Add this line
+    'allauth.account.middleware.AccountMiddleware',
 ]
 
 ROOT_URLCONF = 'image_processing.urls'
@@ -78,10 +78,10 @@ DATABASES = {
         'NAME': os.getenv('DB_NAME', 'postgres'),
         'USER': os.getenv('DB_USER', 'postgres'),
         'PASSWORD': os.getenv('DB_PASSWORD', 'mysecretpassword'),
-        'HOST': os.getenv('DB_HOST', 'db'),  # Use 'db' if running Docker on local machine
+        'HOST': os.getenv('DB_HOST', 'db'),  
         'PORT': os.getenv('DB_PORT', '5432'),
         'TEST': {
-            'NAME': 'test_postgres',  # Explicitly define the test database name
+            'NAME': 'test_postgres',  
         },
     }
 }
@@ -161,7 +161,7 @@ SOCIALACCOUNT_ENABLED = False
 
 # Email backend configuration for production
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'  # Example for Gmail
+EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'imageprogessing@gmail.com'
