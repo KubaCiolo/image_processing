@@ -1,0 +1,52 @@
+<!-- templates/account/email_verification.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirm Email Address</title>
+    {% load static %}
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        .message-popup {
+            position: fixed;
+            bottom: 50px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 50;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 min-h-screen flex flex-col" style="background-color: #F1F1F1;">
+    <header class="w-full px-12 py-5 bg-slate-50 flex justify-between items-center" style="background-color: #FFFFFF;">
+        <div class="flex items-center gap-1.5">
+            <img class="w-16 h-16" src="{% static 'images/logo.png' %}" alt="Logo" />
+            <h1 class="text-zinc-800 text-xl font-bold font-['Poppins'] leading-7">Video Quality Indicators</h1>
+        </div>
+        </nav>
+    </header>
+    <div class="container mx-auto p-4" style="max-width: 600px;">
+        <div class="bg-zinc-100 p-6 rounded-2xl shadow flex flex-col gap-4" style="background-color: #FFFFFF;">
+            <h1 class="text-2xl font-bold">Confirm Email Address</h1>
+            <p>Please confirm that <a href="mailto:{{ email }}">{{ email }}</a> is an email address for user {{ email }}.</p>
+            <form method="POST" action="{% url 'account_confirm_email' key %}">
+                {% csrf_token %}
+                <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded-lg mt-2">Confirm</button>
+            </form>
+        </div>
+    </div>
+    <!-- Display messages as popup -->
+    {% if messages %}
+        <div class="message-popup">
+            {% for message in messages %}
+                <div class="Message w-96 h-48 p-6 bg-white rounded-2xl shadow flex-col justify-start items-start gap-4 inline-flex">
+                    <div class="Main w-80 h-20 flex-col justify-start items-start gap-0.5 flex">
+                        <div class="Message self-stretch text-neutral-950 text-lg font-bold font-['Inter'] leading-relaxed">{{ message.tags|title }}</div>
+                        <div class="Desc self-stretch grow shrink basis-0 text-neutral-500 text-sm font-normal font-['Inter'] leading-tight">{{ message|safe }}</div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+</body>
+</html>

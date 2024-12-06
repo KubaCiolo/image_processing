@@ -1,8 +1,8 @@
-<!-- templates/edit_profile.html -->
+<!-- templates/account/custom_login.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Edit Profile</title>
+    <title>Login</title>
     {% load static %}
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <style>
@@ -22,43 +22,18 @@
             <h1 class="text-zinc-800 text-xl font-bold font-['Poppins'] leading-7">Video Quality Indicators</h1>
         </div>
         <nav class="flex items-center gap-12">
-            <a href="{% url 'profile' %}" class="px-12 py-4 bg-blue-700 rounded-2xl text-white text-base font-semibold font-['Poppins'] leading-normal">Back to Profile</a>
+            <a href="{% url 'index' %}" class="px-12 py-4 bg-slate-200 rounded-2xl text-blue-700 text-base font-semibold font-['Poppins'] leading-normal">Home</a>
+            <a href="{% url 'account_signup' %}" class="px-12 py-4 bg-blue-700 rounded-2xl text-white text-base font-semibold font-['Poppins'] leading-normal">Sign Up</a>
         </nav>
     </header>
     <div class="container mx-auto p-4" style="max-width: calc(100% - 100px);">
         <div class="bg-zinc-100 p-6 rounded-2xl shadow flex flex-col gap-4" style="background-color: #FFFFFF;">
-            <h1 class="text-2xl font-bold">Edit Profile</h1>
-            <form method="post">
+            <h1 class="text-2xl font-bold">Login</h1>
+            <p class="text-black text-base font-normal font-['Poppins']">Please enter your credentials to log in or sign up if you dont have an account yet.</p>
+            <form method="post" action="{% url 'account_login' %}">
                 {% csrf_token %}
-                <div class="flex flex-col gap-4">
-                    <div>
-                        <h2 class="text-xl font-semibold">User Information</h2>
-                        {{ user_form.as_p }}
-                        <p class="text-black text-base font-normal font-['Poppins']">Date Joined: {{ date_joined }}</p>
-                        <p class="text-black text-base font-normal font-['Poppins']">Last Login: {{ last_login }}</p>
-                        <button type="submit" name="update_profile" class="px-4 py-2 bg-blue-600 text-white rounded-lg mt-2">Update Profile</button>
-                    </div>
-                </div>
-            </form>
-            <form method="post">
-                {% csrf_token %}
-                <div class="flex flex-col gap-4">
-                    <div>
-                        <h2 class="text-xl font-semibold">Change Password</h2>
-                        {{ password_form.as_p }}
-                        <button type="submit" name="change_password" class="px-4 py-2 bg-blue-600 text-white rounded-lg mt-2">Change Password</button>
-                    </div>
-                </div>
-            </form>
-            <form method="post">
-                {% csrf_token %}
-                <div class="flex flex-col gap-4">
-                    <div>
-                        <h2 class="text-xl font-semibold">Change Email</h2>
-                        {{ email_form.as_p }}
-                        <button type="submit" name="change_email" class="px-4 py-2 bg-blue-600 text-white rounded-lg mt-2">Change Email</button>
-                    </div>
-                </div>
+                {{ form.as_p }}
+                <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded-lg mt-2">Login</button>
             </form>
         </div>
     </div>
