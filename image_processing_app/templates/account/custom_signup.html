@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register</title>
+    <title>Sign up</title>
     {% load static %}
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <style>
@@ -45,7 +45,7 @@
     </header>
     <div class="container mx-auto p-4" style="max-width: 800px;">
         <div class="bg-zinc-100 p-6 rounded-2xl shadow flex flex-col gap-4" style="background-color: #FFFFFF;">
-            <h1 class="text-2xl font-bold">Register</h1>
+            <h1 class="text-2xl font-bold">Sign up</h1>
             <form method="POST" action="{% url 'account_signup' %}">
                 {% csrf_token %}
                 <div class="mb-4">
@@ -67,7 +67,7 @@
                     <li>Your password can’t be a commonly used password.</li>
                     <li>Your password can’t be entirely numeric.</li>
                 </ul>
-                <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded-lg mt-2">Register</button>
+                <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded-lg mt-2">Sign up</button>
             </form>
         </div>
     </div>

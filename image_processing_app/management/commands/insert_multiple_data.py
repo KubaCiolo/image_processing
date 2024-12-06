@@ -11,8 +11,8 @@ django.setup()
 
 # Paths
 csv_dir = r'C:\Users\jakub_lk\OneDrive\.inżynierka\data1'
-headlines_file = r'C:\Users\jakub_lk\OneDrive\.inżynierka\headlines(art2).txt'
-images_dir = r'C:\Users\jakub_lk\OneDrive\.inżynierka\Es_pdfs(Art2)\From 2023-01-01 to 2023-01-31_3724PDFs_pictures'
+headlines_file = r'C:\Users\jakub_lk\OneDrive\.inżynierka\headlines(Art2).txt'
+images_dir = r'C:\Users\jakub_lk\OneDrive\.inżynierka\Es_pdfs(Art2)\From 2023-02-01 to 2023-02-28_3063PDFs_pictures'
 
 # Read headlines file
 with open(headlines_file, 'r') as f:

@@ -27,7 +27,7 @@ def save_processed_files(log_file, processed_files):
 def process_files_in_directory(directory, log_file):
     vqis_processor = VQIs()  # Initialize the VQIs processor
     directory_path = Path(directory)
-    output_dir = Path(r"C:\Users\jakub_lk\OneDrive\.inżynierka\image_processing\data")
+    output_dir = Path(r"C:\Users\jakub_lk\OneDrive\.inżynierka\image_processing\data1")
     
     # Ensure the output directory exists
     output_dir.mkdir(parents=True, exist_ok=True)

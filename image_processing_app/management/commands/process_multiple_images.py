@@ -19,6 +19,7 @@ def save_processed_files(log_file, processed_files):
         json.dump(list(processed_files), f)
 
 def process_files_in_directory(directory, log_file):
+    print(f"Initializing VQIs processor")
     vqis_processor = VQIs()  # Initialize the VQIs processor
     directory_path = Path(directory)
     output_dir = Path(r"C:\Users\jakub_lk\OneDrive\.inżynierka\data1")
@@ -29,7 +30,9 @@ def process_files_in_directory(directory, log_file):
     # Load the list of processed files
     processed_files = load_processed_files(log_file)
     
+    print(f"Processing files in directory: {directory}")
     for file_path in directory_path.glob("*.jpg"):  # Adjust the pattern if needed
+        print(f"Checking file: {file_path}")
         if str(file_path) in processed_files:
             print(f"Skipping {file_path}: Already processed")
             continue
@@ -50,6 +53,7 @@ def process_files_in_directory(directory, log_file):
             
             # Process the file
             try:
+                print(f"Processing file: {file_path}")
                 result = process_single_mm_file(file_path, vqis_processor)
             except Exception as e:
                 print(f"Skipping {file_path}: Error during processing - {e}")
