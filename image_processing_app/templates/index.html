@@ -1,35 +1,119 @@
 <!-- templates/index.html -->
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Home Page</title>
+    <title>Video Quality Indicators</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    {% load static %}
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-image: url("{% static 'images/background.png' %}");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-color: #F1F1F1;
+        }
+        .message-popup {
+            position: fixed;
+            bottom: 50px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 50;
+        }
+    </style>
 </head>
-<body>
-    <h1>Upload Picture</h1>
-    <form method="post" enctype="multipart/form-data" action="{% url 'index' %}">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Upload</button>
-    </form>
-
-    <br>
-    <a href="{% url 'archive' %}">Go to Archive</a>
-    <br>
-    {% if user.is_authenticated %}
-        <a href="{% url 'account_logout' %}">Logout</a>
-    {% else %}
-        <a href="{% url 'account_login' %}">Sign In</a>
-        <br>
-        <a href="{% url 'account_signup' %}">Sign Up</a>
-    {% endif %}
-
-    <!-- Display messages -->
+<body class=" min-h-screen flex flex-col " style="background-color: #F1F1F1;">
+    <div class="flex-grow flex flex-col justify-between">
+        <div class="LandingPage w-full min-h-screen flex-col justify-start items-center">
+            <div class="Navbar w-full px-12 py-5 bg-white justify-between items-center flex">
+                <div class="Logo justify-start items-center gap-1.5 flex">
+                    <img class="Image1 w-16 h-16" src="{% static 'images/logo.png' %}" alt="Logo" />
+                    <div class="VideoQualityIndicators text-center text-zinc-800 text-xl font-bold font-['Poppins'] leading-7">Video Quality Indicators</div>
+                </div>
+                <div class="Frame32 justify-center items-center gap-12 flex ml-auto">
+                    <div class="Button rounded-2xl justify-center items-center gap-2 inline-flex">
+                        <a href="{% url 'profile' %}" class="Label text-center text-blue-700 text-base font-semibold font-['Poppins'] leading-normal">Profile</a>
+                    </div>
+                    <div class="Button px-2.5 py-1 rounded-2xl justify-center items-center gap-2 inline-flex">
+                        <a href="{% url 'archive' %}" class="Label w-16 self-stretch text-center text-blue-700 text-base font-semibold font-['Poppins'] leading-normal">Archive</a>
+                    </div>
+                    <div class="Button h-14 px-12 py-4 bg-[#E0E4F1] rounded-2xl justify-center items-center gap-2 inline-flex">
+                        {% if user.is_authenticated %}
+                            <a href="{% url 'account_logout' %}" class="px-12 py-4 bg-blue-700 rounded-2xl text-white text-base font-semibold font-['Poppins'] leading-normal">Log out</a>
+                        {% else %}
+                            <a href="{% url 'account_login' %}" class="px-12 py-4 bg-blue-700 rounded-2xl text-white text-base font-semibold font-['Poppins'] leading-normal">Log in</a>
+                            <a href="{% url 'account_signup' %}" class="px-12 py-4 bg-blue-400 rounded-2xl text-white text-base font-semibold font-['Poppins'] leading-normal">Sign up</a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            <div class="Frame21 w-full px-12 py-16 justify-between items-center flex mt-20">
+                <div class="Header w-full max-w-lg flex-col justify-start items-start gap-2 mx-auto mt-8">
+                    <div class="VideoQualityIndicators self-stretch text-zinc-800 text-7xl font-bold font-['Poppins'] leading-tight">Video Quality Indicators</div>
+                    <div class="HereYouCanUploadYourMediaAndReceiveInformationAboutItsIndicators w-full text-zinc-800 text-xl font-normal font-['Mulish'] leading-loose">Here, you can upload your media and receive information about its indicators</div>
+                </div>
+                <div class="UploadV1Step1 w-full max-w-lg h-68 p-6 bg-white rounded-2xl shadow flex flex-col justify-start items-start gap-2 mx-auto mt-8">
+                    <div class="TitleSectionTitle self-stretch h-12 flex-col justify-start items-start flex">
+                        <div class="MasterGeneral self-stretch h-12 flex-col justify-center items-center gap-3 flex">
+                            <div class="Wrapper self-stretch justify-start items-center gap-1.5 inline-flex">
+                                <div class="Left grow shrink basis-0 flex-col justify-start items-start gap-0.5 inline-flex">
+                                    <div class="TitleSection self-stretch text-neutral-950 text-lg font-bold font-['Inter'] leading-relaxed">Media Upload</div>
+                                    <div class="Desc self-stretch h-5 text-neutral-500 text-sm font-normal font-['Inter'] leading-tight">Add your file here</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <form method="post" enctype="multipart/form-data" action="{% url 'index' %}" class="w-full">
+                        {% csrf_token %}
+                        <div class="Frame2 self-stretch h-16 flex-col justify-start items-center gap-2 flex">
+                            <div class="ButtonRoundedOutline w-24 h-10 justify-start items-start inline-flex">
+                                <div class="MasterOutlineButton grow shrink basis-0 self-stretch px-3 py-1.5 bg-blue-700 rounded-lg justify-center items-center gap-2 flex">
+                                    <label class="Button text-white text-xs font-semibold font-['Inter'] leading-none cursor-pointer">
+                                        Browse files
+                                        <input type="file" name="image" class="hidden">
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="Desc self-stretch h-5 text-neutral-500 text-sm font-normal font-['Inter'] leading-tight mb-2">Support for .jpg, .png, .bmp, .tiff, .webp, .mp4, .avi, .mov, .mkv, .wmv files</div>
+                        <div class="Buttons w-full flex justify-end items-start gap-4 mt-2">
+                            <div class="ButtonRoundedFilled flex">
+                                <div class="MasterButton px-4 py-3 bg-blue-700 rounded-lg flex justify-center items-center gap-2">
+                                    <button type="submit" class="Button text-white text-sm font-semibold font-['Inter'] leading-tight">Upload</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="Footer self-stretch grow shrink basis-0 px-14 py-6 bg-zinc-800 justify-start items-center gap-96 inline-flex">
+                <div class="2023 text-white text-sm font-normal font-['Mulish'] leading-snug">© 2024</div>
+            </div>
+        </div>
+    </div>
+    <!-- Display messages as popup -->
     {% if messages %}
-        <ul>
+        <div class="message-popup">
             {% for message in messages %}
-                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message|safe }}</li>
+                <div class="Message w-96 h-48 p-6 bg-white rounded-2xl shadow flex-col justify-start items-start gap-4 inline-flex">
+                    <div class="Main w-80 h-20 flex-col justify-start items-start gap-0.5 flex">
+                        <div class="Message self-stretch text-neutral-950 text-lg font-bold font-['Inter'] leading-relaxed">{{ message.tags|title }}</div>
+                        <div class="Desc self-stretch grow shrink basis-0 text-neutral-500 text-sm font-normal font-['Inter'] leading-tight">{{ message|safe }}</div>
+                    </div>
+                    {% if "download-link" in message.tags %}
+                        <div class="Buttons self-stretch items-center gap-4 inline-flex">
+                            <div class="ButtonRoundedFilled items-start flex">
+                                <div class="MasterButton px-4 py-3 bg-blue-700 rounded-lg items-center gap-2 flex">
+                                    <a href="{{ message|safe }}" class="Button text-white text-sm font-semibold font-['Inter'] leading-tight">Download Here</a>
+                                </div>
+                            </div>
+                        </div>
+                    {% endif %}
+                </div>
             {% endfor %}
-        </ul>
+        </div>
     {% endif %}
 </body>
 </html>

@@ -1,0 +1,109 @@
+<!-- templates/edit_profile.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Edit Profile</title>
+    {% load static %}
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        .message-popup {
+            position: fixed;
+            bottom: 50px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 50;
+        }
+        .styled-input {
+            padding: 0.5rem;
+            border-radius: 0.5rem;
+            border: 1px solid #d1d5db; /* neutral-400 */
+            color: #6b7280; /* neutral-400 */
+            font-size: 0.875rem; /* text-xs */
+            font-weight: 500; /* font-medium */
+            font-family: 'Montserrat', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 min-h-screen flex flex-col" style="background-color: #F1F1F1;">
+    <header class="w-full px-12 py-5 bg-slate-50 flex justify-between items-center" style="background-color: #FFFFFF;">
+        <div class="flex items-center gap-1.5">
+            <img class="w-16 h-16" src="{% static 'images/logo.png' %}" alt="Logo" />
+            <h1 class="text-zinc-800 text-xl font-bold font-['Poppins'] leading-7">Video Quality Indicators</h1>
+        </div>
+        <nav class="flex items-center gap-12">
+            <a href="{% url 'profile' %}" class="px-12 py-4 bg-blue-700 rounded-2xl text-white text-base font-semibold font-['Poppins'] leading-normal">Back to Profile</a>
+        </nav>
+    </header>
+    <div class="container mx-auto p-4" style="max-width: 600px;">
+        <div class="bg-zinc-100 p-6 rounded-2xl shadow flex flex-col gap-4" style="background-color: #FFFFFF;">
+            <h1 class="text-2xl font-bold">Edit Profile</h1>
+            <form method="post">
+                {% csrf_token %}
+                <div class="flex flex-col gap-4">
+                    <div>
+                        <h2 class="text-xl font-semibold">User Information</h2>
+                        <p>
+                            <label for="id_first_name">First name:</label>
+                            <input type="text" name="first_name" value="{{ user.first_name }}" maxlength="150" id="id_first_name" class="styled-input">
+                        </p>
+                        <p>
+                            <label for="id_last_name">Last name:</label>
+                            <input type="text" name="last_name" value="{{ user.last_name }}" maxlength="150" id="id_last_name" class="styled-input">
+                        </p>
+                        <p class="text-black text-base font-normal font-['Poppins']">Date Joined: {{ date_joined }}</p>
+                        <p class="text-black text-base font-normal font-['Poppins']">Last Login: {{ last_login }}</p>
+                        <button type="submit" name="update_profile" class="px-4 py-2 bg-blue-600 text-white rounded-lg mt-2">Update Profile</button>
+                    </div>
+                </div>
+            </form>
+            <form method="post">
+                {% csrf_token %}
+                <div class="flex flex-col gap-4">
+                    <div>
+                        <h2 class="text-xl font-semibold">Change Password</h2>
+                        <p>
+                            <label for="id_oldpassword">Current Password:</label>
+                            <input type="password" name="oldpassword" placeholder="Current Password" autocomplete="current-password" required="" id="id_oldpassword" class="styled-input">
+                        </p>
+                        <p>
+                            <label for="id_password1">New Password:</label>
+                            <input type="password" name="password1" placeholder="New Password" autocomplete="new-password" required="" id="id_password1" class="styled-input">
+                        </p>
+                        <p>
+                            <label for="id_password2">Confirm New Password:</label>
+                            <input type="password" name="password2" placeholder="Confirm New Password" autocomplete="new-password" required="" id="id_password2" class="styled-input">
+                        </p>
+                        <button type="submit" name="change_password" class="px-4 py-2 bg-blue-600 text-white rounded-lg mt-2">Change Password</button>
+                    </div>
+                </div>
+            </form>
+            <form method="post">
+                {% csrf_token %}
+                <div class="flex flex-col gap-4">
+                    <div>
+                        <h2 class="text-xl font-semibold">Change Email</h2>
+                        <p>
+                            <label for="id_email">New Email:</label>
+                            <input type="email" name="email" placeholder="New Email" required="" id="id_email" class="styled-input">
+                        </p>
+                        <button type="submit" name="change_email" class="px-4 py-2 bg-blue-600 text-white rounded-lg mt-2">Change Email</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- Display messages as popup -->
+    {% if messages %}
+        <div class="message-popup">
+            {% for message in messages %}
+                <div class="Message w-96 h-48 p-6 bg-white rounded-2xl shadow flex-col justify-start items-start gap-4 inline-flex">
+                    <div class="Main w-80 h-20 flex-col justify-start items-start gap-0.5 flex">
+                        <div class="Message self-stretch text-neutral-950 text-lg font-bold font-['Inter'] leading-relaxed">{{ message.tags|title }}</div>
+                        <div class="Desc self-stretch grow shrink basis-0 text-neutral-500 text-sm font-normal font-['Inter'] leading-tight">{{ message|safe }}</div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+</body>
+</html>

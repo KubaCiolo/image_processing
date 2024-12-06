@@ -1,12 +1,12 @@
-# image_processing_app/models.py
 from django.db import models
-from django.contrib.auth.models import User
+from django.conf import settings
 
 class VideoQualityMetrics(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     image = models.ImageField(upload_to='uploads/%Y/%m/%d/')
-    name = models.CharField(max_length=255)
+    name = models.CharField(max_length=255, unique=True)  # Add unique constraint
     source_url = models.URLField(blank=True, null=True)
+    doc_headline = models.CharField(max_length=1024, blank=True, null=True)  # Extended length
     upload_date = models.DateTimeField(auto_now_add=True)
     frame = models.IntegerField()
     blockiness = models.FloatField()

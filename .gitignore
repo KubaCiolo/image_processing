@@ -11,6 +11,8 @@ node_modules/
 
 # Ignore media files
 media/
+pdf_images/
+images/
 
 # Ignore log files
 *.log
