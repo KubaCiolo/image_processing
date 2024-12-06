@@ -19,7 +19,6 @@ urlpatterns = [
     path('accounts/logout/', logout_confirmation, name='logout_confirmation'),
     path('accounts/login/', login, name='login'),
     path('accounts/signup/', signup, name='account_signup'),
-    #path('accounts/', include('allauth.urls')),
     path('accounts/confirm-email/<str:key>/', CustomConfirmEmailView.as_view(), name='account_confirm_email'),
     path('accounts/delete/', delete_account, name='delete_account'),
 ]

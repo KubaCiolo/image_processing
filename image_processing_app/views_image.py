@@ -8,7 +8,7 @@ from django.conf import settings
 from .forms import UploadImageForm
 from .models import VideoQualityMetrics
 from pathlib import Path
-from .utils.image_processing import process_image  # Import the process_image function
+from .utils.image_processing import process_image 
 from django.utils.safestring import mark_safe
 from django.contrib.auth.decorators import login_required
 from django.core.files.base import File
